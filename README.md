@@ -75,13 +75,13 @@ Sommaire:
 ## Chapitre III: Classification naïve bayésienne
 
 ### III-1 Classification
-Voici la théorème de Bayes:
+Voici le théorème de Bayes:
 
 ![III-1-bayes]
 
-Le problème de classification revient à estimer la probabilité de chaque classe ![c-i] en se basant sur un vecteur de critères ![vec-f].
-Par example, nous voulons estimer la probabilité d'un animal étant: un chien, un chat, une vache ou autre (4 classes) en se basant sur un vecteur de critères: poids, longeur, longueur des pattes et le type de nouriture.
-En appliquant la théorème de Bayes:
+Le problème de classification revient à estimer la probabilité de chaque classe ![c-i] en se basant sur un vecteur de caractéristiques ![vec-f].
+Par exemple, nous voulons estimer la probabilité d'un animal étant: un chien, un chat, une vache ou autre (4 classes) en se basant sur un vecteur de caractéristiques: poids, longueur, longueur des pattes et le type de nourriture.
+En appliquant le théorème de Bayes:
 
 ![III-1-bayes2]
 
@@ -89,19 +89,19 @@ Le dénominateur ne dépend pas de la classe ![c-i]
 
 ![III-1-bayes3]
 
-En supposant l'indépedance entre les critères ![f-j] de ![vec-f]:
+En supposant l'indépendance entre les critères ![f-j] de ![vec-f]:
 
 ![III-1-bayes4]
 
 Les probabilités calculées servent à sélectionner la classe la plus probable sachant notre vecteur de critères.
-Donc, la classe estimée *c* est celle qui maximize la probabilité conditionnelle.
+Donc, la classe estimée *c* est celle qui maximise la probabilité conditionnelle.
 
 ![III-1-bayes5]
 
 ![III-1-bayes6]
 
-[III-1-bayes]: https://latex.codecogs.com/gif.latex?P(A|B)=\frac{P(B|A)P(A)}{P(B)}
-[III-1-bayes2]: https://latex.codecogs.com/gif.latex?P(c_i|\overrightarrow{f})=\frac{P(\overrightarrow{f}|c_i)P(c_i)}{P(\overrightarrow{f})}
+[III-1-bayes]: https://latex.codecogs.com/gif.latex?\overbrace{P(A|B)}^{\text{post\'erieure}}=\frac{\overbrace{P(A)}^{\text{ant\'erieure}}\overbrace{P(B|A)}^{\text{vraisemblance}}}{\underbrace{P(B)}_{\text{\'evidence}}}
+[III-1-bayes2]: https://latex.codecogs.com/gif.latex?P(c_i|\overrightarrow{f})=\frac{P(c_i)P(\overrightarrow{f}|c_i)}{P(\overrightarrow{f})}
 [III-1-bayes3]: https://latex.codecogs.com/gif.latex?P(c_i|\overrightarrow{f})&space;\propto&space;P(\overrightarrow{f}|c_i)&space;P(c_i)
 [III-1-bayes4]: https://latex.codecogs.com/gif.latex?P(c_i|\overrightarrow{f})&space;\propto&space;P(c_i)&space;\prod\limits_{f_j&space;\in&space;\overrightarrow{f}}&space;P(f_j|c_i)
 [III-1-bayes5]: https://latex.codecogs.com/gif.latex?c&space;=&space;\arg\max\limits_{ci}&space;P(c_i|\overrightarrow{f})
@@ -109,7 +109,7 @@ Donc, la classe estimée *c* est celle qui maximize la probabilité conditionnel
 
 ### III-2 Apprentissage (Estimation des paramètres du modèle)
 
-Etant donné un ensemble de données, la probabilité d'apparaition d'une classe ![c-i] est estimée comme le nombre des exemplaires de ![c-i] divisé par le nombre total des examplaires dans cette ensemble.
+Étant donné un ensemble de données, la probabilité d'apparition d'une classe ![c-i] est estimée comme le nombre des exemplaires de ![c-i] divisé par le nombre total des exemplaires dans cette ensemble.
 
 ![III-2-pci]
 
@@ -138,7 +138,7 @@ valeurs continues
 
 ### III-4 Limites
 
-### Bobliographie
+### Bibliographie
 
 - https://towardsdatascience.com/multinomial-naive-bayes-classifier-for-text-analysis-python-8dd6825ece67
 - https://syncedreview.com/2017/07/17/applying-multinomial-naive-bayes-to-nlp-problems-a-practical-explanation/
@@ -161,12 +161,13 @@ valeurs continues
 ## Chapitre X: Regroupement
 
 ## X-1 Regroupement hiérarchique
+
 ## X-2 K-Means
 
 ### Bibliographie
 
 - https://towardsdatascience.com/unsupervised-learning-with-python-173c51dc7f03
 
-## Chapitre XI: Auto-encodeurs (Maybe not!!)
+## Chapitre XI: Auto-encodeur (Maybe not!!)
 
 ## Chapitre XII: Apprentissage par renforcement
