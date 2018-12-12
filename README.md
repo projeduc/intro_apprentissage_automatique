@@ -1,5 +1,7 @@
 # Introduction à l'apprentissage automatique
 
+[Cliquez Ici pour lire le document sous format Jupyter Nootebook](livre.ipynb)
+
 Sommaire:
 - [Chapitre I: Introduction](#chapitre-i-introduction)
 - [Chapitre II: Préparation de données](#chapitre-ii-préparation-de-données)
@@ -70,6 +72,8 @@ Sommaire:
 ## Chapitre III: Classification naïve bayésienne
 
 ### III-1 Classification
+
+$ P(A|B) = \frac{P(B|A) P(A)}{P(B)} $
 
 ### III-2 Apprentissage (Estimation des paramètres du modèle)
 
