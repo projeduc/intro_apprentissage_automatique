@@ -43,22 +43,86 @@ Glossaire:
 
 #### I-3-1 Apprentissage supervisé
 
-##### Classification
+Lorsque nous disposons d'un ensemble de données avec les résulats attendus, on peut entraîner un système sur ces données pour inférer la fonction utilisée pour avoir ces résulats.
+En résumé:
+
+- **Source d'apprentissage:** des données annotées (nous avons les résultats attendus)
+- **Retour d'information:** direct; à partir des résulats attendues.
+- **Fonction:** prédire les future résultats
+
+Selon le type d'annotation, on peut remarquer deux types des algorithmes d'apprentissage automatique: classement et régression.
+
+##### Classement (Classification supervisée)
+
+Lorsque le résulat attendu est une classe (groupe).
+
+| Par exemple: |
+| :--: |
+| Classer un animal comme: chat, chien, vache ou autre en se basant sur le poids, la longueur et le type de nourriture.  |
 
 ##### Régression
 
+Lorsque le résulat attendu est une valeur.
+
+| Par exemple: |
+| :--: |
+| Estimer le prix d'une maison à partir de sa surface, nombre de chambre et l'emplacement. |
+
+
 #### I-3-2 Apprentissage non supervisé
+
+Lorsque nous disposons d'un ensemble de données non annotées (sans savoir les résulats attendus).
+En résumé:
+
+- **Source d'apprentissage:** des données non annotées
+- **Retour d'information:** pas de retour; on dispose seulement des données en entrée.
+- **Fonction:** rechercher les structures cachées dans les données.
+
+Selon le type de structure que l'algorithme va découvrir, on peut avoir: le regroupement et la réduction de dimension.
 
 ##### Clustering (Regroupement)
 
+L'algorithme de regroupement sert à assigner les échantillons similaires dans le même groupe.
+Donc, le résulat est un ensemble de groupes contenants les échantillons
+
+| Par exemple: |
+| :--: |
+| Regrouper les plantes similaires en se basant sur la couleur, la taile, etc.  |
+
 ##### Réduction de dimension
 
-#### I-3-3 Apprentissage par renforcement  
+L'algorithme de réduction de dimension a comme but d'apprendre comment représenter des données en entrée avec moins de valeurs.
+
+| Par exemple: |
+| :--: |
+| Représenter des individus sur un graph de deux dimensions en utilisant la taille, le poids, l'age, la couleur des cheveux, la texture des cheveux et la couleur des yeux  |
+
+
+#### I-3-3 Apprentissage par renforcement
+
+- **Source d'apprentissage:** le processus de décision
+- **Retour d'information:** un système de récompense
+- **Fonction:** recherche des structures cachées dans les données.
+
+| ![apprentissage par renforcement](IMG/RL-fr.png) |
+|:--:|
+| *Apprentissage par renforcement [ [Wikimedia](https://commons.wikimedia.org/wiki/File:Reinforcement_learning_diagram_fr.svg?uselang=fr) ]* |
+
 
 ### I-4 Limites de l'apprentissage automatique
 
+- Pour des tâches complexes, on a besoin d'une grande quantité de données
+- Dans le cas de l'apprentissage supervisé, l'annotation de données est une tâche fastidieuse; qui prend beaucoup de temps.
+-
+
 ### I-5 Outils de l'apprentissage automatique
 
+### Bibliographie
+
+- https://www.kdnuggets.com/2017/11/3-different-types-machine-learning.html
+- https://www.techleer.com/articles/203-machine-learning-algorithm-backbone-of-emerging-technologies/
+- https://www.wired.com/story/greedy-brittle-opaque-and-shallow-the-downsides-to-deep-learning/
+- https://data-flair.training/blogs/advantages-and-disadvantages-of-machine-learning/
 
 ## Chapitre II: Préparation de données
 
@@ -173,6 +237,8 @@ Donc, la probabilité qu'une caractéristique ![f-j] ait une valeur *x* sachant 
 
 ### III-3 Exemple
 
+**_...TODO: example about sentiment analysis using multinomial bayes_**
+
 ### III-4 Avantages
 
 Les classifieurs naïfs bayésiens, malgès leurs simplicité, ont des points forts:
@@ -199,8 +265,11 @@ Mais, une telle simplicité vient avec un coût.
 - https://towardsdatascience.com/naive-bayes-classifier-81d512f50a7c
 - https://scikit-learn.org/stable/modules/naive_bayes.html
 - https://github.com/ctufts/Cheat_Sheets/wiki/Classification-Model-Pros-and-Cons
+- https://mattshomepage.com/articles/2016/Jun/07/bernoulli_nb/
 
 ## Chapitre IV: Machine à vecteurs de support
+
+
 
 ## Chapitre V: Machine à vecteurs de support
 
