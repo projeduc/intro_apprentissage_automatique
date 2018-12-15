@@ -22,6 +22,10 @@ Glossaire:
 
 ## Chapitre I: Introduction
 
+| ![apprentissage automatique](IMG/AA.png) |
+|:--:|
+| *Apprentissage automatique* |
+
 ### I-1 Motivation
 
 - Certaines tâches sont difficiles à programmer manuellement: Reconnaissance de formes, Traduction par machine, Reconnaissance de la parole, Aide à la décision, etc.
@@ -113,7 +117,8 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 - Pour des tâches complexes, on a besoin d'une grande quantité de données
 - Dans le cas de l'apprentissage supervisé, l'annotation de données est une tâche fastidieuse; qui prend beaucoup de temps.
--
+- Le traitement automatique de langages narurels (TALN) reste un défit
+- Les données d'entraînement sont souvent biaisées
 
 ### I-5 Outils de l'apprentissage automatique
 
@@ -123,6 +128,8 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 - https://www.techleer.com/articles/203-machine-learning-algorithm-backbone-of-emerging-technologies/
 - https://www.wired.com/story/greedy-brittle-opaque-and-shallow-the-downsides-to-deep-learning/
 - https://data-flair.training/blogs/advantages-and-disadvantages-of-machine-learning/
+- https://towardsdatascience.com/coding-deep-learning-for-beginners-types-of-machine-learning-b9e651e1ed9d
+- https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef
 
 ## Chapitre II: Préparation de données
 
