@@ -332,7 +332,7 @@ Donc, le vecteur de caractéristique ![vec-f]={taille, poids, pointure} et le ve
 Les données d'apprentissage contiennent 8 échantillons.
 
 | Sexe | Taille (cm) | Poids (kg) |	Pointure (cm) |
-| :--: |
+| :---: | :---: | :---: | :---: |
 |masculin | 182 | 81.6 | 30 |
 | masculin| 180| 86.2| 28|
 | masculin| 170| 77.1| 30|
@@ -349,7 +349,7 @@ P(masculin) = 4/8 = 0.5
 P(féminin) = 4/8 = 0.5
 
 | Sexe | μ (taille) | σ² (taille) | μ (poids) | σ² (poids) | μ (pointure) | σ² (pointure) |
-| :--: |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | masculin | 178 | 29.333 | 79.92 | 25.476 | 28.25 | 5.5833 |
 | féminin | 165 | 92.666 | 60.1 | 114.04 | 19.00 | 11.333 |
 
