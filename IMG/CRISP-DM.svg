@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="600"
+   height="600"
+   viewBox="0 0 158.75 158.75"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="CRISP-DM.svg">
+  <title
+     id="title1366">CRISP-DM</title>
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1372"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#9400d3;stroke-width:1pt;stroke-opacity:1;fill:#9400d3;fill-opacity:1"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1372-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#9400d3;fill-opacity:1;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1372-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#9400d3;fill-opacity:1;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1372-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#9400d3;fill-opacity:1;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <symbol
+       id="MagneticDisk">
+      <title
+         id="title5499">Magnetic Disk (Database)</title>
+      <desc
+         id="desc5501">A magnetic disk. (ISO)</desc>
+      <path
+         inkscape:connector-curvature="0"
+         d="m 9.2604167,6.6145833 a 17.197917,17.197917 0 0 1 21.1666663,0 V 33.072917 a 17.197917,17.197917 0 0 1 -21.1666663,0 z"
+         style="stroke-width:0.52916664"
+         id="path5503" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 30.427083,6.6145833 a 17.197917,17.197917 0 0 1 -21.1666663,0"
+         style="fill:none;stroke-width:0.52916664;stroke-linecap:butt"
+         id="path5505" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 30.427083,10.583333 a 17.197917,17.197917 0 0 1 -21.1666663,0"
+         style="fill:none;stroke-width:0.52916664;stroke-linecap:butt"
+         id="path5507" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 30.427083,14.552083 a 17.197917,17.197917 0 0 1 -21.1666663,0"
+         style="fill:none;stroke-width:0.52916664;stroke-linecap:butt"
+         id="path5509" />
+    </symbol>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="59.64932"
+     inkscape:cy="277.72614"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>CRISP-DM</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Abdelkrime Aries</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-138.24998)">
+    <circle
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#9400d3;stroke-opacity:1;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;marker-end:"
+       id="path1368"
+       cx="78.619049"
+       cy="217.24701"
+       r="74"
+       clip-path="none" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.88367188;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart)"
+       d="m 36.894704,155.39661 -2.238451,2.14662"
+       id="path1656"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.883672;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart-3)"
+       d="m 142.79726,179.52093 -2.04344,-2.33302"
+       id="path1656-7"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.883672;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart-5)"
+       d="m 121.01083,278.74276 2.2118,-2.17406"
+       id="path1656-5"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.883672;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart-6)"
+       d="m 17.653432,260.23103 2.146118,2.23893"
+       id="path1656-9"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:1;fill:#aaccee;fill-opacity:1;stroke:none;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect17417"
+       width="51.026787"
+       height="19.276785"
+       x="49.892857"
+       y="168.11009" />
+  </g>
+</svg>
