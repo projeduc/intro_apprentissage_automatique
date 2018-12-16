@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800"
+   height="400"
+   viewBox="0 0 211.66666 105.83333"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="AA-supervise.svg">
+  <title
+     id="title1366">CRISP-DM</title>
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1372"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#9400d3;fill-opacity:1;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1372-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#9400d3;fill-opacity:1;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1372-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#9400d3;fill-opacity:1;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1372-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#9400d3;fill-opacity:1;fill-rule:evenodd;stroke:#9400d3;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <symbol
+       id="MagneticDisk">
+      <title
+         id="title5499">Magnetic Disk (Database)</title>
+      <desc
+         id="desc5501">A magnetic disk. (ISO)</desc>
+      <path
+         inkscape:connector-curvature="0"
+         d="m 9.2604167,6.6145833 a 17.197917,17.197917 0 0 1 21.1666663,0 V 33.072917 a 17.197917,17.197917 0 0 1 -21.1666663,0 z"
+         style="stroke-width:0.52916664"
+         id="path5503" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 30.427083,6.6145833 a 17.197917,17.197917 0 0 1 -21.1666663,0"
+         style="fill:none;stroke-width:0.52916664;stroke-linecap:butt"
+         id="path5505" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 30.427083,10.583333 a 17.197917,17.197917 0 0 1 -21.1666663,0"
+         style="fill:none;stroke-width:0.52916664;stroke-linecap:butt"
+         id="path5507" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 30.427083,14.552083 a 17.197917,17.197917 0 0 1 -21.1666663,0"
+         style="fill:none;stroke-width:0.52916664;stroke-linecap:butt"
+         id="path5509" />
+    </symbol>
+    <symbol
+       id="Document">
+      <title
+         id="title1073">Document</title>
+      <desc
+         id="desc1075">A document or report</desc>
+      <path
+         inkscape:connector-curvature="0"
+         d="m 3.96875,9.2604167 h 31.75 V 25.135417 C 22.489583,23.8125 17.197917,34.395833 3.96875,27.78125 Z"
+         style="stroke-width:0.52916664"
+         id="path1077" />
+    </symbol>
+    <symbol
+       id="Process">
+      <title
+         id="title1059">Process</title>
+      <desc
+         id="desc1061">Any processing function.</desc>
+      <rect
+         x="3.96875"
+         y="9.260417"
+         width="31.75"
+         height="21.166666"
+         style="stroke-width:0.52916664"
+         id="rect1063" />
+    </symbol>
+    <symbol
+       id="PredefinedProcess">
+      <title
+         id="title1240">Predefined Process</title>
+      <desc
+         id="desc1242">A formally defined sub-process.</desc>
+      <rect
+         x="3.96875"
+         y="9.260417"
+         width="31.75"
+         height="21.166666"
+         style="stroke-width:0.52916664"
+         id="rect1244" />
+      <rect
+         x="9.260417"
+         y="9.260417"
+         width="21.166666"
+         height="21.166666"
+         style="stroke-width:0.52916664"
+         id="rect1246" />
+    </symbol>
+    <symbol
+       id="Preparation">
+      <title
+         id="title1087">Preparation</title>
+      <desc
+         id="desc1089">A preparation or setup process step. (ISO)</desc>
+      <path
+         inkscape:connector-curvature="0"
+         d="M 9.2604167,9.2604167 H 30.427083 L 35.71875,19.84375 30.427083,30.427083 H 9.2604167 L 3.96875,19.84375 Z"
+         style="stroke-width:0.52916664px"
+         id="path1091" />
+    </symbol>
+    <symbol
+       id="Offpage">
+      <title
+         id="title1194">Off-Page Connector</title>
+      <desc
+         id="desc1196">Exit to or entry from a page. (IBM)</desc>
+      <path
+         inkscape:connector-curvature="0"
+         d="m 14.552083,14.552083 h 10.583334 v 7.9375 L 19.84375,27.78125 14.552083,22.489583 Z"
+         style="stroke-width:0.52916664"
+         id="path1198" />
+    </symbol>
+    <symbol
+       id="InputOutput">
+      <title
+         id="title1066">Input/Output</title>
+      <desc
+         id="desc1068">General input/output functions.</desc>
+      <path
+         inkscape:connector-curvature="0"
+         d="M 9.2604167,9.2604167 H 35.71875 L 30.427083,30.427083 H 3.96875 Z"
+         style="stroke-width:0.52916664"
+         id="path1070" />
+    </symbol>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="398.69054"
+     inkscape:cy="228.64243"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>CRISP-DM</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Abdelkrime Aries</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-191.16665)">
+    <g
+       id="g5311">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Document"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.55552358,0,0,0.50104768,-0.13795721,230.17391)"
+         id="use5034" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Document"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.55552359,0,0,0.50104768,2.5078758,232.30717)"
+         id="use5034-5" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Document"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.55552359,0,0,0.50104768,5.6828757,234.42385)"
+         id="use5034-9" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Document"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.55552359,0,0,0.50104768,8.8578569,237.58215)"
+         id="use5034-0" />
+    </g>
+    <g
+       id="g5305"
+       transform="translate(25.929177,-6.879167)">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Document"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.55552359,0,0,0.50104768,56.74746,205.68094)"
+         id="use5034-8" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Document"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.55552359,0,0,0.50104768,59.393293,207.8142)"
+         id="use5034-5-3" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Document"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.55552359,0,0,0.50104768,62.568292,209.93088)"
+         id="use5034-9-8" />
+    </g>
+    <use
+       id="use5034-0-0"
+       transform="matrix(0.55552359,0,0,0.50104768,82.449842,270.16352)"
+       style="fill:#aaccee;stroke:#000000"
+       xlink:href="#Document"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use5143"
+       transform="matrix(1.3544519,0,0,0.99596355,119.1727,199.37323)"
+       style="fill:#aaccee;stroke:#000000"
+       xlink:href="#Process"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use5172"
+       transform="matrix(1.283457,0,0,0.93922752,120.20353,258.183)"
+       style="fill:#aaccee;stroke:#000000"
+       xlink:href="#PredefinedProcess"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <use
+       id="use5230"
+       transform="matrix(1,0,0,1.4203948,126.58433,217.23038)"
+       style="fill:#aaccee;stroke:#000000"
+       xlink:href="#Offpage"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5246"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,18.520839,193.28333)"><flowRegion
+         id="flowRegion5248"><rect
+           id="rect5250"
+           width="252.69568"
+           height="116.98142"
+           x="408.73288"
+           y="65.875717" /></flowRegion><flowPara
+         id="flowPara5252"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Entraînnement</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5246-6"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,28.187905,251.32834)"><flowRegion
+         id="flowRegion5248-3"><rect
+           id="rect5250-9"
+           width="252.69568"
+           height="116.98142"
+           x="408.73288"
+           y="65.875717" /></flowRegion><flowPara
+         id="flowPara5252-3"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Modèle</flowPara></flowRoot>    <g
+       id="g5321"
+       transform="translate(3.1750001)">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Preparation"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(1.1561286,0,0,1,32.453282,226.50742)"
+         id="use5202" />
+      <flowRoot
+         transform="matrix(0.26458333,0,0,0.26458333,-66.105351,222.18697)"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot5246-6-1"
+         xml:space="preserve"><flowRegion
+           style="line-height:50%"
+           id="flowRegion5248-3-2"><rect
+             style="line-height:50%"
+             y="65.875717"
+             x="408.73288"
+             height="116.98142"
+             width="252.69568"
+             id="rect5250-9-4" /></flowRegion><flowPara
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="flowPara5252-3-7">Partitionn-</flowPara><flowPara
+           id="flowPara5313"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">ement</flowPara></flowRoot>    </g>
+    <use
+       id="use5341"
+       transform="matrix(0.51153687,0,0,0.42354584,185.26288,271.01936)"
+       style="fill:#aaccee;stroke:#000000"
+       xlink:href="#InputOutput"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5246-60"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,-106.14484,199.92358)"><flowRegion
+         id="flowRegion5248-2"
+         style="line-height:50%"><rect
+           id="rect5250-6"
+           width="252.69568"
+           height="116.98142"
+           x="408.73288"
+           y="65.875717"
+           style="line-height:50%" /></flowRegion><flowPara
+         id="flowPara5252-9"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Données </flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         id="flowPara5381">annotées</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5246-60-8"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,-30.553345,172.57066)"><flowRegion
+         id="flowRegion5248-2-7"
+         style="line-height:50%"><rect
+           id="rect5250-6-6"
+           width="252.69568"
+           height="116.98142"
+           x="408.73288"
+           y="65.875717"
+           style="line-height:50%" /></flowRegion><flowPara
+         id="flowPara5252-9-5"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Données </flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         id="flowPara5381-2">d'entraînnement</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5246-60-4"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,-24.127749,241.96712)"><flowRegion
+         id="flowRegion5248-2-0"
+         style="line-height:50%"><rect
+           id="rect5250-6-0"
+           width="252.69568"
+           height="116.98142"
+           x="408.73288"
+           y="65.875717"
+           style="line-height:50%" /></flowRegion><flowPara
+         id="flowPara5252-9-6"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Données </flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         id="flowPara5381-8">de test</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5246-6-5"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,79.264291,241.91733)"><flowRegion
+         id="flowRegion5248-3-4"><rect
+           id="rect5250-9-9"
+           width="252.69568"
+           height="116.98142"
+           x="408.73288"
+           y="65.875717" /></flowRegion><flowPara
+         id="flowPara5252-3-4"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Résulat</flowPara></flowRoot>    <g
+       id="g4090"
+       transform="translate(-23.812509,-14.81667)">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#InputOutput"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.51153687,0,0,0.42354585,108.53371,235.67858)"
+         id="use5341-5" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#InputOutput"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.51153687,0,0,0.42354585,110.65039,238.32443)"
+         id="use5341-0" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#InputOutput"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.51153687,0,0,0.42354585,113.54037,240.93944)"
+         id="use5341-2" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5246-6-5-1"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,-24.382293,217.65126)"><flowRegion
+         id="flowRegion5248-3-4-7"><rect
+           id="rect5250-9-9-4"
+           width="252.69568"
+           height="116.98142"
+           x="408.73288"
+           y="65.875717" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+         id="flowPara4116">Résulats attendus</flowPara></flowRoot>  </g>
+</svg>

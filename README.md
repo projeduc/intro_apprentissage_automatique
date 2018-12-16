@@ -1,6 +1,6 @@
 # Introduction à l'apprentissage automatique
 
-Sommaire:
+## Sommaire
 
 - [Chapitre I: Introduction](#chapitre-i-introduction)
 - [Chapitre II: Préparation de données](#chapitre-ii-préparation-de-données)
@@ -15,10 +15,11 @@ Sommaire:
 - [Chapitre XI: Auto-encodeur](#chapitre-xi*auto-encodeur)
 - [Chapitre XII: Apprentissage par renforcement](#chapitre-xii-apprentissage-par-renforcement)
 
-Glossaire:
-- caractéristique: feature
-- entraînement: training
+## Glossaire
 
+- **caractéristique** [feature] Dans une base  de donnée, c'est l'équivalent de "attribut"
+- **échantillon** [sample] Dans une base de données, c'est l'équivalent de "enregistrement"
+- **entraînement** [training]
 
 ## Chapitre I: Introduction
 
@@ -53,6 +54,10 @@ En résumé:
 - **Source d'apprentissage:** des données annotées (nous avons les résultats attendus)
 - **Retour d'information:** direct; à partir des résulats attendues.
 - **Fonction:** prédire les future résultats
+
+| ![apprentissage supervisé](IMG/AA-supervise.svg) |
+|:--:|
+| *Apprentissage supervisé* |
 
 Selon le type d'annotation, on peut remarquer deux types des algorithmes d'apprentissage automatique: classement et régression.
 
@@ -122,6 +127,42 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 ### I-5 Outils de l'apprentissage automatique
 
+
+Apprentissage automatique comme un service;  Machine Learning as a Service (MLaaS):
+- [Amazon Machine Learning](https://aws.amazon.com/aml/)
+- [BigML](https://bigml.com)
+- [DataRobot](https://www.datarobot.com)
+- [Deepai enterprise machine learning](https://deepai.org/enterprise-machine-learning)
+- [Deepcognition](https://deepcognition.ai)
+- [IBM Watson Machine Learning](https://www.ibm.com/cloud/machine-learning)
+- [Google Cloud Machine Learning Engine](https://cloud.google.com/ml-engine/)
+- [Microsoft Azure Machine Learning studio](https://azure.microsoft.com/fr-fr/services/machine-learning-studio/)
+- [MLJAR](https://mljar.com)
+- [Open ML](https://www.openml.org)
+- [ParallelDots](https://www.paralleldots.com)
+- [VALOHAI](https://valohai.com)
+- [Vize](https://vize.ai): Traitement d'images
+
+### ANNEXE: Méthodologies de science des données
+
+#### CRISP-DM (Cross-industry standard process for data mining) [Standard ouvert]
+
+| ![CRISP-DM](https://upload.wikimedia.org/wikipedia/commons/b/b9/CRISP-DM_Process_Diagram.png) |
+|:--:|
+| *CRISP-DM [ [Wikimedia](https://commons.wikimedia.org/wiki/File:CRISP-DM_Process_Diagram.png) ]* |
+
+#### ASUM-DM (Analytics Solutions Unified Method for Data Mining) [IBM]
+
+| ![ASUM-DM](IMG/ASUM-DM.png) |
+|:--:|
+| *ASUM-DM [ [Source](ftp://ftp.software.ibm.com/software/data/sw-library/services/ASUM.pdf) ]* |
+
+#### TDSP (Team Data Science Process) [Microsoft]
+
+| ![TDSP](https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/media/overview/tdsp-lifecycle2.png) |
+|:--:|
+| *TDSP [ [Source](https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/overview) ]* |
+
 ### Bibliographie
 
 - https://www.kdnuggets.com/2017/11/3-different-types-machine-learning.html
@@ -130,6 +171,9 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 - https://data-flair.training/blogs/advantages-and-disadvantages-of-machine-learning/
 - https://towardsdatascience.com/coding-deep-learning-for-beginners-types-of-machine-learning-b9e651e1ed9d
 - https://towardsdatascience.com/selecting-the-best-machine-learning-algorithm-for-your-regression-problem-20c330bad4ef
+- https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/overview
+- https://www.ibm.com/support/knowledgecenter/en/SSEPGG_9.5.0/com.ibm.im.easy.doc/c_dm_process.html
+- ftp://public.dhe.ibm.com/software/analytics/spss/documentation/modeler/18.0/en/ModelerCRISPDM.pdf
 
 ## Chapitre II: Préparation des données
 
@@ -181,6 +225,8 @@ Pour régler ces problèmes:
 
 #### Intégration des données
 
+
+
 #### Échantillonnage et partitionnement des données
 
 
@@ -190,26 +236,6 @@ Pour régler ces problèmes:
 
 ### II-5 Discrétisation des données
 
-### ANNEXE: Méthodologies de science des données
-
-#### CRISP-DM (Cross-industry standard process for data mining) [Standard ouvert]
-
-| ![CRISP-DM](https://upload.wikimedia.org/wikipedia/commons/e/e4/CRISP_DM.png) |
-|:--:|
-| *CRISP-DM [ [Wikimedia](https://commons.wikimedia.org/wiki/File:CRISP_DM.png?uselang=fr) ]* |
-
-#### ASUM-DM (Analytics Solutions Unified Method for Data Mining) [IBM]
-
-| ![ASUM-DM](IMG/ASUM-DM.png) |
-|:--:|
-| *ASUM-DM [ [Source](ftp://ftp.software.ibm.com/software/data/sw-library/services/ASUM.pdf) ]* |
-
-#### TDSP (Team Data Science Process) [Microsoft]
-
-| ![TDSP](https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/media/overview/tdsp-lifecycle2.png) |
-|:--:|
-| *TDSP [ [Source](https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/overview) ]* |
-
 ### Bibliographie
 
 - https://developers.google.com/machine-learning/data-prep/
@@ -218,9 +244,6 @@ Pour régler ces problèmes:
 - https://www.altexsoft.com/blog/datascience/preparing-your-dataset-for-machine-learning-8-basic-techniques-that-make-your-data-better/
 - https://www.analyticsindiamag.com/get-started-preparing-data-machine-learning/
 - https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/prepare-data
-- https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/overview
-- https://www.ibm.com/support/knowledgecenter/en/SSEPGG_9.5.0/com.ibm.im.easy.doc/c_dm_process.html
-- ftp://public.dhe.ibm.com/software/analytics/spss/documentation/modeler/18.0/en/ModelerCRISPDM.pdf
 
 [vec-f]: https://latex.codecogs.com/png.latex?\overrightarrow{f}
 [c-i]: https://latex.codecogs.com/png.latex?c_i
@@ -407,9 +430,9 @@ Mais, une telle simplicité vient avec un coût.
 
 ## Chapitre X: Regroupement
 
-## X-1 Regroupement hiérarchique
+### X-1 Regroupement hiérarchique
 
-## X-2 K-Means
+### X-2 K-Means
 
 ### Bibliographie
 
