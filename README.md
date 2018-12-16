@@ -127,8 +127,36 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 ### I-5 Outils de l'apprentissage automatique
 
+#### frameworks et bibliothèque logicielles
 
-Apprentissage automatique comme un service;  Machine Learning as a Service (MLaaS):
+##### Deep Learning
+
+L'algorithme d'apprentissage est le réseau de neurones:
+
+| Outil | Licence | écrit en | interfaces |
+| :---: | :---: | :---: | :---: |
+| [Keras](https://keras.io) | - | Python | Python, R |
+| [Theano](http://deeplearning.net/software/theano/) | - | Python | Python |
+| [Caffe](http://caffe.berkeleyvision.org) | BSD | C++ | C++, MATLAB, Python |
+| [Torch](http://torch.ch) | BSD | C, Lua | C, Lua, LuaJIT |
+| [The Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) | MIT | C++ | Python, C++ |
+| [Deeplearning4j]() | Apache 2.0 | C++, Java | Java, Scala, Clojure, Python, Kotlin |
+
+
+##### Générique
+
+| Outil | Licence | écrit en | interfaces |
+| :---: | :---: | :---: | :---: |
+| [Shogun](http://www.shogun-toolbox.org) | - | C++ | C++, C#, Java, Lua, Octave, Python, R, Ruby |
+| [scikit-learn](https://scikit-learn.org/stable/) | BSD | Python | Python |
+| [Apache Spark MLLib](http://spark.apache.org/mllib/) | Apache 2.0 | - | Java, R, Python, Scala |
+| [ScalaNLP Breeze](https://github.com/scalanlp/breeze) | Apache 2.0 | Scala | Scala |
+
+
+
+#### Apprentissage automatique comme un service
+
+Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service):
 - [Amazon Machine Learning](https://aws.amazon.com/aml/)
 - [BigML](https://bigml.com)
 - [DataRobot](https://www.datarobot.com)
