@@ -3,7 +3,7 @@
 ## Sommaire
 
 - [Chapitre I: Introduction](#chapitre-i-introduction)
-- [Chapitre II: Préparation de données](#chapitre-ii-préparation-de-données)
+- [Chapitre II: Préparation des données](#chapitre-ii-préparation-des-données)
 - [Chapitre III: Classification naïve bayésienne](#chapitre-iii-classification-naïve-bayésienne)
 - [Chapitre IV: Machine à vecteurs de support](#chapitre-iv-machine-à-vecteurs-de-support)
 - [Chapitre V: Arbre de décision](#chapitre-v-arbre-de-décision)
@@ -55,7 +55,7 @@ En résumé:
 - **Retour d'information:** direct; à partir des résulats attendues.
 - **Fonction:** prédire les future résultats
 
-| ![apprentissage supervisé](IMG/AA-supervise.svg) |
+| ![apprentissage supervisé](IMG/AA-supervise.svg?sanitize=true) |
 |:--:|
 | *Apprentissage supervisé* |
 
@@ -92,7 +92,7 @@ Selon le type de structure que l'algorithme va découvrir, on peut avoir: le reg
 ##### Clustering (Regroupement)
 
 L'algorithme de regroupement sert à assigner les échantillons similaires dans le même groupe.
-Donc, le résulat est un ensemble de groupes contenants les échantillons
+Donc, le résulat est un ensemble de groupes contenants les échantillons.
 
 | Par exemple: |
 | :--: |
@@ -217,7 +217,16 @@ Critères d’intégrité des données:
 - Le nombre des erreurs d'annotation
 - La quantité de bruits dans les données: erreurs et exceptions
 
-Les problèmes rencontrés dans les données:
+#### Intégration des données
+
+Les données
+
+### Annotation des données
+
+
+### II-4 Nétoyage des données
+
+Les problèmes rencontrés dans les données peuvent être:
 
 - Valeurs omises (données non disponibles): des échantilons (enregistrements) avec des caractéristiques (attributs) sans valeurs. Les causes, entre autres, peuvent être:
   - Mauvais fonctionnement de l'équipement
@@ -250,12 +259,6 @@ Pour régler ces problèmes:
   - Clustering pour détecter les exceptions
   - Détection automatique des valeurs suspectes et vérification humaine.
   - Lisser les données par des méthodes de régression.
-
-#### Intégration des données
-
-
-
-#### Échantillonnage et partitionnement des données
 
 
 ### II-3 Transformation des données
