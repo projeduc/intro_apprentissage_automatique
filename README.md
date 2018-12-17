@@ -127,7 +127,7 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 ### I-5 Outils de l'apprentissage automatique
 
-#### frameworks et bibliothèque logicielles
+#### I-5-1 frameworks et bibliothèques logicielles
 
 ##### Deep Learning
 
@@ -154,7 +154,7 @@ L'algorithme d'apprentissage est le réseau de neurones:
 
 
 
-#### Apprentissage automatique comme un service
+#### I-5-2 Apprentissage automatique comme un service
 
 Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service):
 - [Amazon Machine Learning](https://aws.amazon.com/aml/)
@@ -170,6 +170,18 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 - [ParallelDots](https://www.paralleldots.com)
 - [VALOHAI](https://valohai.com)
 - [Vize](https://vize.ai): Traitement d'images
+
+#### I-5-3 Les ressources
+
+##### Repertoires de données
+
+- [Kaggle](https://www.kaggle.com): télécarger les données, faire des compétitions avec des prix.
+- [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
+- [Visual data](https://www.visualdata.io): Des données sur le traitement d'images.
+
+
+- [U.S. Government’s open data](https://www.data.gov)
+-
 
 ### ANNEXE: Méthodologies de science des données
 
@@ -202,6 +214,7 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 - https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/overview
 - https://www.ibm.com/support/knowledgecenter/en/SSEPGG_9.5.0/com.ibm.im.easy.doc/c_dm_process.html
 - ftp://public.dhe.ibm.com/software/analytics/spss/documentation/modeler/18.0/en/ModelerCRISPDM.pdf
+- https://medium.com/datadriveninvestor/the-50-best-public-datasets-for-machine-learning-d80e9f030279
 
 ## Chapitre II: Préparation des données
 
@@ -262,11 +275,14 @@ Pour régler ces problèmes:
 
 ### II-3 Transformation des données
 
-#### Groupement (binning, bucketing)
+#### II-3-1 Discrétisation en utilisant le groupement (binning, bucketing)
 
-Certaines caractéristiques numériques sont utiles pour estimer une tâche, mais il n'existe aucune relation linéaire entre ces caractéristiques et cette tâche. Dans ce cas, il faut les transformer en vecteurs de booléens.
+La discrétisation est le fait de convertir les caractéristiques numériques en caractéristiques nominales. Elle est utilisée pour simplifier l'exploitation des données dans certains types d'algorithmes.
+- Dans le classifieur naif bayésien multinomial, les attributs doivent avoir des valeurs nominales.
+- Certaines caractéristiques numériques sont utiles pour estimer une tâche, mais il n'existe aucune relation linéaire entre ces caractéristiques et cette tâche.
 
 Prenant un exemple sur les prix des maisons suivant le latitude.
+On ne peut pas trouver une fonction linéaire entre le latitude et le prix d'une maison, mais on sait que l'emplacement où cette maison se trouve affecte son prix.
 
 | ![prix-maisons](https://developers.google.com/machine-learning/crash-course/images/ScalingBinningPart1.svg) |
 |:--:|
@@ -276,14 +292,18 @@ On peut diviser la plage de latitude sur 11 parties (si on veut plus de précisi
 
 | ![prix-maisons2](https://developers.google.com/machine-learning/crash-course/images/ScalingBinningPart2.svg) |
 |:--:|
-| *Binning de latitude [ [Source](https://developers.google.com/machine-learning/crash-course/representation/cleaning-data) ]* |
+| *Binning de latitude avec des plages égales [ [Source](https://developers.google.com/machine-learning/crash-course/representation/cleaning-data) ]* |
 
-Donc, chaque valeur de latitude sera représetée sur un vecteur de 11 booléens (0 ou 1). Par exemple:
+Donc, pour la caractéristique "latitude" les valeurs vont être représetée par une étiquette entre 1 et 11. Par exemple, ``
+latitude 37.4 => 6
+``
+
+Dans le cas des algorithmes où on doit manipuler des valeurs numériques (comme les réseaux de neurones), on peut représenter chaque valeur comme un vecteur de 11 booléens (0 ou 1). Par exemple:
 ``
 latitude 37.4 => [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
 ``
 
-Dans certaines cas, diviser la plage d'une caractéristique en parties égales n'ai pas la bonne chose à faire.
+Dans certaines cas, diviser la plage d'une caractéristique en parties égales n'ai pas la bonne solution.
 Supposant, nous avons un ensemble de données sur le nombre des automobiles vendues pour chaque prix.
 
 | ![nbr-automobiles](https://developers.google.com/machine-learning/data-prep/images/bucketizing-needed.svg) |
@@ -296,13 +316,22 @@ On remarque qu'il y a un seul échantillon pour les prix > 45000. Pour fixer ça
 |:--:|
 | *Binning des prix des automobiles par quantiles [ [Source](https://developers.google.com/machine-learning/data-prep/transform/bucketing) ]* |
 
+#### II-3-2
+
 ### II-4 Réduction des données
 
-#### Données imbalancées
+#### II-4-1 Données imbalancées
 
-#### Partitionnement des données
+#### II-4-2 Partitionnement des données
 
-#### Randomisation
+#### II-4-3 Randomisation
+
+### II-5 Outils de préparation des données
+
+| Outil | Licence | Langage |
+| :---: | :---: | :---: |
+| [pandas](https://pandas.pydata.org) | BSD | Python |
+
 
 ### Bibliographie
 
@@ -312,6 +341,7 @@ On remarque qu'il y a un seul échantillon pour les prix > 45000. Pour fixer ça
 - https://www.altexsoft.com/blog/datascience/preparing-your-dataset-for-machine-learning-8-basic-techniques-that-make-your-data-better/
 - https://www.analyticsindiamag.com/get-started-preparing-data-machine-learning/
 - https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/prepare-data
+- https://www.simplilearn.com/data-preprocessing-tutorial
 
 [vec-f]: https://latex.codecogs.com/png.latex?\overrightarrow{f}
 [c-i]: https://latex.codecogs.com/png.latex?c_i
@@ -319,6 +349,10 @@ On remarque qu'il y a un seul échantillon pour les prix > 45000. Pour fixer ça
 [vec-C]: https://latex.codecogs.com/png.latex?\overrightarrow{C}
 
 ## Chapitre III: Classification naïve bayésienne
+
+La classification est un apprentissage supervisé; ce qui veut dire, on doit entraîner notre système sur un ensemble de données, ensuite on utilise ce modèle pour classer des données de test.
+
+Ici, on va commencer par présenter la phase de classification avant la phase d'entraînement.
 
 ### III-1 Classification
 
