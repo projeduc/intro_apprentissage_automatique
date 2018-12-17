@@ -55,7 +55,7 @@ En résumé:
 - **Retour d'information:** direct; à partir des résulats attendues.
 - **Fonction:** prédire les future résultats
 
-| ![apprentissage supervisé](IMG/AA-supervise.svg?sanitize=true) |
+| ![apprentissage supervisé](IMG/AA-supervise.svg)|
 |:--:|
 | *Apprentissage supervisé* |
 
@@ -211,7 +211,7 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 
 #### Qualité des données
 
-Critères d’intégrité des données:
+Critères d'intégrité des données:
 - Taille: Nombre des échantillons (enregistrements). Certaines tâches nécessitent une grande taille de données pour qu'elles soient appris.
 - Le nombre et le type de caractéristiques (nominales, binaires, ordinales ou continues).
 - Le nombre des erreurs d'annotation
@@ -219,12 +219,12 @@ Critères d’intégrité des données:
 
 #### Intégration des données
 
-Les données
-
-### Annotation des données
 
 
-### II-4 Nétoyage des données
+#### Annotation des données
+
+
+### II-2 Nétoyage des données
 
 Les problèmes rencontrés dans les données peuvent être:
 
@@ -260,12 +260,49 @@ Pour régler ces problèmes:
   - Détection automatique des valeurs suspectes et vérification humaine.
   - Lisser les données par des méthodes de régression.
 
-
 ### II-3 Transformation des données
+
+#### Groupement (binning, bucketing)
+
+Certaines caractéristiques numériques sont utiles pour estimer une tâche, mais il n'existe aucune relation linéaire entre ces caractéristiques et cette tâche. Dans ce cas, il faut les transformer en vecteurs de booléens.
+
+Prenant un exemple sur les prix des maisons suivant le latitude.
+
+| ![prix-maisons](https://developers.google.com/machine-learning/crash-course/images/ScalingBinningPart1.svg) |
+|:--:|
+| *Exemple sur les prix des maisons [ [Source](https://developers.google.com/machine-learning/crash-course/representation/cleaning-data) ]* |
+
+On peut diviser la plage de latitude sur 11 parties (si on veut plus de précision, on peut augmenter le nombre des parties).
+
+| ![prix-maisons2](https://developers.google.com/machine-learning/crash-course/images/ScalingBinningPart2.svg) |
+|:--:|
+| *Binning de latitude [ [Source](https://developers.google.com/machine-learning/crash-course/representation/cleaning-data) ]* |
+
+Donc, chaque valeur de latitude sera représetée sur un vecteur de 11 booléens (0 ou 1). Par exemple:
+``
+latitude 37.4 => [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+``
+
+Dans certaines cas, diviser la plage d'une caractéristique en parties égales n'ai pas la bonne chose à faire.
+Supposant, nous avons un ensemble de données sur le nombre des automobiles vendues pour chaque prix.
+
+| ![nbr-automobiles](https://developers.google.com/machine-learning/data-prep/images/bucketizing-needed.svg) |
+|:--:|
+| *Binning des prix des automobiles avec des plages identiques [ [Source](https://developers.google.com/machine-learning/data-prep/transform/bucketing) ]* |
+
+On remarque qu'il y a un seul échantillon pour les prix > 45000. Pour fixer ça, on peut utiliser les quantiles: on divise notre jeu de données en intervalles contenant le même nombre de données.
+
+| ![nbr-automobiles2](https://developers.google.com/machine-learning/data-prep/images/bucketizing-applied.svg) |
+|:--:|
+| *Binning des prix des automobiles par quantiles [ [Source](https://developers.google.com/machine-learning/data-prep/transform/bucketing) ]* |
 
 ### II-4 Réduction des données
 
-### II-5 Discrétisation des données
+#### Données imbalancées
+
+#### Partitionnement des données
+
+#### Randomisation
 
 ### Bibliographie
 
