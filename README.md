@@ -316,7 +316,47 @@ On remarque qu'il y a un seul échantillon pour les prix > 45000. Pour fixer ça
 |:--:|
 | *Binning des prix des automobiles par quantiles [ [Source](https://developers.google.com/machine-learning/data-prep/transform/bucketing) ]* |
 
-#### II-3-2
+#### II-3-2 Normalisation
+
+##### Mise à l'échelle min-max
+
+La mise en échelle min-max transorme chaque valeur numérique *x* vers une autre valeur *x' ∈ [0,1]* en utilisant la valeur minimale et la valeur maximale dans les données. Cette normalisation conserve la distance proportionnelle entre les valeurs d'une caractéristique.
+
+![II-3-min-max]
+
+La mise à l'échelle min-max est un bon choix si ces deux conditions sont satisfaites:
+- On sait les les limites supérieure et inférieure approximatives des valeurs de la caractéristique concernée (avec peu ou pas de valeurs aberrantes).
+- Les valeurs sont presque uniformément réparties sur cette plage ( [min, max]).
+
+Un bon exemple est l'âge. La plupart des valeurs d'âge se situent entre 0 et 90, et qui sont distribuées sur toute cette plage.
+
+En revanche, utiliser cette normalisation sur le revenu est une mauvaise chose. Un petit nombre de personnes ont des revenus très élevés. Si on applique cette normalisation, la plupart des gens seraient réduits à une petite partie de l'échelle.
+
+Cette normalisation offre plus d'avantages si les données se consistent de plusieurs caractéristiques. Ses intérets sont les suivants:
+- Aider [l'algorithme du gradient](https://fr.wikipedia.org/wiki/Algorithme_du_gradient) (un algorithme d'optimisation) à converger plus rapidement.
+- Eviter le problème des valeurs non définies lorsqu'une valeur dépasse la limite de précision en virgule flottante pendant l'entraînement.
+- Apprendre les poids appropriés pour chaque caractéristique; si une caractéristique a un intervalle plus large que les autres, le modèle généré va favoriser cette caractéristique.
+
+##### Coupure
+
+S'il existe des valeurs aberrantes d'une caractéristique dans les extrémités, on applique une coupure min avec une valeur α et/ou max avec une valeur β.
+
+![II-3-coupure]
+
+Par exemple, dans un graphe qui illustre le nombre de cambres par personnes, on remarque qu'au delà de 4 les valeurs sont très baisses. La solution est d'appliquer une coupure max de 4.
+
+| ![coupure](https://developers.google.com/machine-learning/data-prep/images/norm-clipping-outliers.svg) |
+|:--:|
+| *Nombre de cambres par personne: avant et après la coupure avec max de 4 personnes [ [Source](https://developers.google.com/machine-learning/data-prep/transform/normalization) ]* |
+
+##### Mise à l'échelle log
+
+
+
+##### Z-score
+
+[II-3-min-max]: https://latex.codecogs.com/png.latex?x'=\frac{x-x_{min}}{x_{max}-x_{min}}
+[II-3-coupure]: https://latex.codecogs.com/gif.latex?x'=\left\{\begin{matrix}&space;\alpha&si\,x\ge\alpha\\&space;\beta&si\,x\le\beta\\&space;x&sinon&space;\end{matrix}\right.
 
 ### II-4 Réduction des données
 
@@ -331,6 +371,11 @@ On remarque qu'il y a un seul échantillon pour les prix > 45000. Pour fixer ça
 | Outil | Licence | Langage |
 | :---: | :---: | :---: |
 | [pandas](https://pandas.pydata.org) | BSD | Python |
+| [pandas](https://pandas.pydata.org) | BSD | Python |
+
+### II-6 Un peu de programmation
+
+
 
 
 ### Bibliographie
