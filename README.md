@@ -2,8 +2,8 @@
 
 ## Sommaire
 
-- [Chapitre I: Introduction](#chapitre-i-introduction)
-- [Chapitre II: Préparation des données](#chapitre-ii-préparation-des-données)
+- [Chapitre I: Introduction](introduction.md)
+- [Chapitre II: Préparation des données](preparation)
 - [Chapitre III: Classification naïve bayésienne](#chapitre-iii-classification-naïve-bayésienne)
 - [Chapitre IV: Machine à vecteurs de support](#chapitre-iv-machine-à-vecteurs-de-support)
 - [Chapitre V: Arbre de décision](#chapitre-v-arbre-de-décision)
@@ -275,8 +275,6 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 
 ## Chapitre II: Préparation des données
 
-**_...TODO: Complete one day!!_**
-
 ### II-1 Collection des données
 
 #### Qualité des données
@@ -421,6 +419,15 @@ Dans le schéma suivant, la plupart des films ont moins d'évaluations.
 
 ##### Z-score
 
+Le Z-score est utilisé pour assurer que la distribution d'une caractéristique ait une moyenne = 0 et un écart type = 1.
+C'est utile quand il y a quelques valeurs aberrantes, mais pas si extrême qu'on a besoin d'appliquer une coupure.
+Dans certaines ouvrages, cette transformation n'est pas classifiée comme une "normalisation" mais comme étant une "standardisation".
+Cela est due au fait qu'elle transforme l'ancienne distribution à une distribution normale.
+
+Etant donnée une caractéristique avec des valeurs *x*, les nouvelles valeurs *x'* peuvent être exprimer par *x*, la moyenne des valeurs *μ* et leurs écart type *σ*.
+
+![II-3-z-score]
+
 #### II-3-3 Binarisation
 
 Il existe des cas où on n'a pas besoin des fréquences (nombre d'occurences) d'une caractéristique pour créer un modèle; on a besoin seulement de savoir si cette caractéristique a apparue une fois au moins pour un échantillon. Dans ce cas, on binarise les valeurs de cette caractéristique.
@@ -432,6 +439,7 @@ Cela n'exige pas le nombre de fois qu'une chanson a été écoutée mais, plutô
 
 
 [II-3-min-max]: https://latex.codecogs.com/png.latex?x'=\frac{x-x_{min}}{x_{max}-x_{min}}
+[II-3-z-score]: https://latex.codecogs.com/png.latex?x'=\frac{x-\mu}{\sigma}
 [II-3-coupure]: https://latex.codecogs.com/png.latex?x'=\begin{cases}\alpha&si\;x\ge\alpha\\\\\beta&si\;x\le\beta\\\\x&sinon\end{cases}
 [II-3-log]: https://latex.codecogs.com/png.latex?x'=\log(x)
 [II-3-bin]: https://latex.codecogs.com/png.latex?x'=\begin{cases}1&si\;x\ge1\\\\0&sinon\end{cases}
@@ -453,7 +461,11 @@ Cela n'exige pas le nombre de fois qu'une chanson a été écoutée mais, plutô
 
 ### II-6 Un peu de programmation
 
-#### II-6-1 Discrétisation
+#### II-6-1 Lecture de données
+
+#### II-6-2 Nétoyage de données
+
+#### II-6-3 Discrétisation
 
 
 
