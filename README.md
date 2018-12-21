@@ -1,4 +1,4 @@
-# Introduction à l'apprentissage automatique
+﻿# Introduction à l'apprentissage automatique
 
 ## Sommaire
 
@@ -186,8 +186,59 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 ##### Repertoires de données
 
 - [Kaggle](https://www.kaggle.com): télécarger les données, faire des compétitions avec des prix.
+- [Registry of Open Data on AWS](https://registry.opendata.aws)
 - [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
 - [Visual data](https://www.visualdata.io): Des données sur le traitement d'images.
+
+##### Images
+
+- [COCO](http://cocodataset.org/#home) un ensemble de données de détection, de segmentation et d'annotation des images.
+- [COIL-100](http://www1.cs.columbia.edu/CAVE/software/softlib/coil-100.php) des images de 100 objets différents prises sous tous les angles dans une rotation de 360.
+- [ImageNet](http://image-net.org) des images organisées selon la hiérarchie de  [WordNet](http://wordnet.princeton.edu/)
+- [Indoor Scene Recognition](http://web.mit.edu/torralba/www/indoor.html) reconnaissance de scènes d'intérieur
+- [Labelled Faces in the Wild](http://vis-www.cs.umass.edu/lfw/): reconnaissance faciale sans contraintes
+- [LabelMe](http://labelme.csail.mit.edu/Release3.0/browserTools/php/dataset.php) Images annotées
+- [LSUN](http://lsun.cs.princeton.edu/2016/) des images concernant un défi pour la classification de la scène.
+- [Open Images Dataset de Google](https://ai.googleblog.com/2016/09/introducing-open-images-dataset.html)
+- [Stanford Dogs Dataset](http://vision.stanford.edu/aditya86/ImageNetDogs/) la reconnaissance des races de chiens.
+- [VisualGenome](http://visualgenome.org) une base pour connecter les images au langage
+
+##### Analyse des sentiments
+
+- [Large Movie Review Dataset](http://ai.stanford.edu/~amaas/data/sentiment/) critiques de films
+-[Multi-Domain Sentiment Dataset](http://www.cs.jhu.edu/~mdredze/datasets/sentiment/) commentaires sur les produits d'Amazon
+- [Sentiment140](http://help.sentiment140.com/for-students/) des Tweets avec des émoticônes filtrées.
+- [Stanford Sentiment Treebank](https://nlp.stanford.edu/sentiment/index.html) critiques de films
+
+##### Traitement du langage naturel
+
+- [Amazon Reviews](https://snap.stanford.edu/data/web-Amazon.html)
+- [Enron Email Dataset](https://www.cs.cmu.edu/~./enron/)
+- [Google Books Ngrams](https://aws.amazon.com/datasets/google-books-ngrams/)
+- [Gutenberg eBooks List](http://www.gutenberg.org/wiki/Gutenberg:Offline_Catalogs) Liste annotée de livres électroniques du projet Gutenberg.
+- [Hansards text chunks of Canadian Parliament](https://www.isi.edu/natural-language/download/hansard/) texte aligné: Français-Anglais
+- [HotspotQA Dataset](https://hotpotqa.github.io) Question-Réponse (réponse automatique)
+- [Jeopardy](https://www.reddit.com/r/datasets/comments/1uyd0t/200000_jeopardy_questions_in_a_json_file/) Les questions de Jeopardy format Json
+- [SMS Spam Collection in English](http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/)
+- [UCI's Spambase](https://archive.ics.uci.edu/ml/datasets/Spambase) filtrage du courrier électronique indésirable
+- [Wikipedia Links data](https://code.google.com/archive/p/wiki-links/downloads)
+- [Yelp Reviews](https://www.yelp.com/dataset)
+
+##### Auto-conduite
+
+- [Baidu Apolloscapes](http://apolloscape.auto/)
+- [Berkeley DeepDrive BDD100k](http://bdd-data.berkeley.edu/)
+- [Bosch Small Traffic Lights Dataset](https://hci.iwr.uni-heidelberg.de/node/6132)
+- [Cityscapes dataset](https://www.cityscapes-dataset.com/)
+- [Comma.ai](https://archive.org/details/comma-dataset)
+- [CSSAD Dataset](http://aplicaciones.cimat.mx/Personal/jbhayet/ccsad-dataset)
+- [KUL Belgium Traffic Sign Dataset](http://www.vision.ee.ethz.ch/~timofter/traffic_signs/)
+- [LaRa Traffic Light Recognition](http://www.lara.prd.fr/benchmarks/trafficlightsrecognition)
+- [LISA datasets](http://cvrr.ucsd.edu/LISA/datasets.html)
+- [MIT AGE Lab](http://lexfridman.com/automated-synchronization-of-driving-data-video-audio-telemetry-accelerometer/)
+- [Oxford's Robotic Car](http://robotcar-dataset.robots.ox.ac.uk/)
+- [WPI datasets](http://computing.wpi.edu/dataset.html)
+
 
 ### ANNEXE: Méthodologies de science des données
 
@@ -434,7 +485,7 @@ Voici le théorème de Bayes:
 ![III-1-bayes]
 
 Le problème de classification revient à estimer la probabilité de chaque classe ![c-i] sachant un vecteur de caractéristiques ![vec-f].
-Par exemple, on veut estimer la probabilité d'un animal étant: un chien, un chat, une vache ou autre (4 classes) en utilsant quelques caractéristiques: poids, longueur, longueur des pattes et le type de nourriture.
+Par exemple, on veut estimer la probabilité d'un animal étant: un chien, un chat, une vache ou autre (4 classes) en utilisant quelques caractéristiques: poids, longueur, longueur des pattes et le type de nourriture.
 En appliquant le théorème de Bayes:
 
 ![III-1-bayes2]
@@ -483,12 +534,12 @@ La probabilité d'une caractéristique ![f-j] sachant une classe ![c-i] est le n
 ![III-2-mult2]
 
 Certaines caractéristiques peuvent ne pas se figurer dans une classe donnée, ce qui va donner une probabilité nulle.
-Pour remedier à ce problème, on peut utiliser une fonction de lissage comme le lissage de Lidstone.
+Pour remédier à ce problème, on peut utiliser une fonction de lissage comme le lissage de Lidstone.
 
 ![III-2-mult3]
 
 Où: |![vec-f]| est le nombre des caractéristiques.
-Alpha: est un nombre dans l'intervalle ]0, 1]. Lorsque sa valeur égale à 1, on appelle ça le laaissage de Laplace.
+Alpha: est un nombre dans l'intervalle ]0, 1]. Lorsque sa valeur égale à 1, on appelle ça le laissage de Laplace.
 
 #### Loi de Bernoulli
 
@@ -559,11 +610,11 @@ P(féminin) = 4/8 = 0.5
 
 ### III-4 Avantages
 
-Les classifieurs naïfs bayésiens, malgès leurs simplicité, ont des points forts:
+Les classifieurs naïfs bayésiens, malgré leurs simplicité, ont des points forts:
 
 - Ils ont besoin d'une petite quantité de données d’entraînement.
 - Ils sont très rapides par rapport aux autres classifieurs.
-- Ils donnent de bonnes résulats dans le cas de filtrage du courrier indésirable et de classification de documents.
+- Ils donnent de bonnes résultats dans le cas de filtrage du courrier indésirable et de classification de documents.
 
 ### III-5 Limites
 
