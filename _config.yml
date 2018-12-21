@@ -1,3 +1,8 @@
 theme: jekyll-theme-leap-day
 title: Introduction à l'apprentissage automatique
 description: Présenter l'apprentissage automatique de la manière la plus simple possible.
+navbar-links:
+  Page principale: "README"
+  Introduction: "introduction"
+  Préparation des données: "preparation"
+  Classification naïve bayésienne: "bayes"
