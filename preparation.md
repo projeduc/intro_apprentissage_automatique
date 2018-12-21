@@ -2,9 +2,10 @@
 
 ## Sommaire
 
+
 ## II-1 Collection des données
 
-### Qualité des données
+### II-1-1 Qualité des données
 
 Critères d'intégrité des données:
 - Taille: Nombre des échantillons (enregistrements). Certaines tâches nécessitent une grande taille de données pour qu'elles soient appris.
@@ -12,11 +13,11 @@ Critères d'intégrité des données:
 - Le nombre des erreurs d'annotation
 - La quantité de bruits dans les données: erreurs et exceptions
 
-### Intégration des données
+### II-1-2 Intégration des données
 
 
 
-### Annotation des données
+### II-1-3 Annotation des données
 
 
 ## II-2 Nétoyage des données
