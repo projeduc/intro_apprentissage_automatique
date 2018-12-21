@@ -6,3 +6,7 @@ navbar-links:
   Introduction: "introduction"
   Préparation des données: "preparation"
   Classification naïve bayésienne: "bayes"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap

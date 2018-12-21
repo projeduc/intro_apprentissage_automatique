@@ -15,8 +15,21 @@ Critères d'intégrité des données:
 
 ### II-1-2 Intégration des données
 
+Quand on veut collecter des données pour l'apprentissage automatique, souvent, on a besoin de combiner des données de différentes sources:
+- Données structurées:
+  - Bases de données
+  - Fichiers de tabuleurs: CSV, etc.
+- Données semi-structurées: XML, JSON, etc.
+- Données non structurées: documents textes, images, métadonnées, etc.
 
+Il faut, tout d'abord, vérifier l'intégrité des données:
+- Vérifier que les fichiers XML sont conformes à leurs définitions [XSD](https://fr.wikipedia.org/wiki/XML_Schema)
+- Vérifier que les séparateurs des colonnes dans les fichiers CSV sont correctes (point-virgule ou virgule et pas les deux au même temps).
 
+Quand on joint deux schémas de données, on doit vérifier:
+- Problème de nommage: il se peut qu'on ait des données identiques avec des nominations différentes. Par exemple, si on veut joindre deux tables de données **b1** et **b2** qui ont deux attributs avec le même sens mais différents noms **b1.numclient** et **b2.clientid**, on doit unifier les noms des attributs.
+- Conflits de valeurs: les valeurs des attributs provenant de sources différentes sont représentées différemment. Par exemple, une source de données qui représente la taille en **cm** et une autre qui représente la taille en **pouces**.
+- Redondance: les attributs qu'on puisse déduire des autres, les enregistrements identiques.
 
 ### II-1-3 Annotation des données
 
