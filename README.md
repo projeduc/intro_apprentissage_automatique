@@ -131,27 +131,36 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 ##### Deep Learning
 
-L'algorithme d'apprentissage est le réseau de neurones:
+Les outils suivants sont conçus pour l'apprentissage approfondu qui est basé le réseau de neurones.
+- Outil: nom et lien de l'outil (ordre alphabétique)
+- Licence: la licence de l'outil. Ici, on ne s'interresse que par les outils open sources.
+- écrit en: le langage de programmation utilisé pour écrire cet outil.
+- interfaces: les langages de programmation qu'on puisse utiliser pour utiliser cet outil (API).
 
 | Outil | Licence | écrit en | interfaces |
 | :---: | :---: | :---: | :---: |
-| [Keras](https://keras.io) | - | Python | Python, R |
-| [Theano](http://deeplearning.net/software/theano/) | - | Python | Python |
 | [Caffe](http://caffe.berkeleyvision.org) | BSD | C++ | C++, MATLAB, Python |
+| [Deeplearning4j](https://deeplearning4j.org) | Apache 2.0 | C++, Java | Java, Scala, Clojure, Python, Kotlin |
+| [Keras](https://keras.io) | MIT | Python | Python, R |
+| [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) | MIT | C++ | Python, C++ |
+| [MXNet (Apache)](https://mxnet.apache.org) | Apache 2.0 | C++ | C++, Clojure, Java, Julia, Perl, Python, R, Scala |
+| [TensorFlow](https://www.tensorflow.org) | Apache 2.0 | C++, Python | Python (Keras), C/C++, Java, Go, JavaScript, R, Julia, Swift |
+| [Theano](http://deeplearning.net/software/theano/) | BSD | Python | Python |
 | [Torch](http://torch.ch) | BSD | C, Lua | C, Lua, LuaJIT |
-| [The Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) | MIT | C++ | Python, C++ |
-| [Deeplearning4j]() | Apache 2.0 | C++, Java | Java, Scala, Clojure, Python, Kotlin |
 
+Pour une comparison plus détaillée, veuiller consulter [cette page en Wikipédia](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)
 
 ##### Générique
 
+La liste suivante contient les outils avec plusieurs algorithmes d'apprentissage automatique.
+
 | Outil | Licence | écrit en | interfaces |
 | :---: | :---: | :---: | :---: |
-| [Shogun](http://www.shogun-toolbox.org) | - | C++ | C++, C#, Java, Lua, Octave, Python, R, Ruby |
-| [scikit-learn](https://scikit-learn.org/stable/) | BSD | Python | Python |
-| [Apache Spark MLLib](http://spark.apache.org/mllib/) | Apache 2.0 | - | Java, R, Python, Scala |
+| [Data Analytics Acceleration Library(Intel)](http://software.intel.com/intel-daal) | Apache 2.0 | C++, Python, Java | C++, Python, Java |
+| [MLLib(Apache Spark)](http://spark.apache.org/mllib/) | Apache 2.0 | - | Java, R, Python, Scala |
 | [ScalaNLP Breeze](https://github.com/scalanlp/breeze) | Apache 2.0 | Scala | Scala |
-
+| [Scikit-learn](https://scikit-learn.org/stable/) | BSD | Python | Python |
+| [Shogun](http://www.shogun-toolbox.org) | - | C++ | C++, C#, Java, Lua, Octave, Python, R, Ruby |
 
 
 #### I-5-2 Apprentissage automatique comme un service
@@ -162,6 +171,7 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 - [DataRobot](https://www.datarobot.com)
 - [Deepai enterprise machine learning](https://deepai.org/enterprise-machine-learning)
 - [Deepcognition](https://deepcognition.ai)
+- [FloydHub](https://www.floydhub.com)
 - [IBM Watson Machine Learning](https://www.ibm.com/cloud/machine-learning)
 - [Google Cloud Machine Learning Engine](https://cloud.google.com/ml-engine/)
 - [Microsoft Azure Machine Learning studio](https://azure.microsoft.com/fr-fr/services/machine-learning-studio/)
@@ -178,10 +188,6 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 - [Kaggle](https://www.kaggle.com): télécarger les données, faire des compétitions avec des prix.
 - [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
 - [Visual data](https://www.visualdata.io): Des données sur le traitement d'images.
-
-
-- [U.S. Government’s open data](https://www.data.gov)
--
 
 ### ANNEXE: Méthodologies de science des données
 
@@ -339,24 +345,45 @@ Cette normalisation offre plus d'avantages si les données se consistent de plus
 
 ##### Coupure
 
-S'il existe des valeurs aberrantes d'une caractéristique dans les extrémités, on applique une coupure min avec une valeur α et/ou max avec une valeur β.
+S'il existe des valeurs aberrantes dans les extrémités d'une caractéristique, on applique une coupure max avec une valeur α et/ou min avec une valeur β.
 
 ![II-3-coupure]
 
-Par exemple, dans un graphe qui illustre le nombre de cambres par personnes, on remarque qu'au delà de 4 les valeurs sont très baisses. La solution est d'appliquer une coupure max de 4.
+Par exemple, dans le graphe suivant, qui illustre le nombre de cambres par personnes, on remarque qu'au delà de 4 les valeurs sont très baisses. La solution est d'appliquer une coupure max de 4.
 
 | ![coupure](https://developers.google.com/machine-learning/data-prep/images/norm-clipping-outliers.svg) |
 |:--:|
-| *Nombre de cambres par personne: avant et après la coupure avec max de 4 personnes [ [Source](https://developers.google.com/machine-learning/data-prep/transform/normalization) ]* |
+| *Nombre de chambres par personne: avant et après la coupure avec max de 4 personnes [ [Source](https://developers.google.com/machine-learning/data-prep/transform/normalization) ]* |
 
 ##### Mise à l'échelle log
 
+Cette transformation est utile lorsque un petit ensemble de valeurs ont plusieurs points, or la plupart des valeurs ont moins de points. Elle sert à compresser la range des valeurs.
 
+![II-3-log]
+
+Par exemple, les évaluations par film.
+Dans le schéma suivant, la plupart des films ont moins d'évaluations.
+
+| ![log](https://developers.google.com/machine-learning/data-prep/images/norm-log-scaling-movie-ratings.svg) |
+|:--:|
+| *Normalisation log des évaluation des films [ [Source](https://developers.google.com/machine-learning/data-prep/transform/normalization) ]* |
 
 ##### Z-score
 
+#### II-3-3 Binarisation
+
+Il existe des cas où on n'a pas besoin des fréquences (nombre d'occurences) d'une caractéristique pour créer un modèle; on a besoin seulement de savoir si cette caractéristique a apparue une fois au moins pour un échantillon. Dans ce cas, on binarise les valeurs de cette caractéristique.
+
+![II-3-bin]
+
+Par exemple, si on veut construire un système de recommandation de chansons, on va simplement avoir besoin de savoir si une personne est intéressée ou a écouté une chanson en particulier.
+Cela n'exige pas le nombre de fois qu'une chanson a été écoutée mais, plutôt, les différentes chansons que cette personne a écoutées.
+
+
 [II-3-min-max]: https://latex.codecogs.com/png.latex?x'=\frac{x-x_{min}}{x_{max}-x_{min}}
-[II-3-coupure]: https://latex.codecogs.com/gif.latex?x'=\left\{\begin{matrix}&space;\alpha&si\,x\ge\alpha\\&space;\beta&si\,x\le\beta\\&space;x&sinon&space;\end{matrix}\right.
+[II-3-coupure]: https://latex.codecogs.com/png.latex?x'=\begin{cases}\alpha&si\;x\ge\alpha\\\\\beta&si\;x\le\beta\\\\x&sinon\end{cases}
+[II-3-log]: https://latex.codecogs.com/png.latex?x'=\log(x)
+[II-3-bin]: https://latex.codecogs.com/png.latex?x'=\begin{cases}1&si\;x\ge1\\\\0&sinon\end{cases}
 
 ### II-4 Réduction des données
 
@@ -371,10 +398,11 @@ Par exemple, dans un graphe qui illustre le nombre de cambres par personnes, on 
 | Outil | Licence | Langage |
 | :---: | :---: | :---: |
 | [pandas](https://pandas.pydata.org) | BSD | Python |
-| [pandas](https://pandas.pydata.org) | BSD | Python |
+| [scikit-learn](https://scikit-learn.org/stable/) | BSD | Python |
 
 ### II-6 Un peu de programmation
 
+#### II-6-1 Discrétisation
 
 
 
