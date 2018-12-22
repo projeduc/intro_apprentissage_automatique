@@ -34,6 +34,7 @@ Quand on joint deux schémas de données, on doit vérifier:
 ### II-1-3 Annotation des données
 
 
+
 ## II-2 Nétoyage des données
 
 Les problèmes rencontrés dans les données peuvent être:
@@ -172,19 +173,35 @@ Etant donnée une caractéristique avec des valeurs *x*, les nouvelles valeurs *
 
 ### II-3-3 Binarisation
 
-Il existe des cas où on n'a pas besoin des fréquences (nombre d'occurences) d'une caractéristique pour créer un modèle; on a besoin seulement de savoir si cette caractéristique a apparue une fois au moins pour un échantillon. Dans ce cas, on binarise les valeurs de cette caractéristique.
+Il existe des cas où on n'a pas besoin des fréquences (nombre d'occurences) d'une caractéristique pour créer un modèle; on a besoin seulement de savoir si cette caractéristique a apparue une fois au moins pour un échantillon. Dans le cas général, on veut vérifier si la fréquence a dépassé un certain seuil **a** ou non. Dans ce cas, on binarise les valeurs de cette caractéristique.
 
 ![II-3-bin]
 
 Par exemple, si on veut construire un système de recommandation de chansons, on va simplement avoir besoin de savoir si une personne est intéressée ou a écouté une chanson en particulier.
 Cela n'exige pas le nombre de fois qu'une chanson a été écoutée mais, plutôt, les différentes chansons que cette personne a écoutées.
 
+### II-3-4 Créations de nouvelles caractéristiques (Les interactions)
+
+Dans l'apprentissage automatique supervisés, en général, on veut modéliser la sortie (classes discrètes ou valeurs continues) en fonction des valeurs de caractéristiques en entrée.
+Par exemple, une équation de régression linéaire simple peut modélise la sortie **y** en se basant sur les caractéristiques **xi** et leurs poids correspondants **wi** comme suit:
+
+![II-3-reg]
+
+Dans ce cas, on a modélisé la sortie en se basant sur des entrées indépendantes l'une de l'autre.
+Cependant, souvent dans plusieurs scénarios réels, il est judicieux d'essayer également de capturer les interactions entre les caractéristiques.
+Donc, on peut créer de nouvelles caractéristiques en multipliants les anciennes deux à deux (ou encore plus).
+Notre équation de régression linéaire sera comme suit:
+
+![II-3-reg2]
+
 
 [II-3-min-max]: https://latex.codecogs.com/png.latex?x'=\frac{x-x_{min}}{x_{max}-x_{min}}
 [II-3-z-score]: https://latex.codecogs.com/png.latex?x'=\frac{x-\mu}{\sigma}
 [II-3-coupure]: https://latex.codecogs.com/png.latex?x'=\begin{cases}\alpha&si\;x\ge\alpha\\\\\beta&si\;x\le\beta\\\\x&sinon\end{cases}
 [II-3-log]: https://latex.codecogs.com/png.latex?x'=\log(x)
-[II-3-bin]: https://latex.codecogs.com/png.latex?x'=\begin{cases}1&si\;x\ge1\\\\0&sinon\end{cases}
+[II-3-bin]: https://latex.codecogs.com/png.latex?x'=\begin{cases}1&si\;x>a\\\\0&sinon\end{cases}
+[II-3-reg]: https://latex.codecogs.com/png.latex?y=w_1x_1+w_2x_2+...+w_nx_n
+[II-3-reg2]: https://latex.codecogs.com/png.latex?y=w_1x_1+w_2x_2+...+w_nx_n+w_{11}x_1^2+w_{22}x_2^2+w_{12}x_1x_2+...
 
 ## II-4 Réduction des données
 
@@ -205,9 +222,21 @@ Cela n'exige pas le nombre de fois qu'une chanson a été écoutée mais, plutô
 
 ### II-6-1 Lecture de données
 
-### II-6-2 Nétoyage de données
+### II-6-2 Intégration des données
 
-### II-6-3 Discrétisation
+### II-6-3 Nétoyage de données
+
+### II-6-4 Discrétisation
+
+### II-6-5 Mise à l'échelle min-max
+
+### II-6-6 Coupure
+
+### II-6-7 Mise à l'échelle log
+
+### II-6-8 Z-score
+
+### II-6-9 Binarisation
 
 ## Bibliographie
 
