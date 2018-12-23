@@ -190,7 +190,7 @@ Le fichier est de type CSV contenant 8124 échantillons. Voici la description de
 
 ### Tester s'il y a des valeurs manquantes
 
-Consulter le fichier [codes/bayes/test.py](codes/bayes/test.py)
+Consulter le fichier [codes/bayes/tester.py](codes/bayes/tester.py)
 
 Avant tout, on importe le fichier, et on affiche les 6 premières lignes (plus la première qui contient les noms des caractéristiques) afin de vérifier l'importation nos données.
 
@@ -203,8 +203,6 @@ data = pandas.read_csv("champignons.csv")
 print data.head(6)
 
 ```
-
-La variable **data** sera un objet de type **numpy.array**. Vous pouvez consulter les méthodes fournises par ce type (classe) [ICI](https://docs.scipy.org/doc/numpy-1.15.1/reference/generated/numpy.array.html). On va présenter quelques méthodes utiles dans la vérification.
 
 On peut vérifier s'il y a des valeurs manquantes dans les échantillons. Ici, on va afficher le nombre de valeurs manquantes pour chaque caractéristique.
 
@@ -220,7 +218,7 @@ print data['classe'].unique()
 
 ```
 
-On peut vérifier le nombre des lignes et des colonnes. Bien sûre, il faut soustraire une ligne (la première ligne contenant les noms des caractéristiques), et aussi une colonne si on veut savoir le nombre des caractéristiques (sans les classes de sortie).
+On peut vérifier le nombre des lignes et des colonnes. Bien sûre, il faut soustraire une colonne si on veut savoir le nombre des caractéristiques (sans les classes de sortie).
 
 ```python
 print data.shape
@@ -229,14 +227,102 @@ print data.shape
 
 ### Classifieur naïf bayésien multinomial
 
+Consulter le fichier [codes/bayes/test.py](codes/bayes/classer.py)
 
+On va lire le fichier en utilisant l'outil **pandas**
 
+```python
+data = pandas.read_csv("champignons.csv")
+```
 
+Avant d'utiliser le classifieur naïf bayésien de **scikit-learn**, on doit transformer les catégories de chaque caractéristique en valeurs numériques.
+Ceci est possible en utilisant un encodeur des étiquettes (*LabelEncoder*)
 
+```python
+from sklearn.preprocessing import LabelEncoder
+encodeur = LabelEncoder()
+for col in data.columns:
+    data[col] = encodeur.fit_transform(data[col])
 
+```
 
+On sépare les données en: entrées (les caractéristiques) et sorties (les classes: comestible ou toxique).
+Dans notre fichier, les classes (qui sont le resultat attendu) sont dans la colonne 0, et les autres caractéristiques (les entrées) sont dans les colonnes restantes.
 
+```python
+X = data.iloc[:,1:23] #les caractéristiques
+y = data.iloc[:, 0]  #les résulats (classes)
+```
 
+Ensuite, il faut séparer les données en deux partie: une pour l'entraînement (on prend 80%) et une pour le test (on prend 20%).
+On va utiliser [train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) de scikit-learn.
+
+```python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+```
+
+Toutes les caractéristiques sont nominales, donc on va utiliser **MultinomialNB**. il peut avoir comme parametres:
+- **alpha** : float, optional (default=1.0).
+C'est le lissage de Laplace/Linstone. Si on ne veut pas appliquer un lissage, on met 0.
+- **fit_prior** : boolean, optional (default=True).
+Est-ce qu'on calcule la probabilité apriori ou non. Si non, les probabilités des classes seront considérées comme uniformes.
+- **class_prior** : array-like, size (n_classes,), optional (default=None).
+Une liste des probabilités apriori prédéfinies.
+La méthode **fit** va entraîner le modèle en fournissant les valeurs des caractéristiques et leurs classes.
+
+```python
+from sklearn.naive_bayes import MultinomialNB
+modele = MultinomialNB()
+modele.fit(X_train, y_train)
+```
+
+Pour prédir les classes d'un ensemble d'échantillons (ici, les données de test), on utilise la méthode **predict**.
+
+```python
+y_pred = modele.predict(X_test)
+```
+
+Enfin, on teste la précision de notre modèle.
+
+```python
+from sklearn.metrics import accuracy_score
+print "précision: ", accuracy_score(y_test, y_pred)
+
+```
+
+Ou, on peut utiliser la méthode **score** qui donne le même résulat
+
+```python
+print "précision: ", modele.score(X_test, y_test)
+
+```
+
+### Sauvegarder le modèle
+
+Après avoir entraîner un modèle, il est souhaitable de le conserver pour un usage ultérieur sans avoir besoin d'entraîner une deuxième fois.
+Il y a deux façons de le faire selon [la doc de scikit-learn ](https://scikit-learn.org/stable/modules/model_persistence.html):
+- la sérialisation pickle
+- la sérialisation joblib
+
+La deuxième est recommandatée par scikit-learn.
+Après avoir entraîner notre modèle, on le sauvegarde.
+
+```python
+from joblib import dump
+...
+modele.fit(X_train, y_train)
+dump(modele, 'mon_modele.joblib')
+```
+
+Lorsqu'on veut prédir une classe en utilisant ce modèle, on le relance.
+
+```python
+from joblib import load
+...
+modele = load('mon_modele.joblib')
+y_pred2 = modele.predict(X_test2)
+```
 
 ## Bibliographie
 
@@ -248,3 +334,4 @@ print data.shape
 - https://scikit-learn.org/stable/modules/naive_bayes.html
 - https://github.com/ctufts/Cheat_Sheets/wiki/Classification-Model-Pros-and-Cons
 - https://mattshomepage.com/articles/2016/Jun/07/bernoulli_nb/
+- https://scikit-learn.org/stable/modules/model_persistence.html
