@@ -158,6 +158,86 @@ Mais, une telle simplicité vient avec un coût.
 - S'il existe une grande corrélation entre les caractéristiques, ils vont donner une mauvaise performance.
 - Dans le cas des caractéristiques continues (prix, surface, etc.), les données doivent suivre la loi normale.
 
+## III-6 un peu de programmation
+
+Dans cette exercice, on veut classifier les champignons comme toxiques ou non.
+On va utiliser [mushroom classification](https://archive.ics.uci.edu/ml/datasets/mushroom) pour classer les champignons comme comestibles ou toxiques en se basant sur 22 caractéristiques nominales.
+Le fichier est de type CSV contenant 8124 échantillons. Voici la description des colonnes:
+
+1. classe: (e) [edible] comestible; (p) [poisonous] toxique
+1. chapeau-forme: (b) [bell]; (c) [conical] conique; (x) [convex] convexe; (f) [flat] plat; (k) [knobbed] noué; (s) [sunken] enfoncé
+1. chapeau-surface: (f) [fibrous] fibreuse; (g) [grooves] rainures; (y) [scaly] écailleuse; (s) [smooth] lisse
+1. chapeau-couleur: brown=n, buff=b, cinnamon=c, gray=g, green=r,
+1. ecchymoses: true=t, false=f
+1. odeur: almond=a, anise=l, creosote=c, fishy=y, foul=f, musty=m, none=n, pungent=p, spicy=s
+1. branchie-attachement: attached=a,descending=d,free=f,notched=n
+1. branchie-espacement:             close=c,crowded=w,distant=d
+1. branchie-taille:                broad=b,narrow=n
+1. branchie-couleur:               black=k,brown=n,buff=b,chocolate=h,gray=g, green=r,orange=o,pink=p,purple=u,red=e, white=w,yellow=y
+1. tige-forme:              enlarging=e,tapering=t
+1. tige-racine:               bulbous=b,club=c,cup=u,equal=e, rhizomorphs=z,rooted=r,missing=?
+1. tige-surface-dessus-anneau: fibrous=f,scaly=y,silky=k,smooth=s
+1. tige-surface-dessous-anneau: fibrous=f,scaly=y,silky=k,smooth=s
+1. tige-couleur-dessus-anneau:   brown=n,buff=b,cinnamon=c,gray=g,orange=o, pink=p,red=e,white=w,yellow=y
+1. tige-couleur-dessous-anneau:   brown=n,buff=b,cinnamon=c,gray=g,orange=o, pink=p,red=e,white=w,yellow=y
+1. voile-type:                partial=p,universal=u
+1. voile-couleur:               brown=n,orange=o,white=w,yellow=y
+1. anneau-nombre:              none=n,one=o,two=t
+1. anneau-type:                cobwebby=c,evanescent=e,flaring=f,large=l, none=n,pendant=p,sheathing=s,zone=z
+1. spore-couleur:        black=k,brown=n,buff=b,chocolate=h,green=r, orange=o,purple=u,white=w,yellow=y
+1. population:               abundant=a,clustered=c,numerous=n, scattered=s,several=v,solitary=y
+1. habitat:                  grasses=g,leaves=l,meadows=m,paths=p, urban=u,waste=w,woods=d
+
+### Tester s'il y a des valeurs manquantes
+
+Consulter le fichier [codes/bayes/test.py](codes/bayes/test.py)
+
+Avant tout, on importe le fichier, et on affiche les 6 premières lignes (plus la première qui contient les noms des caractéristiques) afin de vérifier l'importation nos données.
+
+```python
+import pandas
+
+#lire le fichier csv
+data = pandas.read_csv("champignons.csv")
+#affichier les 6 premiers échantillons
+print data.head(6)
+
+```
+
+La variable **data** sera un objet de type **numpy.array**. Vous pouvez consulter les méthodes fournises par ce type (classe) [ICI](https://docs.scipy.org/doc/numpy-1.15.1/reference/generated/numpy.array.html). On va présenter quelques méthodes utiles dans la vérification.
+
+On peut vérifier s'il y a des valeurs manquantes dans les échantillons. Ici, on va afficher le nombre de valeurs manquantes pour chaque caractéristique.
+
+```python
+print data.isnull().sum()
+
+```
+
+On peut afficher, également, les différentes catégories possibles pour une caractéristique donnée. Ici, on veut afficher les classes possibles. Attention! si on utilise un nom de caractéristique qui n'existe pas dans les données, on va avoir une erreur.
+
+```python
+print data['classe'].unique()
+
+```
+
+On peut vérifier le nombre des lignes et des colonnes. Bien sûre, il faut soustraire une ligne (la première ligne contenant les noms des caractéristiques), et aussi une colonne si on veut savoir le nombre des caractéristiques (sans les classes de sortie).
+
+```python
+print data.shape
+
+```
+
+### Classifieur naïf bayésien multinomial
+
+
+
+
+
+
+
+
+
+
 ## Bibliographie
 
 - https://towardsdatascience.com/multinomial-naive-bayes-classifier-for-text-analysis-python-8dd6825ece67
