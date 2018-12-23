@@ -2,6 +2,17 @@
 
 ## Sommaire
 
+[(Retour vers la page principale)](README.md)
+
+- Chapitre I: Introduction
+  - [I-1 Motivation](#i-1-motivation)
+  - [I-2 Applications](#i-2-applications)
+  - [I-3 Types des algorithmes d'apprentissage](#i-3-types-des-algorithmes-dapprentissage)
+  - [I-4 Limites de l'apprentissage automatique](#i-4-limites-de-lapprentissage-automatique)
+  - [I-5 Outils de l'apprentissage automatique](#i-5-outils-de-lapprentissage-automatique)
+  - [I-6 Méthodologies de science des données](#i-6-méthodologies-de-science-des-données)
+
+
 | ![apprentissage automatique](IMG/AA.png) |
 |:--:|
 | *Apprentissage automatique* |
@@ -10,6 +21,8 @@
 
 - Certaines tâches sont difficiles à programmer manuellement: Reconnaissance de formes, Traduction par machine, Reconnaissance de la parole, Aide à la décision, etc.
 - Les données sont disponibles, qui peuvent être utilisé pour estimer la fonction de notre tâche.
+
+[(Sommaire)](#sommaire)
 
 ## I-2 Applications
 
@@ -22,6 +35,8 @@
 - Domaine légal : cas de CaseText https://casetext.com
 - Traduction: Google traslate https://translate.google.com/
 **_...TODO: Add more_**
+
+[(Sommaire)](#sommaire)
 
 ## I-3 Types des algorithmes d'apprentissage
 
@@ -47,6 +62,8 @@ Lorsque le résulat attendu est une classe (groupe).
 | Par exemple: |
 | :--: |
 | Classer un animal comme: chat, chien, vache ou autre en se basant sur le poids, la longueur et le type de nourriture.  |
+
+TODO: recall, precision, evaluation methods 
 
 #### Régression
 
@@ -97,12 +114,16 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 | *Apprentissage par renforcement [ [Wikimedia](https://commons.wikimedia.org/wiki/File:Reinforcement_learning_diagram_fr.svg?uselang=fr) ]* |
 
 
+[(Sommaire)](#sommaire)
+
 ## I-4 Limites de l'apprentissage automatique
 
 - Pour des tâches complexes, on a besoin d'une grande quantité de données
 - Dans le cas de l'apprentissage supervisé, l'annotation de données est une tâche fastidieuse; qui prend beaucoup de temps.
 - Le traitement automatique de langages narurels (TALN) reste un défit
 - Les données d'entraînement sont souvent biaisées
+
+[(Sommaire)](#sommaire)
 
 ## I-5 Outils de l'apprentissage automatique
 
@@ -218,8 +239,9 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 - [Oxford's Robotic Car](http://robotcar-dataset.robots.ox.ac.uk/)
 - [WPI datasets](http://computing.wpi.edu/dataset.html)
 
+[(Sommaire)](#sommaire)
 
-## ANNEXE: Méthodologies de science des données
+## I-6 Méthodologies de science des données
 
 ### CRISP-DM (Cross-industry standard process for data mining) [Standard ouvert]
 
@@ -238,6 +260,8 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 | ![TDSP](https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/media/overview/tdsp-lifecycle2.png) |
 |:--:|
 | *TDSP [ [Source](https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/overview) ]* |
+
+[(Sommaire)](#sommaire)
 
 ## Bibliographie
 

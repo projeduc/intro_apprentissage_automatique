@@ -11,6 +11,16 @@ Ici, on va commencer par présenter la phase de classification avant la phase d'
 
 ## Sommaire
 
+[(Retour vers la page principale)](README.md)
+
+- Chapitre III: Classification naïve bayésienne
+  - [III-1 Classification](#iii-1-classification)
+  - [III-2 Apprentissage](#iii-2-apprentissage)
+  - [III-3 Exemples](#iii-3-exemples)
+  - [III-4 Avantages](#iii-4-avantages)
+  - [III-5 Limites](#iii-5-limites)
+  - [III-6 un peu de programmation](#iii-6-un-peu-de-programmation)
+
 ## III-1 Classification
 
 Voici le théorème de Bayes:
@@ -49,6 +59,8 @@ Techniquement, on utilise l'espace logarithmique puisque le produit des probabil
 [III-1-bayes5]: https://latex.codecogs.com/png.latex?c&space;=&space;\arg\max\limits_{ci}&space;P(c_i|\overrightarrow{f})
 [III-1-bayes6]: https://latex.codecogs.com/png.latex?c&space;=&space;\arg\max\limits_{ci}&space;P(c_i)&space;\prod\limits_{f_j&space;\in&space;\overrightarrow{f}}&space;P(f_j|c_i)
 [III-1-bayes7]: https://latex.codecogs.com/png.latex?c=\arg\max\limits_{ci}\;\log(P(c_i))+\sum\limits_{f_j\in\overrightarrow{f}}\log(P(f_j|c_i))
+
+[(Sommaire)](#sommaire)
 
 ## III-2 Apprentissage
 
@@ -103,7 +115,9 @@ Donc, la probabilité qu'une caractéristique ![f-j] ait une valeur *x* sachant 
 [III-2-sigma]: https://latex.codecogs.com/png.latex?\sigma^2_{ij}=\frac{1}{|c_i|-1}\sum\limits_{k=1}^{|c_i|}(x_k-\mu_{ij})^2\;/\;x_k\;\in\;f_j\,\cap\,c_i
 [III-2-normal]: https://latex.codecogs.com/png.latex?P(f_j=x|c_i)=\frac{1}{2\pi\sigma^2_{ij}}e^{-\frac{(x-\mu_{ij})^2}{2\sigma^2_{ij}}}
 
-## III-3 Exemple
+[(Sommaire)](#sommaire)
+
+## III-3 Exemples
 
 ### Classifieur naïf bayésien suivant la loi normal
 
@@ -141,6 +155,8 @@ P(féminin) = 4/8 = 0.5
 
 **_...TODO: example about sentiment analysis using multinomial bayes_**
 
+[(Sommaire)](#sommaire)
+
 ## III-4 Avantages
 
 Les classifieurs naïfs bayésiens, malgré leurs simplicité, ont des points forts:
@@ -148,6 +164,8 @@ Les classifieurs naïfs bayésiens, malgré leurs simplicité, ont des points fo
 - Ils ont besoin d'une petite quantité de données d’entraînement.
 - Ils sont très rapides par rapport aux autres classifieurs.
 - Ils donnent de bonnes résultats dans le cas de filtrage du courrier indésirable et de classification de documents.
+
+[(Sommaire)](#sommaire)
 
 ## III-5 Limites
 
@@ -157,6 +175,8 @@ Mais, une telle simplicité vient avec un coût.
 - Les probabilités obtenues en utilisant ces classifieurs ne doivent pas être prises au sérieux.
 - S'il existe une grande corrélation entre les caractéristiques, ils vont donner une mauvaise performance.
 - Dans le cas des caractéristiques continues (prix, surface, etc.), les données doivent suivre la loi normale.
+
+[(Sommaire)](#sommaire)
 
 ## III-6 un peu de programmation
 
@@ -305,7 +325,7 @@ Il y a deux façons de le faire selon [la doc de scikit-learn ](https://scikit-l
 - la sérialisation pickle
 - la sérialisation joblib
 
-La deuxième est recommandatée par scikit-learn.
+La deuxième est recommandée par scikit-learn.
 Après avoir entraîner notre modèle, on le sauvegarde.
 
 ```python
@@ -323,6 +343,8 @@ from joblib import load
 modele = load('mon_modele.joblib')
 y_pred2 = modele.predict(X_test2)
 ```
+
+[(Sommaire)](#sommaire)
 
 ## Bibliographie
 

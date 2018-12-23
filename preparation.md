@@ -2,6 +2,15 @@
 
 ## Sommaire
 
+[(Retour vers la page principale)](README.md)
+
+- Chapitre II: Préparation des données
+  - [II-1 Collection des données](#i-1-collection-des-données)
+  - [II-2 Nétoyage des données](#ii-2-nétoyage-des-données)
+  - [II-3 Transformation des données](#ii-3-transformation-des-données)
+  - [II-4 Réduction des données](#ii-4-réduction-des-données)
+  - [II-5 Outils de préparation des données](#ii-5-outils-de-préparation-des-données)
+  - [II-6 Un peu de programmation](#ii-6-un-peu-de-programmation)
 
 ## II-1 Collection des données
 
@@ -34,6 +43,8 @@ Quand on joint deux schémas de données, on doit vérifier:
 ### II-1-3 Annotation des données
 
 
+
+[(Sommaire)](#sommaire)
 
 ## II-2 Nétoyage des données
 
@@ -70,6 +81,8 @@ Pour régler ces problèmes:
   - Clustering pour détecter les exceptions
   - Détection automatique des valeurs suspectes et vérification humaine.
   - Lisser les données par des méthodes de régression.
+
+[(Sommaire)](#sommaire)
 
 ## II-3 Transformation des données
 
@@ -203,6 +216,8 @@ Notre équation de régression linéaire sera comme suit:
 [II-3-reg]: https://latex.codecogs.com/png.latex?y=w_1x_1+w_2x_2+...+w_nx_n
 [II-3-reg2]: https://latex.codecogs.com/png.latex?y=w_1x_1+w_2x_2+...+w_nx_n+w_{11}x_1^2+w_{22}x_2^2+w_{12}x_1x_2+...
 
+[(Sommaire)](#sommaire)
+
 ## II-4 Réduction des données
 
 ### II-4-1 Données imbalancées
@@ -211,12 +226,16 @@ Notre équation de régression linéaire sera comme suit:
 
 ### II-4-3 Randomisation
 
+[(Sommaire)](#sommaire)
+
 ## II-5 Outils de préparation des données
 
 | Outil | Licence | Langage |
 | :---: | :---: | :---: |
 | [pandas](https://pandas.pydata.org) | BSD | Python |
 | [scikit-learn](https://scikit-learn.org/stable/) | BSD | Python |
+
+[(Sommaire)](#sommaire)
 
 ## II-6 Un peu de programmation
 
@@ -237,6 +256,9 @@ Notre équation de régression linéaire sera comme suit:
 ### II-6-8 Z-score
 
 ### II-6-9 Binarisation
+
+
+[(Sommaire)](#sommaire)
 
 ## Bibliographie
 
