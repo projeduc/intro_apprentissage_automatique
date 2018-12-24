@@ -252,6 +252,8 @@ Ici, on va utiliser l'ensemble des données [Census Income Data Set (Adult)](htt
 Les données se composent de 14 caractéristiques et de 48842 échantilons.
 Dans le but de l'exercice, on a réduit le nombre des caractéristiques à 7 et quelques échantillons dispercés sur plusieurs formats de fichiers.
 
+#### Fichier adult1.csv
+
 Le premier fichier (data/adult1.csv) est un fichier CSV avec des colonnes séparées par des virgules (50 échantilons).
 Le fichier contient les colonnes suivantes (avec l'entête: titres des colonnes) dans l'ordre:
 1. age: entier.
@@ -269,6 +271,7 @@ On ignore les espaces qui suivent les séparateurs.
 ```python
 adult1 = pandas.read_csv("../../data/adult1.csv", skipinitialspace=True)
 ```
+#### Fichier adult2.csv
 
 Le deuxième fichier est un fichier CSV lui aussi, mais les colonnes sont séparées par des points-virgules.
 Le fichier est mal-formé; il existe des lignes avec séparation par virgules.
@@ -292,6 +295,8 @@ adult2 = pandas.read_csv("../../data/adult2.csv", skipinitialspace=True, sep=";"
 Pour plus d'options veuillez consulter la documentation de [read_csv](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html).
 Le problème qui se pose est qu'on va avoir des lignes avec des "NaN" (valeurs non définies).
 On va régler ça dans l'étape de nétoyage des données.
+
+#### Fichier adult3.db (sqlite)
 
 Le troisième fichier est de format Sqlite, dont le schéma est le suivant:
 
@@ -326,10 +331,71 @@ Pour être cohérent avec les données précédentes, on doit remplacer les "?" 
 ```python
 import sqlite3
 import numpy
-con = sqlite3.connect("../../data/adults3.db")
+con = sqlite3.connect("../../data/adult3.db")
 adult3 = pandas.read_sql_query("SELECT * FROM income", con)
 adult3 = adult3.replace('?', numpy.nan)
 ```
+
+#### Fichier adult4.xml
+
+Le 4ième fichier est de format XML dont la [DTD](https://fr.wikipedia.org/wiki/Document_type_definition) est la suivante:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT income (candidat)*>
+<!ATTLIST candidat id ID #REQUIRED>
+<!ELEMENT candidat (age, workclass, education, marital_status, sex, hours_per_week, class)>
+<!ELEMENT age #PCDATA>
+<!ELEMENT workclass #PCDATA>
+<!ELEMENT education #PCDATA>
+<!ELEMENT marital_status #PCDATA>
+<!ELEMENT sex #PCDATA>
+<!ELEMENT hours_per_week #PCDATA>
+<!ELEMENT class #PCDATA>
+```
+
+- Les valeurs possibles des champs nominals sont comme celles de la base de données sqlite (fichier adult3.db).
+- Les valeurs non définies sont représentées par l'absence de leurs balises respectives dans le fichier XML.
+
+Pour valider le fichier XML, on a utilisé la bibliothèque **lxml**.
+
+```python
+from lxml import etree
+parser = etree.XMLParser(dtd_validation=True)
+tree = etree.parse("../../data/adult4.xml", parser)
+```
+
+Après l'exécution de ces instructions nous avons eu le message d'erreur suivant
+
+```sh
+>> python preparer.py
+Traceback (most recent call last):
+  File "preparer.py", line 29, in <module>
+    tree = etree.parse("../../data/adult4.xml", parser)
+  File "src/lxml/etree.pyx", line 3426, in lxml.etree.parse
+  File "src/lxml/parser.pxi", line 1839, in lxml.etree._parseDocument
+  File "src/lxml/parser.pxi", line 1865, in lxml.etree._parseDocumentFromURL
+  File "src/lxml/parser.pxi", line 1769, in lxml.etree._parseDocFromFile
+  File "src/lxml/parser.pxi", line 1162, in lxml.etree._BaseParser._parseDocFromFile
+  File "src/lxml/parser.pxi", line 600, in lxml.etree._ParserContext._handleParseResultDoc
+  File "src/lxml/parser.pxi", line 710, in lxml.etree._handleParseResult
+  File "src/lxml/parser.pxi", line 639, in lxml.etree._raiseParseError
+  File "../../data/adult4.xml", line 461
+lxml.etree.XMLSyntaxError: Element candidat content does not follow the DTD, expecting (age , workclass , education , marital_status , sex , hours_per_week , class), got (age workclass education marital_status hours_per_week class ), line 461, column 12
+```
+
+Il est évident que le champs "sex" n'exist pas dans un enregistrement.
+Le problème, ici, est que celui qui a créé ce fichier XML n'a pas respecté sa propre définition DTD.
+Il falait qu'il crée des balises vides ou avec un symbole spécifique même si la valeur est absente.
+Pour traiter ça, on va modifier le fichier DTD afin qu'il accepte des éléments de moins.
+
+```xml
+<!ELEMENT candidat (age?, workclass?, education?, marital_status?, sex?, hours_per_week?, class)>
+```
+
+TO BE CONTINUED
+
+
 
 ### II-6-2 Intégration des données
 

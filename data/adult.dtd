@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT income (candidat)*>
+<!ATTLIST candidat id CDATA #REQUIRED>
+<!ELEMENT candidat (age?, workclass?, education?, marital-status?, sex?, hours-per-week?, class)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT workclass (#PCDATA)>
+<!ELEMENT education (#PCDATA)>
+<!ELEMENT marital-status (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!ELEMENT hours-per-week (#PCDATA)>
+<!ELEMENT class (#PCDATA)>
