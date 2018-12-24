@@ -241,9 +241,63 @@ Notre équation de régression linéaire sera comme suit:
 
 ### II-6-1 Lecture de données
 
+Pour lire les données, on va utiliser la bibliothèque **pandas**.
+Elle support [plusieurs types de fichiers](https://pandas.pydata.org/pandas-docs/stable/io.html): csv (read\_csv), JSON (read\_json), HTML (read\_html), MS Excel (read\_excel), SQL (read\_sql), etc.
+
+```python
+import pandas
+```
+
+Ici, on va utiliser l'ensemble des données [Census Income Data Set (Adult)](https://archive.ics.uci.edu/ml/datasets/Census+Income).
+Les données se composent de 14 caractéristiques et de 48842 échantilons.
+Dans le but de l'exercice, on a réduit le nombre des caractéristiques à 7 et quelques échantillons dispercés sur plusieurs formats de fichiers.
+
+Le premier fichier (data/adult1.csv) est un fichier CSV avec des colonnes séparées par des virgules (50 échantilons).
+Le fichier contient les colonnes suivantes (avec l'entête: titres des colonnes) dans l'ordre:
+1. age: entier.
+1. workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.  
+1. education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.  
+1. marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
+1. occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.  
+1. sex: Female, Male.
+1. hours-per-week: entier.
+1. class: <=50K, >50K
+
+On sait que le fichier est bien formé; donc, on ne va pas vérifier le format.
+On ignore les espaces qui suivent les séparateurs.
+
+```python
+adult1 = pandas.read_csv("../../data/adult1.csv", skipinitialspace=True)
+```
+
+Le deuxième fichier est un fichier CSV lui aussi, mais les colonnes sont séparées par des points-virgules.
+Le fichier est mal-formé; il existe des lignes avec séparation par virgules.
+Aussi, il n'y a pas d'entête pour désigner les noms des colonnes (caractéristiques).
+Voici le sens des colonnes dans l'ordre:
+1. class: Y, N (il gagne plus de 50K)
+1. age: entier
+1. sex: F, M
+1. workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
+1. education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
+1. hours-per-week: entier.
+1. marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
+
+Dans ce cas, on va spécifier que le séparateur est ";", il n'y a pas d'entête (la première ligne contient des données et pas les noms des colonnes) et on spécifie les noms des colonnes.
+
+```python
+noms = ["class", "age", "sex", "workclass", "education", "hours-per-week", "marital-status"]
+adult2 = pandas.read_csv("../../data/adult2.csv", skipinitialspace=True, sep=";", header=None, names=noms)
+```
+
+Pour plus d'options veuillez consulter la documentation de [read_csv](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html).
+Le problème qui se pose est qu'on va avoir des lignes avec des "NaN" (valeurs non définies).
+On va régler ça dans l'étape de nétoyage des données. 
+
+
+
 ### II-6-2 Intégration des données
 
-### II-6-3 Nétoyage de données
+### II-6-3 Nétoyage des données
 
 ### II-6-4 Discrétisation
 
@@ -269,3 +323,4 @@ Notre équation de régression linéaire sera comme suit:
 - https://www.analyticsindiamag.com/get-started-preparing-data-machine-learning/
 - https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/prepare-data
 - https://www.simplilearn.com/data-preprocessing-tutorial
+- https://pandas.pydata.org/pandas-docs/stable/io.html

@@ -247,12 +247,12 @@ print data.shape
 
 ### Classifieur naïf bayésien multinomial
 
-Consulter le fichier [codes/bayes/test.py](codes/bayes/classer.py)
+Consulter le fichier [codes/bayes/classer.py](codes/bayes/classer.py)
 
 On va lire le fichier en utilisant l'outil **pandas**
 
 ```python
-data = pandas.read_csv("champignons.csv")
+data = pandas.read_csv("../../data/champignons.csv")
 ```
 
 Avant d'utiliser le classifieur naïf bayésien de **scikit-learn**, on doit transformer les catégories de chaque caractéristique en valeurs numériques.

@@ -1,0 +1,51 @@
+age,workclass,education,Marital-status,occupation,sex,Hours-per-week,class
+39, State-gov, Bachelors, Never-married, Adm-clerical, Male,40, <=50K
+50, Self-emp-not-inc, Bachelors, Married-civ-spouse, Exec-managerial, Male,13, <=50K
+38, Private, HS-grad, Divorced, Handlers-cleaners, Male,40, <=50K
+53, Private, 11th,, Handlers-cleaners, Male,40, <=50K
+28, Private, Bachelors, Married-civ-spouse, Prof-specialty, Female,40, <=50K
+37, Private, Masters, Married-civ-spouse, Exec-managerial, Female,40, <=50K
+49, Private, 9th, Married-spouse-absent, Other-service, Female,16, <=50K
+52, Self-emp-not-inc, HS-grad, Married-civ-spouse, Exec-managerial, Male,45, >50K
+31, Private, Masters, Never-married, Prof-specialty, Female,50, >50K
+42, Private, Bachelors, Married-civ-spouse, Exec-managerial, Male,40, >50K
+, Private, Some-college, Married-civ-spouse, Exec-managerial, Male,80, >50K
+30, State-gov, Bachelors, Married-civ-spouse, Prof-specialty, Male,40, >50K
+23, Private, Bachelors, Never-married, Adm-clerical, Female,30, <=50K
+32, Private, Assoc-acdm, Never-married, Sales, Male,50, <=50K
+40, Private, Assoc-voc, Married-civ-spouse, Craft-repair, Male,40, >50K
+34, Private, 7th-8th, Married-civ-spouse, Transport-moving, Male,45, <=50K
+, Self-emp-not-inc, HS-grad, Never-married, Farming-fishing, Male,35, <=50K
+32, Private, HS-grad, Never-married, Machine-op-inspct, Male,40, <=50K
+38, Private, 11th, Married-civ-spouse, Sales, Male,50, <=50K
+43, Self-emp-not-inc, Masters, Divorced, Exec-managerial, Female,45, >50K
+40, Private, Doctorate, Married-civ-spouse, Prof-specialty, Male,60, >50K
+54, Private, HS-grad, Separated, Other-service, Female,20, <=50K
+35, Federal-gov, 9th, Married-civ-spouse, Farming-fishing, Male,40, <=50K
+43, Private, 11th, Married-civ-spouse, Transport-moving, Male,40, <=50K
+59, Private, HS-grad, Divorced, Tech-support, Female,40, <=50K
+56, Local-gov, Bachelors, Married-civ-spouse, Tech-support, Male,40, >50K
+19, Private, HS-grad, Never-married, Craft-repair, Male,40, <=50K
+54,, Some-college, Married-civ-spouse,, Male,60, >50K
+39, Private, HS-grad, Divorced, Exec-managerial, Male,80, <=50K
+49, Private, HS-grad, Married-civ-spouse, Craft-repair, Male,40, <=50K
+23, Local-gov, Assoc-acdm, Never-married, Protective-serv, Male,52, <=50K
+20, Private, Some-college, Never-married, Sales, Male,44, <=50K
+45, Private, Bachelors, Divorced, Exec-managerial, Male,40, <=50K
+30, Federal-gov, Some-college, Married-civ-spouse, Adm-clerical, Male,40, <=50K
+22, State-gov, Some-college, Married-civ-spouse, Other-service,,15, <=50K
+48, Private, 11th, Never-married, Machine-op-inspct, Male,40, <=50K
+21, Private, Some-college, Never-married, Machine-op-inspct, Male,40, <=50K
+19, Private, HS-grad, Married-AF-spouse, Adm-clerical, Female,25, <=50K
+31, Private, Some-college, Married-civ-spouse, Sales, Male,38, >50K
+48, Self-emp-not-inc, Assoc-acdm, Married-civ-spouse, Prof-specialty, Male,40, <=50K
+31, Private, 9th, Married-civ-spouse, Machine-op-inspct, Male,43, <=50K
+53, Self-emp-not-inc, Bachelors, Married-civ-spouse, Prof-specialty, Male,40, <=50K
+24, Private, Bachelors, Married-civ-spouse, Tech-support, Male,50, <=50K
+, Private, HS-grad, Separated, Adm-clerical, Female,40, <=50K
+25, Private, HS-grad, Never-married, Handlers-cleaners, Male,35, <=50K
+57, Federal-gov, Bachelors, Married-civ-spouse, Prof-specialty, Male,40, >50K
+53, Private, HS-grad, Married-civ-spouse, Machine-op-inspct, Male,38, <=50K
+44, Private, Masters, Divorced, Exec-managerial, Female,40, <=50K
+41, State-gov, Assoc-voc, Married-civ-spouse, Craft-repair, Male,40, <=50K
+29, Private, Assoc-voc, Never-married, Prof-specialty, Male,43, <=50K
