@@ -4,7 +4,7 @@
 import pandas
 
 #lire le fichier csv
-data = pandas.read_csv("champignons.csv")
+data = pandas.read_csv("../../data/champignons.csv")
 #affichier les 6 premiers échantillons
 print data.head(6)
 

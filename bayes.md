@@ -180,8 +180,8 @@ Mais, une telle simplicité vient avec un coût.
 
 ## III-6 un peu de programmation
 
-Dans cette exercice, on veut classifier les champignons comme toxiques ou non.
-On va utiliser [mushroom classification](https://archive.ics.uci.edu/ml/datasets/mushroom) pour classer les champignons comme comestibles ou toxiques en se basant sur 22 caractéristiques nominales.
+Dans cet exercice, on veut classifier les champignons comme toxiques ou non.
+On va utiliser l'ensemble de données [mushroom classification](https://archive.ics.uci.edu/ml/datasets/mushroom) pour classer les champignons comme comestibles ou toxiques en se basant sur 22 caractéristiques nominales.
 Le fichier est de type CSV contenant 8124 échantillons. Voici la description des colonnes:
 
 1. classe: (e) [edible] comestible; (p) [poisonous] toxique

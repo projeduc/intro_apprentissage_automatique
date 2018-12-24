@@ -1,23 +1,30 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Ici, on va utiliser un classifieur baïf bayésien multinomial existant
-# Le but est de se familiariser avec les outils existants
+# Ici, on va construire un classifieur baïf bayésien multinomial de zéro
+# Le but est de comprendre comment l'algorithme fonctionne
 
-import pandas
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.metrics import accuracy_score
-
-#lire le fichier csv
-data = pandas.read_csv("../../data/champignons.csv")
-
-#transformer les catégories de chaque caractéristique comme des valeurs numériques
-encodeur = LabelEncoder()
-for col in data.columns:
-    data[col] = encodeur.fit_transform(data[col])
+if __name__ == "__main__":
+    import classer2 as c
+    data = c.lire_csv("../../data/champignons.csv")
+    print data[:4, :2]
 
 
+def lire_csv(url):
+    """
+    Une fonction pour extraire une matrice à partir d'un fichier CSV
+    séparé par des virgules
+    """
+    #Ouverture du fichier en mode lecture
+    f = open(url,"r")
+    #Lecture de toutes les lignes du fichier
+    lignes = f.readlines()
+    #Fermeture du fichier
+    f.close()
+    #Création d'un tableau qui contient d'autres tableaux
+    #Ces derniers sont créés en éclatant chaque ligne par la virgule
+    return [l.split(",") for l in lignes]
+
+"""
 #séparer les entrées (caractéristiques) et la sortie (classe)
 y = data.iloc[:, 0]  #les résulats (classes)
 X = data.iloc[:, 1:] #les caractéristiques
@@ -48,3 +55,4 @@ y_pred = modele.predict(X_test)
 print "précision: ", accuracy_score(y_test, y_pred)
 
 print "précision: ", modele.score(X_test, y_test)
+"""
