@@ -28,10 +28,24 @@ adult3 = adult3.replace('?', numpy.nan)
 parser = etree.XMLParser(dtd_validation=True)
 arbre = etree.parse("../../data/adult4.xml", parser)
 
-adult4 = pandas.DataFrame(columns=noms)
+def valeur_noeud(noeud):
+    return noeud.text if noeud is not None else numpy.nan
+
+noms2 = ["id", "age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class"]
+adult4 = pandas.DataFrame(columns=noms2)
 
 for candidat in arbre.getroot():
-    id = candidat.
-    print candidat.tag
-    #adult4 = adult4.append(pandas.Series([i.get('id'), i.get('name')], index=dfcols), ignore_index=True)
-adult4.head()
+    idi = candidat.get("id")
+    age = valeur_noeud(candidat.find('age'))
+    workclass = valeur_noeud(candidat.find('workclass'))
+    education = valeur_noeud(candidat.find('education'))
+    marital = valeur_noeud(candidat.find('marital-status'))
+    sex = valeur_noeud(candidat.find('sex'))
+    hours = valeur_noeud(candidat.find('hours-per-week'))
+    klass = valeur_noeud(candidat.find('class'))
+
+    adult4 = adult4.append(
+        pandas.Series([idi, age, workclass, education, marital, sex, hours, klass],
+        index=noms2), ignore_index=True)
+
+print adult4

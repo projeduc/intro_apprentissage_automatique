@@ -43,7 +43,6 @@
 
 <candidat id="56">
     <age>52</age>
-    <workclass>?</workclass>
     <education>HS-grad</education>
     <marital-status>divorced</marital-status>
     <sex>M</sex>
@@ -103,7 +102,6 @@
 
 <candidat id="62">
     <age>68</age>
-    <workclass>?</workclass>
     <education>1st-4th</education>
     <marital-status>divorced</marital-status>
     <sex>F</sex>
@@ -373,7 +371,6 @@
 
 <candidat id="89">
     <age>53</age>
-    <workclass>?</workclass>
     <education>Bachelors</education>
     <marital-status>divorced</marital-status>
     <sex>F</sex>

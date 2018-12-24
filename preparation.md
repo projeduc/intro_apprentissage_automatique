@@ -362,7 +362,7 @@ Pour valider le fichier XML, on a utilisé la bibliothèque **lxml**.
 ```python
 from lxml import etree
 parser = etree.XMLParser(dtd_validation=True)
-tree = etree.parse("../../data/adult4.xml", parser)
+arbre = etree.parse("../../data/adult4.xml", parser)
 ```
 
 Après l'exécution de ces instructions nous avons eu le message d'erreur suivant
@@ -371,7 +371,7 @@ Après l'exécution de ces instructions nous avons eu le message d'erreur suivan
 >> python preparer.py
 Traceback (most recent call last):
   File "preparer.py", line 29, in <module>
-    tree = etree.parse("../../data/adult4.xml", parser)
+    arbre = etree.parse("../../data/adult4.xml", parser)
   File "src/lxml/etree.pyx", line 3426, in lxml.etree.parse
   File "src/lxml/parser.pxi", line 1839, in lxml.etree._parseDocument
   File "src/lxml/parser.pxi", line 1865, in lxml.etree._parseDocumentFromURL
@@ -380,11 +380,11 @@ Traceback (most recent call last):
   File "src/lxml/parser.pxi", line 600, in lxml.etree._ParserContext._handleParseResultDoc
   File "src/lxml/parser.pxi", line 710, in lxml.etree._handleParseResult
   File "src/lxml/parser.pxi", line 639, in lxml.etree._raiseParseError
-  File "../../data/adult4.xml", line 461
-lxml.etree.XMLSyntaxError: Element candidat content does not follow the DTD, expecting (age , workclass , education , marital_status , sex , hours_per_week , class), got (age workclass education marital_status hours_per_week class ), line 461, column 12
+  File "../../data/adult4.xml", line 51
+lxml.etree.XMLSyntaxError: Element candidat content does not follow the DTD, expecting (age , workclass , education , marital-status , sex , hours-per-week , class), got (age education marital-status sex hours-per-week class ), line 51, column 12
 ```
 
-Il est évident que le champs "sex" n'exist pas dans un enregistrement.
+Il est évident que le champs "workclass" n'exist pas dans un enregistrement.
 Le problème, ici, est que celui qui a créé ce fichier XML n'a pas respecté sa propre définition DTD.
 Il falait qu'il crée des balises vides ou avec un symbole spécifique même si la valeur est absente.
 Pour traiter ça, on va modifier le fichier DTD afin qu'il accepte des éléments de moins.
@@ -393,9 +393,35 @@ Pour traiter ça, on va modifier le fichier DTD afin qu'il accepte des élément
 <!ELEMENT candidat (age?, workclass?, education?, marital_status?, sex?, hours_per_week?, class)>
 ```
 
-TO BE CONTINUED
+Pour traiter un noeud XML, on va définir une fonction qui retourne son texte s'il existe, sinon la valeur "NaN" de **numpy**.
 
+```python
+def valeur_noeud(noeud):
+    return noeud.text if noeud is not None else numpy.nan
+```
 
+On crée un objet de type **pandas.DataFrame** avec les titres des colonnes.
+Ensuite, on parcourt les éléments un par un en ajoutant les valeurs dans l'objet qu'on a créé.
+
+```python
+noms2 = ["id", "age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class"]
+adult4 = pandas.DataFrame(columns=noms2)
+
+for candidat in arbre.getroot():
+    idi = candidat.get("id")
+    age = valeur_noeud(candidat.find('age'))
+    workclass = valeur_noeud(candidat.find('workclass'))
+    education = valeur_noeud(candidat.find('education'))
+    marital = valeur_noeud(candidat.find('marital-status'))
+    sex = valeur_noeud(candidat.find('sex'))
+    hours = valeur_noeud(candidat.find('hours-per-week'))
+    klass = valeur_noeud(candidat.find('class'))
+
+    adult4 = adult4.append(
+        pandas.Series([idi, age, workclass, education, marital, sex, hours, klass],
+        index=noms2), ignore_index=True)
+
+```
 
 ### II-6-2 Intégration des données
 
