@@ -239,7 +239,7 @@ Notre équation de régression linéaire sera comme suit:
 
 ## II-6 Un peu de programmation
 
-### II-6-1 Lecture de données
+### II-6-1 Lecture des données
 
 Pour lire les données, on va utiliser la bibliothèque **pandas**.
 Elle support [plusieurs types de fichiers](https://pandas.pydata.org/pandas-docs/stable/io.html): csv (read\_csv), JSON (read\_json), HTML (read\_html), MS Excel (read\_excel), SQL (read\_sql), etc.
@@ -291,9 +291,45 @@ adult2 = pandas.read_csv("../../data/adult2.csv", skipinitialspace=True, sep=";"
 
 Pour plus d'options veuillez consulter la documentation de [read_csv](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html).
 Le problème qui se pose est qu'on va avoir des lignes avec des "NaN" (valeurs non définies).
-On va régler ça dans l'étape de nétoyage des données. 
+On va régler ça dans l'étape de nétoyage des données.
 
+Le troisième fichier est de format Sqlite, dont le schéma est le suivant:
 
+```sql
+CREATE TABLE `income` (
+	`num`	INTEGER, --identifiant
+	`age`	INTEGER,
+	`workclass`	TEXT,
+	`education`	TEXT,
+	`marital-status`	TEXT,
+	`sex`	TEXT,
+	`hours-per-day`	REAL,
+	`class`	TEXT
+);
+```
+
+Les valeurs possibles des champs (les valeurs non définies sont marquées par "?"):
+1. num: entier pour identifier l'individu
+1. age: entier
+1. workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
+1. education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
+1. marital-status: married, divorced, widowed, single.
+1. sex: F, M
+1. hours-per-day: réel; la moyenne des heurs pour chaque jour (supposant, on travaille 5 jours/semaine)
+1. class: Y, N
+
+Pour lire les données d'une base de données, on va utiliser la méthode **read_sql_query** de pandas.
+L'SGBD peut être intérrogé en utilisant le module **sqlite3**.
+Les valeurs "?" veulent dire "pas définies".
+Pour être cohérent avec les données précédentes, on doit remplacer les "?" par la valeur "NaN" de **numpy**.
+
+```python
+import sqlite3
+import numpy
+con = sqlite3.connect("../../data/adults3.db")
+adult3 = pandas.read_sql_query("SELECT * FROM income", con)
+adult3 = adult3.replace('?', numpy.nan)
+```
 
 ### II-6-2 Intégration des données
 
