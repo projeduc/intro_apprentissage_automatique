@@ -344,13 +344,13 @@ Le 4ième fichier est de format XML dont la [DTD](https://fr.wikipedia.org/wiki/
 <?xml version="1.0" encoding="UTF-8"?>
 <!ELEMENT income (candidat)*>
 <!ATTLIST candidat id ID #REQUIRED>
-<!ELEMENT candidat (age, workclass, education, marital_status, sex, hours_per_week, class)>
+<!ELEMENT candidat (age, workclass, education, marital-status, sex, hours-per-week, class)>
 <!ELEMENT age #PCDATA>
 <!ELEMENT workclass #PCDATA>
 <!ELEMENT education #PCDATA>
-<!ELEMENT marital_status #PCDATA>
+<!ELEMENT marital-status #PCDATA>
 <!ELEMENT sex #PCDATA>
-<!ELEMENT hours_per_week #PCDATA>
+<!ELEMENT hours-per-week #PCDATA>
 <!ELEMENT class #PCDATA>
 ```
 
@@ -390,7 +390,7 @@ Il falait qu'il crée des balises vides ou avec un symbole spécifique même si 
 Pour traiter ça, on va modifier le fichier DTD afin qu'il accepte des éléments de moins.
 
 ```xml
-<!ELEMENT candidat (age?, workclass?, education?, marital_status?, sex?, hours_per_week?, class)>
+<!ELEMENT candidat (age?, workclass?, education?, marital-status?, sex?, hours-per-week?, class)>
 ```
 
 Pour traiter un noeud XML, on va définir une fonction qui retourne son texte s'il existe, sinon la valeur "NaN" de **numpy**.
@@ -424,6 +424,66 @@ for candidat in arbre.getroot():
 ```
 
 ### II-6-2 Intégration des données
+
+Lors de la lecture des 4 fichiers, on remarque que leurs schémas sont différents.
+Donc, avant de fusionner les 4 schémas, il faut régler les problèmes qui gênent à cette opération.
+Voici la liste des problèmes rencontrés:
+
+1. Ordre et noms différents des caractéristiques. Par exemple, le champs "class" est en dernier dans des schémas, et en premier dans d'autres.
+  - Renommer les caractéristiques
+  - Réorganiser l'ordre des caractéristiques dans les tableaux.
+1. Echantillons (enregistrement) redondants: les schémas de "adult3.db" et "adult4.xml" contiennent une caractéristique: "num" et "id" respectivement (qu'on a unifié dans l'étape précédente).
+Ici, on ne veut pas qu'une personne se répète plus d'une fois.
+  - Supprimer une des deux échantillons redondants
+  - On remarque qu'il y a des échantillons dupliqués où un est plus complet (ne contient pas de valeurs manquantes) que l'autre. Donc, on garde le plus complet.
+1. Caractéristiques inutiles (de plus): adult1.csv contient la caractéristique "occupation" qui ne figure pas chez les autres fichiers.
+  - Supprimer la colonne
+1. Conflits de valeurs, les caractéristiques suivantes ont des différentes valeurs possibles entre les schémas (solution: unifier les valeurs).
+  - marital-status: on gardre les valeurs les plus restraintes (married, divorced, widowed, single). Les autres valeurs seront transformées à une de ces 4.
+  - sex: on garde les valeurs avec moins de taille (F, M)
+  - class: on garde les valeurs avec moins de taille (Y, N)
+  - Problème d'échelle dans la caractéristique "adult3.hours-per-day" qui est représetée par "hours-per-week" dans les autres schémas. On multiplie les valeurs par 5 (nous avons supposé 5 jours/semaines) et on renomme la colonne "hours-per-week".
+
+#### Ordre et noms différents des caractéristiques
+
+On commence par renommer les caractéristiques identiques.
+- adult3.num sera adult3.id, pour être homogène avec adult4.id
+- adult3.hours-per-day sera adult3.hours-per-week pour être homogène avec les autres schémas. On va transformer les valeurs après.
+
+On va utiliser la méthode [pandas.DataFrame.rename](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rename.html) où l'objet "adult3" est de type **pandas.DataFrame**.
+
+```python
+adult3.rename(columns={'num': 'id', 'hours-per-day': 'hours-per-week'}, inplace=True)
+```
+
+Ensuite, on va ordonner les caractéristiques selon cet ordre: "age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class". Les caractéristiques en plus vont être mises en derniers. On va utiliser la méthode [pandas.DataFrame.reindex_axis](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reindex_axis.html).
+
+```python
+ordre = ["age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class"]
+adult1 = adult1.reindex_axis(ordre + ["occupation"], axis=1)
+#print adult1.head()
+adult2 = adult2.reindex_axis(ordre, axis=1)
+adult3 = adult3.reindex_axis(ordre + ["id"], axis=1)
+adult4 = adult4.reindex_axis(ordre + ["id"], axis=1)
+```
+
+#### Echantillons (enregistrement) redondants
+
+Les tables "adult3" et "adult4" contiennent des enregistrements avec le même "id". Une solution est de fusionner les deux tables dans une seule (disant "adult34"), ensuite utiliser la méthode [pandas.DataFrame.drop_duplicates](http://pandas.pydata.org/pandas-docs/version/0.17/generated/pandas.DataFrame.drop_duplicates.html). On peut choisir quelle occurence on veut garder.
+
+```python
+# après fusionnement
+adult34 = adult34.drop_duplicates(['id'], keep='last')
+```
+
+Mais, dans notre cas 
+
+
+#### Caractéristiques inutiles
+
+#### Conflits de valeurs
+
+#### Fusionnement des schémas
 
 ### II-6-3 Nétoyage des données
 

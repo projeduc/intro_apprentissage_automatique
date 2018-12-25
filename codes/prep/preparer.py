@@ -48,4 +48,18 @@ for candidat in arbre.getroot():
         pandas.Series([idi, age, workclass, education, marital, sex, hours, klass],
         index=noms2), ignore_index=True)
 
-print adult4
+
+# Renommer les caractéristiques
+adult3.rename(columns={'num': 'id', 'hours-per-day': 'hours-per-week'}, inplace=True)
+
+# Ordonner les caractéristiques
+ordre = ["age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class"]
+adult1 = adult1.reindex_axis(ordre + ["occupation"], axis=1)
+#print adult1.head()
+adult2 = adult2.reindex_axis(ordre, axis=1)
+adult3 = adult3.reindex_axis(ordre + ["id"], axis=1)
+adult4 = adult4.reindex_axis(ordre + ["id"], axis=1)
+
+adult34 = pandas.concat([adult3, adult4])
+
+print adult34 
