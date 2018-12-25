@@ -39,6 +39,7 @@ Quand on joint deux schémas de données, on doit vérifier:
 - Problème de nommage: il se peut qu'on ait des données identiques avec des nominations différentes. Par exemple, si on veut joindre deux tables de données **b1** et **b2** qui ont deux attributs avec le même sens mais différents noms **b1.numclient** et **b2.clientid**, on doit unifier les noms des attributs.
 - Conflits de valeurs: les valeurs des attributs provenant de sources différentes sont représentées différemment. Par exemple, une source de données qui représente la taille en **cm** et une autre qui représente la taille en **pouces**.
 - Redondance: les attributs qu'on puisse déduire des autres, les enregistrements identiques.
+- Types différents des attributs
 
 ### II-1-3 Annotation des données
 
@@ -259,14 +260,15 @@ Le fichier contient les colonnes suivantes (avec l'entête: titres des colonnes)
 1. age: entier.
 1. workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.  
 1. education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.  
-1. marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
+1. Marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
 1. occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.  
 1. sex: Female, Male.
-1. hours-per-week: entier.
+1. Hours-per-week: entier.
 1. class: <=50K, >50K
 
 On sait que le fichier est bien formé; donc, on ne va pas vérifier le format.
 On ignore les espaces qui suivent les séparateurs.
+Aussi, on va définir le type de chaque colonne
 
 ```python
 adult1 = pandas.read_csv("../../data/adult1.csv", skipinitialspace=True)
@@ -409,13 +411,13 @@ adult4 = pandas.DataFrame(columns=noms2)
 
 for candidat in arbre.getroot():
     idi = candidat.get("id")
-    age = valeur_noeud(candidat.find('age'))
-    workclass = valeur_noeud(candidat.find('workclass'))
-    education = valeur_noeud(candidat.find('education'))
-    marital = valeur_noeud(candidat.find('marital-status'))
-    sex = valeur_noeud(candidat.find('sex'))
-    hours = valeur_noeud(candidat.find('hours-per-week'))
-    klass = valeur_noeud(candidat.find('class'))
+    age = valeur_noeud(candidat.find("age"))
+    workclass = valeur_noeud(candidat.find("workclass"))
+    education = valeur_noeud(candidat.find("education"))
+    marital = valeur_noeud(candidat.find("marital-status"))
+    sex = valeur_noeud(candidat.find("sex"))
+    hours = valeur_noeud(candidat.find("hours-per-week"))
+    klass = valeur_noeud(candidat.find("class"))
 
     adult4 = adult4.append(
         pandas.Series([idi, age, workclass, education, marital, sex, hours, klass],
@@ -433,11 +435,7 @@ Voici la liste des problèmes rencontrés:
   - Renommer les caractéristiques
   - Réorganiser l'ordre des caractéristiques dans les tableaux.
 
-1. Conflits de valeurs, les caractéristiques suivantes ont des différentes valeurs possibles entre les schémas (solution: unifier les valeurs).
-  - marital-status: on gardre les valeurs les plus restraintes (married, divorced, widowed, single). Les autres valeurs seront transformées à une de ces 4.
-  - sex: on garde les valeurs avec moins de taille (F, M)
-  - class: on garde les valeurs avec moins de taille (Y, N)
-  - Problème d'échelle dans la caractéristique "adult3.hours-per-day" qui est représetée par "hours-per-week" dans les autres schémas. On multiplie les valeurs par 5 (nous avons supposé 5 jours/semaines) et on renomme la colonne "hours-per-week".
+1. Problème d'échelle: dans la caractéristique "adult3.hours-per-day" qui est représetée par "hours-per-week" dans les autres schémas. On multiplie les valeurs par 5 (nous avons supposé 5 jours/semaines) et on renomme la colonne "hours-per-week".
 
 1. Echantillons (enregistrement) redondants: les schémas de "adult3.db" et "adult4.xml" contiennent une caractéristique: "num" et "id" respectivement (qu'on a unifié dans l'étape précédente).
 Ici, on ne veut pas qu'une personne se répète plus d'une fois.
@@ -445,17 +443,25 @@ Ici, on ne veut pas qu'une personne se répète plus d'une fois.
   - On remarque qu'il y a des échantillons dupliqués où un est plus complet (ne contient pas de valeurs manquantes) que l'autre. Donc, on garde le plus complet.
 1. Caractéristiques inutiles (de plus): adult1.csv contient la caractéristique "occupation" qui ne figure pas chez les autres fichiers.
   - Supprimer la colonne
+1. Conflits de valeurs, les caractéristiques suivantes ont des différentes valeurs possibles entre les schémas (solution: unifier les valeurs).
+  - marital-status: on gardre les valeurs les plus restraintes (married, divorced, widowed, single). Les autres valeurs seront transformées à une de ces 4.
+  - sex: on garde les valeurs avec moins de taille (F, M)
+  - class: on garde les valeurs avec moins de taille (Y, N)
+
 
 #### Ordre et noms différents des caractéristiques
 
 On commence par renommer les caractéristiques identiques.
 - adult3.num sera adult3.id, pour être homogène avec adult4.id
 - adult3.hours-per-day sera adult3.hours-per-week pour être homogène avec les autres schémas. On va transformer les valeurs après.
+- adult1.Hours-per-week sera adult1.hours-per-week (un problème de majuscule)
+- adult1.Marital-status sera adult1.marital-status (un problème de majuscule)
 
 On va utiliser la méthode [pandas.DataFrame.rename](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rename.html) où l'objet "adult3" est de type **pandas.DataFrame**.
 
 ```python
-adult3.rename(columns={'num': 'id', 'hours-per-day': 'hours-per-week'}, inplace=True)
+adult3.rename(columns={"num": "id", "hours-per-day": "hours-per-week"}, inplace=True)
+adult1.rename(columns={"Hours-per-week": "hours-per-week", "Marital-status": "marital-status"}, inplace=True)
 ```
 
 Ensuite, on va ordonner les caractéristiques selon cet ordre: "age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class". Les caractéristiques en plus vont être mises en derniers. On va utiliser la méthode [pandas.DataFrame.reindex](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reindex.html).
@@ -469,8 +475,16 @@ adult3 = adult3.reindex(ordre + ["id"], axis=1)
 adult4 = adult4.reindex(ordre + ["id"], axis=1)
 ```
 
-#### Conflits de valeurs
+#### Problème d'échelle
 
+On a modifié "adult3.hours-per-day" par "hours-per-week" qui change le sens mais pas les valeurs.
+On va régler ça ici.
+
+```python
+adult3["hours-per-week"] *= 5
+```
+
+On a réglé ce problème avant de régler la redondance, puisque dans l'étape suivante on va fusionner les deux tables "adult3" et "adult4".
 
 
 #### Echantillons (enregistrement) redondants
@@ -479,7 +493,7 @@ Les tables "adult3" et "adult4" contiennent des enregistrements avec le même "i
 
 ```python
 adult34 = pandas.concat([adult3, adult4])
-adult34 = adult34.drop_duplicates('id', keep='last')
+adult34 = adult34.drop_duplicates("id", keep="last")
 ```
 
 Dans notre cas, il faut remplir les valeurs manquantes à partir des autres enregistrements identiques (le même "id") avant de supprimer une des deux. L'idée est la suivante:
@@ -504,13 +518,13 @@ dtype: object
 ```
 
 Peut être en transformant le type de "id" en entier, le problème va se régler.
-L'idée, donc, sera: 
+L'idée, donc, sera:
 
 ```python
 # concaténer les enregistrements des deux tables
 adult34 = pandas.concat([adult3, adult4], ignore_index=True)
 # définir le type de "id" comme étant entier, et remplacer la colonne
-adult34["id"] = pandas.to_numeric(adult34["id"], downcast='integer')
+adult34["id"] = pandas.to_numeric(adult34["id"], downcast="integer")
 # ordonner les enregistrements par "id"
 adult34 = adult34.sort_values(by="id")
 # regrouper les par "id", et pour chaque groupe remplacer les
@@ -518,11 +532,23 @@ adult34 = adult34.sort_values(by="id")
 adult34 = adult34.groupby("id").ffill()
 # supprimer les enregistrements dupliqués
 # on garde les derniers, puisqu'ils sont été réglés
-adult34.drop_duplicates('id', keep='last', inplace=True)
+adult34.drop_duplicates("id", keep="last", inplace=True)
 ```
 
-
 #### Caractéristiques inutiles
+
+Ici on va supprimer les colonnes inutiles:
+- adult1.occupation
+- adult34.id
+
+```python
+adult1.drop(["occupation"], axis=1, inplace=True)
+adult34.drop(["id"], axis=1, inplace=True)
+```
+
+#### Conflits de valeurs
+
+
 
 #### Fusionnement des schémas
 

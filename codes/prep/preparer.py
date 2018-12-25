@@ -9,6 +9,10 @@ import sqlite3
 import numpy
 from lxml import etree
 
+###############################
+### II-6-1 Lecture des données
+###############################
+
 #lire le premier fichier (CSV)
 adult1 = pandas.read_csv("../../data/adult1.csv", skipinitialspace=True)
 
@@ -22,7 +26,7 @@ adult2 = pandas.read_csv("../../data/adult2.csv", skipinitialspace=True, sep=";"
 #Les ? doivent être Considérées comme des NaN
 con = sqlite3.connect("../../data/adult3.db")
 adult3 = pandas.read_sql_query("SELECT * FROM income", con)
-adult3 = adult3.replace('?', numpy.nan)
+adult3 = adult3.replace("?", numpy.nan)
 
 #valider le fichier XML
 parser = etree.XMLParser(dtd_validation=True)
@@ -36,34 +40,49 @@ adult4 = pandas.DataFrame(columns=noms2)
 
 for candidat in arbre.getroot():
     idi = candidat.get("id")
-    age = valeur_noeud(candidat.find('age'))
-    workclass = valeur_noeud(candidat.find('workclass'))
-    education = valeur_noeud(candidat.find('education'))
-    marital = valeur_noeud(candidat.find('marital-status'))
-    sex = valeur_noeud(candidat.find('sex'))
-    hours = valeur_noeud(candidat.find('hours-per-week'))
-    klass = valeur_noeud(candidat.find('class'))
+    age = valeur_noeud(candidat.find("age"))
+    workclass = valeur_noeud(candidat.find("workclass"))
+    education = valeur_noeud(candidat.find("education"))
+    marital = valeur_noeud(candidat.find("marital-status"))
+    sex = valeur_noeud(candidat.find("sex"))
+    hours = valeur_noeud(candidat.find("hours-per-week"))
+    klass = valeur_noeud(candidat.find("class"))
 
     adult4 = adult4.append(
         pandas.Series([idi, age, workclass, education, marital, sex, hours, klass],
         index=noms2), ignore_index=True)
 
+####################################
+### II-6-2 Intégration des données
+####################################
+
+#### Ordre et noms différents des caractéristiques
+#### ----------------------------------------------
 
 # Renommer les caractéristiques
-adult3.rename(columns={'num': 'id', 'hours-per-day': 'hours-per-week'}, inplace=True)
+adult3.rename(columns={"num": "id", "hours-per-day": "hours-per-week"}, inplace=True)
+adult1.rename(columns={"Hours-per-week": "hours-per-week", "Marital-status": "marital-status"}, inplace=True)
 
 # Ordonner les caractéristiques
 ordre = ["age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class"]
 adult1 = adult1.reindex(ordre + ["occupation"], axis=1)
-#print adult1.head()
 adult2 = adult2.reindex(ordre, axis=1)
 adult3 = adult3.reindex(ordre + ["id"], axis=1)
 adult4 = adult4.reindex(ordre + ["id"], axis=1)
 
+#### Problème d'échelle
+#### --------------------
+
+#transformer les heurs/jour à heurs/semaine
+adult3["hours-per-week"] *= 5
+
+#### Echantillons (enregistrement) redondants
+#### ----------------------------------------
+
 # concaténer les enregistrements des deux tables
 adult34 = pandas.concat([adult3, adult4], ignore_index=True)
 # définir le type de "id" comme étant entier, et remplacer la colonne
-adult34["id"] = pandas.to_numeric(adult34["id"], downcast='integer')
+adult34["id"] = pandas.to_numeric(adult34["id"], downcast="integer")
 # ordonner les enregistrements par "id"
 adult34 = adult34.sort_values(by="id")
 # regrouper les par "id", et pour chaque groupe remplacer les
@@ -71,4 +90,17 @@ adult34 = adult34.sort_values(by="id")
 adult34 = adult34.groupby("id").ffill()
 # supprimer les enregistrements dupliqués
 # on garde les derniers, puisqu'ils sont été réglés
-adult34.drop_duplicates('id', keep='last', inplace=True)
+adult34.drop_duplicates("id", keep="last", inplace=True)
+
+#### Caractéristiques inutiles
+#### ------------------------------
+
+adult1.drop(["occupation"], axis=1, inplace=True)
+adult34.drop(["id"], axis=1, inplace=True)
+
+#### Conflits de valeurs
+#### -------------------------
+
+
+#### Fusionnement des schémas
+#### -------------------------
