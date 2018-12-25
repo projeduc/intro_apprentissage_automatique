@@ -54,12 +54,21 @@ adult3.rename(columns={'num': 'id', 'hours-per-day': 'hours-per-week'}, inplace=
 
 # Ordonner les caractéristiques
 ordre = ["age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class"]
-adult1 = adult1.reindex_axis(ordre + ["occupation"], axis=1)
+adult1 = adult1.reindex(ordre + ["occupation"], axis=1)
 #print adult1.head()
-adult2 = adult2.reindex_axis(ordre, axis=1)
-adult3 = adult3.reindex_axis(ordre + ["id"], axis=1)
-adult4 = adult4.reindex_axis(ordre + ["id"], axis=1)
+adult2 = adult2.reindex(ordre, axis=1)
+adult3 = adult3.reindex(ordre + ["id"], axis=1)
+adult4 = adult4.reindex(ordre + ["id"], axis=1)
 
-adult34 = pandas.concat([adult3, adult4])
-
-print adult34 
+# concaténer les enregistrements des deux tables
+adult34 = pandas.concat([adult3, adult4], ignore_index=True)
+# définir le type de "id" comme étant entier, et remplacer la colonne
+adult34["id"] = pandas.to_numeric(adult34["id"], downcast='integer')
+# ordonner les enregistrements par "id"
+adult34 = adult34.sort_values(by="id")
+# regrouper les par "id", et pour chaque groupe remplacer les
+# valeurs absentes par une valeur précédente dans le même groupe
+adult34 = adult34.groupby("id").ffill()
+# supprimer les enregistrements dupliqués
+# on garde les derniers, puisqu'ils sont été réglés
+adult34.drop_duplicates('id', keep='last', inplace=True)

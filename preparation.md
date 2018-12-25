@@ -432,17 +432,19 @@ Voici la liste des problèmes rencontrés:
 1. Ordre et noms différents des caractéristiques. Par exemple, le champs "class" est en dernier dans des schémas, et en premier dans d'autres.
   - Renommer les caractéristiques
   - Réorganiser l'ordre des caractéristiques dans les tableaux.
+
+1. Conflits de valeurs, les caractéristiques suivantes ont des différentes valeurs possibles entre les schémas (solution: unifier les valeurs).
+  - marital-status: on gardre les valeurs les plus restraintes (married, divorced, widowed, single). Les autres valeurs seront transformées à une de ces 4.
+  - sex: on garde les valeurs avec moins de taille (F, M)
+  - class: on garde les valeurs avec moins de taille (Y, N)
+  - Problème d'échelle dans la caractéristique "adult3.hours-per-day" qui est représetée par "hours-per-week" dans les autres schémas. On multiplie les valeurs par 5 (nous avons supposé 5 jours/semaines) et on renomme la colonne "hours-per-week".
+
 1. Echantillons (enregistrement) redondants: les schémas de "adult3.db" et "adult4.xml" contiennent une caractéristique: "num" et "id" respectivement (qu'on a unifié dans l'étape précédente).
 Ici, on ne veut pas qu'une personne se répète plus d'une fois.
   - Supprimer une des deux échantillons redondants
   - On remarque qu'il y a des échantillons dupliqués où un est plus complet (ne contient pas de valeurs manquantes) que l'autre. Donc, on garde le plus complet.
 1. Caractéristiques inutiles (de plus): adult1.csv contient la caractéristique "occupation" qui ne figure pas chez les autres fichiers.
   - Supprimer la colonne
-1. Conflits de valeurs, les caractéristiques suivantes ont des différentes valeurs possibles entre les schémas (solution: unifier les valeurs).
-  - marital-status: on gardre les valeurs les plus restraintes (married, divorced, widowed, single). Les autres valeurs seront transformées à une de ces 4.
-  - sex: on garde les valeurs avec moins de taille (F, M)
-  - class: on garde les valeurs avec moins de taille (Y, N)
-  - Problème d'échelle dans la caractéristique "adult3.hours-per-day" qui est représetée par "hours-per-week" dans les autres schémas. On multiplie les valeurs par 5 (nous avons supposé 5 jours/semaines) et on renomme la colonne "hours-per-week".
 
 #### Ordre et noms différents des caractéristiques
 
@@ -456,32 +458,71 @@ On va utiliser la méthode [pandas.DataFrame.rename](https://pandas.pydata.org/p
 adult3.rename(columns={'num': 'id', 'hours-per-day': 'hours-per-week'}, inplace=True)
 ```
 
-Ensuite, on va ordonner les caractéristiques selon cet ordre: "age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class". Les caractéristiques en plus vont être mises en derniers. On va utiliser la méthode [pandas.DataFrame.reindex_axis](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reindex_axis.html).
+Ensuite, on va ordonner les caractéristiques selon cet ordre: "age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class". Les caractéristiques en plus vont être mises en derniers. On va utiliser la méthode [pandas.DataFrame.reindex](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.reindex.html).
 
 ```python
 ordre = ["age", "workclass", "education", "marital-status", "sex", "hours-per-week", "class"]
-adult1 = adult1.reindex_axis(ordre + ["occupation"], axis=1)
+adult1 = adult1.reindex(ordre + ["occupation"], axis=1)
 #print adult1.head()
-adult2 = adult2.reindex_axis(ordre, axis=1)
-adult3 = adult3.reindex_axis(ordre + ["id"], axis=1)
-adult4 = adult4.reindex_axis(ordre + ["id"], axis=1)
+adult2 = adult2.reindex(ordre, axis=1)
+adult3 = adult3.reindex(ordre + ["id"], axis=1)
+adult4 = adult4.reindex(ordre + ["id"], axis=1)
 ```
+
+#### Conflits de valeurs
+
+
 
 #### Echantillons (enregistrement) redondants
 
 Les tables "adult3" et "adult4" contiennent des enregistrements avec le même "id". Une solution est de fusionner les deux tables dans une seule (disant "adult34"), ensuite utiliser la méthode [pandas.DataFrame.drop_duplicates](http://pandas.pydata.org/pandas-docs/version/0.17/generated/pandas.DataFrame.drop_duplicates.html). On peut choisir quelle occurence on veut garder.
 
 ```python
-# après fusionnement
-adult34 = adult34.drop_duplicates(['id'], keep='last')
+adult34 = pandas.concat([adult3, adult4])
+adult34 = adult34.drop_duplicates('id', keep='last')
 ```
 
-Mais, dans notre cas 
+Dans notre cas, il faut remplir les valeurs manquantes à partir des autres enregistrements identiques (le même "id") avant de supprimer une des deux. L'idée est la suivante:
+- On fusionne les deux tables
+- On regroupe les enregistrements en se basant sur la caractéristique (champs, attribut, colonne) "id".
+- On fait un remplissage en arrière par groupe: la valeur "NaN" sera remplacée par une valeur
+
+Après l'application de ces étapes, on a remarqué que cette approche n'a pas fonctionné.
+On a essayé d'ordonner les enregistrements selon le "id" pour enquêter quelles sont les valeurs réglées; c'était un peu étrange: l'ordre n'était pas juste.
+En affichant les types des colonnes en utilisant ``print adult34.dtypes``, on a eu:
+
+```
+age               object
+workclass         object
+education         object
+marital-status    object
+sex               object
+hours-per-week    object
+class             object
+id                object
+dtype: object
+```
+
+Peut être en transformant le type de "id" en entier, le problème va se régler.
+L'idée, donc, sera: 
+
+```python
+# concaténer les enregistrements des deux tables
+adult34 = pandas.concat([adult3, adult4], ignore_index=True)
+# définir le type de "id" comme étant entier, et remplacer la colonne
+adult34["id"] = pandas.to_numeric(adult34["id"], downcast='integer')
+# ordonner les enregistrements par "id"
+adult34 = adult34.sort_values(by="id")
+# regrouper les par "id", et pour chaque groupe remplacer les
+# valeurs absentes par une valeur précédente dans le même groupe
+adult34 = adult34.groupby("id").ffill()
+# supprimer les enregistrements dupliqués
+# on garde les derniers, puisqu'ils sont été réglés
+adult34.drop_duplicates('id', keep='last', inplace=True)
+```
 
 
 #### Caractéristiques inutiles
-
-#### Conflits de valeurs
 
 #### Fusionnement des schémas
 
