@@ -101,6 +101,47 @@ adult34.drop(["id"], axis=1, inplace=True)
 #### Conflits de valeurs
 #### -------------------------
 
+dic = {
+    "Never-married": "single",
+    "Married-civ-spouse": "married",
+    "Married-spouse-absent": "married",
+    "Married-AF-spouse": "married",
+    "Divorced": "divorced",
+    "Separated": "divorced",
+    "Widowed": "widowed"
+}
+adult1["marital-status"] = adult1["marital-status"].map(dic)
+adult2["marital-status"] = adult2["marital-status"].map(dic)
+
+#print adult1["marital-status"].unique()
+#print adult2["marital-status"].unique()
+#print adult34["marital-status"].unique()
+
+adult1["sex"] = adult1["sex"].map({"Female": "F", "Male": "M"})
+adult1["class"] = adult1["class"].map({"<=50K": "N", ">50K": "Y"})
 
 #### Fusionnement des schémas
 #### -------------------------
+
+adult = pandas.concat([adult1, adult2, adult34], ignore_index=True)
+
+####################################
+### II-6-3 Nétoyage des données
+####################################
+
+# afficher le nombre des valeurs indéfinies pour chaque colonne
+#print adult.isnull().sum()
+
+adult.dropna(subset=["workclass", "education", "marital-status", "sex", "hours-per-week", "class"], inplace=True)
+
+adult["age"] = pandas.to_numeric(adult["age"])
+adult["age"] = adult.groupby(["class", "education"])["age"].transform(lambda x: x.fillna(x.mean().round()))
+
+adult["hours-per-week"] = pandas.to_numeric(adult["hours-per-week"])
+
+adult.to_csv("adult_test.csv")
+#print adult.dtypes
+#print adult.isnull().sum()
+#print adult["marital-status"].unique()
+#print adult["sex"].unique()
+#print adult["class"].unique()

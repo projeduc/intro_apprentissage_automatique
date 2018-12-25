@@ -548,11 +548,107 @@ adult34.drop(["id"], axis=1, inplace=True)
 
 #### Conflits de valeurs
 
+Remplacer les valeurs de "marital-status" dans les tables "adult1" et "adult2" comme suit:
+- "Never-married" par "single"
+- "Married-civ-spouse", "Married-spouse-absent" et "Married-AF-spouse"  par "married"
+- "Divorced" et "Separated" par "divorced"
+- "Widowed" par "widowed"
 
+```python
+dic = {
+    "Never-married": "single",
+    "Married-civ-spouse": "married",
+    "Married-spouse-absent": "married",
+    "Married-AF-spouse": "married",
+    "Divorced": "divorced",
+    "Separated": "divorced",
+    "Widowed": "widowed"
+}
+adult1["marital-status"] = adult1["marital-status"].map(dic)
+adult2["marital-status"] = adult2["marital-status"].map(dic)
+```
+
+On va remplacer les valeurs de "sex" dans la table "adult1": (Female, Male) par (F, M) respectivement.
+Vous pouvez vérifier les valeurs possibles pour cette colonne en utilisant la fonction [pandas.Series.unique](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.unique.html):
+
+```python
+print adult1["marital-status"].unique()
+print adult2["marital-status"].unique()
+print adult34["marital-status"].unique()
+```
+
+ça va donner le résulat suivant:
+
+```
+['Male' 'Female' nan]
+['F' 'M' 'Private, HS-grad' nan]
+[u'M' u'F']
+```
+
+Ceci est dû au problème rencontré lors du chargement du fichier "adult2.csv" (les colonnes séparées par des virgules or elles doivent être séparées par des points-virgules).
+On laisse ça puisqu'on va nétoyer les enregistrements avec des champs vides.
+Sinon, on peut appliquer la même chose que sur "adult1" pour avoir des "NaN" là où il y a un problème.
+
+```python
+adult1["sex"] = adult1["sex"].map({"Female": "F", "Male": "M"})
+```
+
+On va remplacer les valeurs de "class" dans la table "adult1": (<=50K, >50K) par (N, Y) respectivement.
+
+```python
+adult1["class"] = adult1["class"].map({"<=50K": "N", ">50K": "Y"})
+```
 
 #### Fusionnement des schémas
 
+```python
+adult = pandas.concat([adult1, adult2, adult34], ignore_index=True)
+```
+
 ### II-6-3 Nétoyage des données
+
+Avant tout, on va vérifier le nombre des valeurs indéfinies dans chaque colonne.
+
+```python
+print adult.isnull().sum()
+```
+
+ça va donner
+
+```
+age                5
+workclass         10
+education          1
+marital-status     4
+sex                2
+hours-per-week     2
+class              0
+dtype: int64
+```
+
+On va, donc, nétoyer tous les enregistrements avec une valeur "NaN" sauf la colonne "age", on va la traiter autrement.
+
+```python
+adult.dropna(subset=["workclass", "education", "marital-status", "sex", "hours-per-week", "class"], inplace=True)
+```
+
+Pour les valeurs de absentes de "age", on va faire un laissage par moyenne:
+- Transformer les valeurs de "age" comme numériques
+- On regroupe les enregistrements par "class" et "education". Ceci en supposant que les individus avec la même class et le même niveau d'éducation ont le même age. Si on veut être plus sûre, on peut tracer des graphes entre "age" et les autres attributs.
+- On calcule la moyenne et l'arrondir
+- On l'affecte aux valeurs indéfinies
+
+```python
+adult["age"] = pandas.to_numeric(adult["age"])
+adult["age"] = adult.groupby(["class", "education"])["age"].transform(lambda x: x.fillna(x.mean().round()))
+```
+
+On vérifie le nombre des valeurs indéfinies pour être sûre qu'il ne reste aucune.
+Aussi, les types des attributs; par exemple, "hours-per-week" doit être numérique et pas un objet.
+
+```python
+adult["hours-per-week"] = pandas.to_numeric(adult["hours-per-week"])
+```
 
 ### II-6-4 Discrétisation
 
