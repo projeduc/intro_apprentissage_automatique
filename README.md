@@ -12,10 +12,10 @@
 
 
 - [Chapitre II: Préparation des données](preparation.md)
-  - [II-1 Collection des données](preparation.md#i-1-collection-des-données)
-  - [II-2 Nétoyage des données](preparation.md#ii-2-nétoyage-des-données)
+  - [II-1 Collection des données](preparation.md#ii-1-collection-des-données)
+  - [II-2 Nettoyage des données](preparation.md#ii-2-nettoyage-des-données)
   - [II-3 Transformation des données](preparation.md#ii-3-transformation-des-données)
-  - [II-4 Réduction des données](preparation.md#ii-4-réduction-des-données)
+  - [II-4 Échantillonnage et fractionnement des données](preparation.md#ii-4-échantillonnage-et-fractionnement-des-données)
   - [II-5 Outils de préparation des données](preparation.md#ii-5-outils-de-préparation-des-données)
   - [II-6 Un peu de programmation](preparation.md#ii-6-un-peu-de-programmation)
 
@@ -33,7 +33,7 @@
 - [Chapitre V: Arbre de décision](#chapitre-v-arbre-de-décision)
 - [Chapitre VI: Régression linéaire](#chapitre-vi-régression-linéaire)
 - [Chapitre VII: Régression logistique](#chapitre-vii-régression-logistique)
-- [Chapitre VIII: Perceptron](#chapitre-viii-perceptron)
+- [Chapitre VIII: Perceptron](#chapitre-viii-perceptron): peut être il faut fusionner ça avec le réseau de neurones
 - [Chapitre IX: Réseau de neurones artificiels](#chapitre-ix-réseau-de-neurones-artificiels)
 - [Chapitre X: Regroupement K-Means](#chapitre-x-regroupement-k-means)
 - [Chapitre XI: Auto-encodeur](#chapitre-xi*auto-encodeur)

@@ -33,7 +33,7 @@
 
 - Finance : Prévention de fraude, management de risques, prédiction des investissements, etc.
 - Domaine légal : cas de CaseText https://casetext.com
-- Traduction: Google traslate https://translate.google.com/
+- Traduction: Google translate https://translate.google.com/
 **_...TODO: Add more_**
 
 [(Sommaire)](#sommaire)
@@ -42,11 +42,11 @@
 
 ### I-3-1 Apprentissage supervisé
 
-Lorsque nous disposons d'un ensemble de données avec les résulats attendus, on peut entraîner un système sur ces données pour inférer la fonction utilisée pour avoir ces résulats.
+Lorsque nous disposons d'un ensemble de données avec les résultats attendus, on peut entrainer un système sur ces données pour inférer la fonction utilisée pour avoir ces résultats.
 En résumé:
 
 - **Source d'apprentissage:** des données annotées (nous avons les résultats attendus)
-- **Retour d'information:** direct; à partir des résulats attendues.
+- **Retour d'information:** direct; à partir des résultats attendues.
 - **Fonction:** prédire les future résultats
 
 | ![apprentissage supervisé](IMG/AA-supervise.svg)|
@@ -57,7 +57,7 @@ Selon le type d'annotation, on peut remarquer deux types des algorithmes d'appre
 
 #### Classement (Classification supervisée)
 
-Lorsque le résulat attendu est une classe (groupe).
+Lorsque le résultat attendu est une classe (groupe).
 
 | Par exemple: |
 | :--: |
@@ -67,7 +67,7 @@ TODO: recall, precision, evaluation methods
 
 #### Régression
 
-Lorsque le résulat attendu est une valeur.
+Lorsque le résultat attendu est une valeur.
 
 | Par exemple: |
 | :--: |
@@ -88,11 +88,11 @@ Selon le type de structure que l'algorithme va découvrir, on peut avoir: le reg
 #### Clustering (Regroupement)
 
 L'algorithme de regroupement sert à assigner les échantillons similaires dans le même groupe.
-Donc, le résulat est un ensemble de groupes contenants les échantillons.
+Donc, le résultat est un ensemble de groupes contenants les échantillons.
 
 | Par exemple: |
 | :--: |
-| Regrouper les plantes similaires en se basant sur la couleur, la taile, etc.  |
+| Regrouper les plantes similaires en se basant sur la couleur, la taille, etc.  |
 
 #### Réduction de dimension
 
@@ -100,7 +100,7 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 | Par exemple: |
 | :--: |
-| Représenter des individus sur un graph de deux dimensions en utilisant la taille, le poids, l'age, la couleur des cheveux, la texture des cheveux et la couleur des yeux  |
+| Représenter des individus sur un graphe de deux dimensions en utilisant la taille, le poids, l'age, la couleur des cheveux, la texture des cheveux et la couleur des yeux  |
 
 
 ### I-3-3 Apprentissage par renforcement
@@ -120,8 +120,8 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 - Pour des tâches complexes, on a besoin d'une grande quantité de données
 - Dans le cas de l'apprentissage supervisé, l'annotation de données est une tâche fastidieuse; qui prend beaucoup de temps.
-- Le traitement automatique de langages narurels (TALN) reste un défit
-- Les données d'entraînement sont souvent biaisées
+- Le traitement automatique de langages naturels (TALN) reste un défit
+- Les données d'entrainement sont souvent biaisées
 
 [(Sommaire)](#sommaire)
 
@@ -131,9 +131,9 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 #### Deep Learning
 
-Les outils suivants sont conçus pour l'apprentissage approfondu qui est basé le réseau de neurones.
+Les outils suivants sont conçus pour l'apprentissage approfondi qui est basé le réseau de neurones.
 - Outil: nom et lien de l'outil (ordre alphabétique)
-- Licence: la licence de l'outil. Ici, on ne s'interresse que par les outils open sources.
+- Licence: la licence de l'outil. Ici, on ne s'intéresse que par les outils open sources.
 - écrit en: le langage de programmation utilisé pour écrire cet outil.
 - interfaces: les langages de programmation qu'on puisse utiliser pour utiliser cet outil (API).
 
@@ -148,7 +148,7 @@ Les outils suivants sont conçus pour l'apprentissage approfondu qui est basé l
 | [Theano](http://deeplearning.net/software/theano/) | BSD | Python | Python |
 | [Torch](http://torch.ch) | BSD | C, Lua | C, Lua, LuaJIT |
 
-Pour une comparison plus détaillée, veuiller consulter [cette page en Wikipédia](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)
+Pour une comparaison plus détaillée, veuillez consulter [cette page en Wikipédia](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)
 
 #### Générique
 
@@ -183,7 +183,7 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 
 ### I-5-3 Les ressources
 
-#### Repertoires de données
+#### Répertoires de données
 
 - [Kaggle](https://www.kaggle.com): télécarger les données, faire des compétitions avec des prix.
 - [Registry of Open Data on AWS](https://registry.opendata.aws)
@@ -205,7 +205,7 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 
 #### Analyse des sentiments
 
-- [Large Movie Review Dataset](http://ai.stanford.edu/~amaas/data/sentiment/) critiques de films
+- [Large Movie Review Dataset](http://ai.stanford.edu/~amaas/data/sentiment/) critiques des films
 -[Multi-Domain Sentiment Dataset](http://www.cs.jhu.edu/~mdredze/datasets/sentiment/) commentaires sur les produits d'Amazon
 - [Sentiment140](http://help.sentiment140.com/for-students/) des Tweets avec des émoticônes filtrées.
 - [Stanford Sentiment Treebank](https://nlp.stanford.edu/sentiment/index.html) critiques de films

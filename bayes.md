@@ -1,8 +1,8 @@
 ﻿# Chapitre III: Classification naïve bayésienne
 
-La classification est un apprentissage supervisé; ce qui veut dire, on doit entraîner notre système sur un ensemble de données, ensuite on utilise ce modèle pour classer des données de test.
+La classification est un apprentissage supervisé; ce qui veut dire, on doit entrainer notre système sur un ensemble de données, ensuite on utilise ce modèle pour classer des données de test.
 
-Ici, on va commencer par présenter la phase de classification avant la phase d'entraînement.
+Ici, on va commencer par présenter la phase de classification avant la phase d'entrainement.
 
 [vec-f]: https://latex.codecogs.com/png.latex?\overrightarrow{f}
 [c-i]: https://latex.codecogs.com/png.latex?c_i
@@ -64,7 +64,7 @@ Techniquement, on utilise l'espace logarithmique puisque le produit des probabil
 
 ## III-2 Apprentissage
 
-Étant donné un ensemble de données d'entraînement avec *N* échantillons, la probabilité d'apparition d'une classe ![c-i] est estimée comme étant le nombre de ses échantillons divisé par le nombre total des échantillons d'entraînement.
+Étant donné un ensemble de données d'entrainement avec *N* échantillons, la probabilité d'apparition d'une classe ![c-i] est estimée comme étant le nombre de ses échantillons divisé par le nombre total des échantillons d'entrainement.
 
 ![III-2-pci]
 
@@ -97,7 +97,7 @@ Par exemple,
 
 Lorsque les valeurs des caractéristiques sont continues, on utilise la loi normale (loi gaussienne).
 Par exemple, le poids, le prix, etc.
-En se basant sur les données d'entraînement avec *N* échantillons, on calcule l'espérance *μ* et la variance *σ²* de chaque caractéristique ![f-j] et chaque classe ![c-i].
+En se basant sur les données d'entrainement avec *N* échantillons, on calcule l'espérance *μ* et la variance *σ²* de chaque caractéristique ![f-j] et chaque classe ![c-i].
 
 ![III-2-mu]
 
@@ -161,7 +161,7 @@ P(féminin) = 4/8 = 0.5
 
 Les classifieurs naïfs bayésiens, malgré leurs simplicité, ont des points forts:
 
-- Ils ont besoin d'une petite quantité de données d’entraînement.
+- Ils ont besoin d'une petite quantité de données d'entrainement.
 - Ils sont très rapides par rapport aux autres classifieurs.
 - Ils donnent de bonnes résultats dans le cas de filtrage du courrier indésirable et de classification de documents.
 
@@ -170,7 +170,7 @@ Les classifieurs naïfs bayésiens, malgré leurs simplicité, ont des points fo
 ## III-5 Limites
 
 Les classifieurs naïfs bayésiens certes sont populaires à cause de leur simplicité.
-Mais, une telle simplicité vient avec un coût.
+Mais, une telle simplicité vient avec un cout.
 
 - Les probabilités obtenues en utilisant ces classifieurs ne doivent pas être prises au sérieux.
 - S'il existe une grande corrélation entre les caractéristiques, ils vont donner une mauvaise performance.
@@ -267,14 +267,14 @@ for col in data.columns:
 ```
 
 On sépare les données en: entrées (les caractéristiques) et sorties (les classes: comestible ou toxique).
-Dans notre fichier, les classes (qui sont le resultat attendu) sont dans la colonne 0, et les autres caractéristiques (les entrées) sont dans les colonnes restantes.
+Dans notre fichier, les classes (qui sont le résultat attendu) sont dans la colonne 0, et les autres caractéristiques (les entrées) sont dans les colonnes restantes.
 
 ```python
 X = data.iloc[:,1:23] #les caractéristiques
 y = data.iloc[:, 0]  #les résulats (classes)
 ```
 
-Ensuite, il faut séparer les données en deux partie: une pour l'entraînement (on prend 80%) et une pour le test (on prend 20%).
+Ensuite, il faut séparer les données en deux partie: une pour l'entrainement (on prend 80%) et une pour le test (on prend 20%).
 On va utiliser [train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) de scikit-learn.
 
 ```python
@@ -320,13 +320,13 @@ print "précision: ", modele.score(X_test, y_test)
 
 ### Sauvegarder le modèle
 
-Après avoir entraîner un modèle, il est souhaitable de le conserver pour un usage ultérieur sans avoir besoin d'entraîner une deuxième fois.
+Après avoir entrainer un modèle, il est souhaitable de le conserver pour un usage ultérieur sans avoir besoin d'entrainer une deuxième fois.
 Il y a deux façons de le faire selon [la doc de scikit-learn ](https://scikit-learn.org/stable/modules/model_persistence.html):
 - la sérialisation pickle
 - la sérialisation joblib
 
 La deuxième est recommandée par scikit-learn.
-Après avoir entraîner notre modèle, on le sauvegarde.
+Après avoir entrainer notre modèle, on le sauvegarde.
 
 ```python
 from joblib import dump
@@ -335,7 +335,7 @@ modele.fit(X_train, y_train)
 dump(modele, 'mon_modele.joblib')
 ```
 
-Lorsqu'on veut prédir une classe en utilisant ce modèle, on le relance.
+Lorsqu'on veut prédire une classe en utilisant ce modèle, on le relance.
 
 ```python
 from joblib import load

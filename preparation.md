@@ -6,9 +6,9 @@
 
 - Chapitre II: Préparation des données
   - [II-1 Collection des données](#i-1-collection-des-données)
-  - [II-2 Nétoyage des données](#ii-2-nétoyage-des-données)
+  - [II-2 Nettoyage des données](#ii-2-nettoyage-des-données)
   - [II-3 Transformation des données](#ii-3-transformation-des-données)
-  - [II-4 Réduction des données](#ii-4-réduction-des-données)
+  - [II-4 Échantillonnage et fractionnement des données](#ii-4-échantillonnage-et-fractionnement-des-données)
   - [II-5 Outils de préparation des données](#ii-5-outils-de-préparation-des-données)
   - [II-6 Un peu de programmation](#ii-6-un-peu-de-programmation)
 
@@ -27,7 +27,7 @@ Critères d'intégrité des données:
 Quand on veut collecter des données pour l'apprentissage automatique, souvent, on a besoin de combiner des données de différentes sources:
 - Données structurées:
   - Bases de données
-  - Fichiers de tabuleurs: CSV, etc.
+  - Fichiers de tabulateurs: CSV, etc.
 - Données semi-structurées: XML, JSON, etc.
 - Données non structurées: documents textes, images, métadonnées, etc.
 
@@ -83,7 +83,7 @@ ils offrent des interfaces graphiques simples à utiliser pour créer des tâche
 Parmi les plateformes, on peut citer: [Amazon Mechanical Turk (MTurk)](https://www.mturk.com/) et [Clickworker](https://www.clickworker.com/).
 
 Les avantages:
-- Des résulats rapides
+- Des résultats rapides
 - Coûts abordables
 
 Les inconvénients:
@@ -92,7 +92,7 @@ Les inconvénients:
 
 Il y a deux types de crowdsourcing:
 - Explicite: En demandant directement des contributions
-- Implicite: En intègrant des tâches dans d'autres formes afin de motiver la participation
+- Implicite: En intégrant des tâches dans d'autres formes afin de motiver la participation
   - Tâches inévitables (par exemple, reCAPTCHA)
   - Jeux ayant des objectifs (par exemple, jeu ESP)
 
@@ -102,7 +102,7 @@ Cette approche consiste à générer des données qui imitent les données réel
 Par exemple, générer des visages pour la reconnaissance faciale.
 
 Les avantages:
-- Gain de temps et de coûts
+- Gain de temps et de couts
 - L'utilisation de données non sensibles: parfois, il faut demander la permission pour utiliser certaines données.
 
 Les inconvénients:
@@ -111,10 +111,10 @@ Les inconvénients:
 
 #### Approche 5: Par programmation
 
-Cette approche consite à écrire des programmes qui annotent les données automatiquement.
+Cette approche consiste à écrire des programmes qui annotent les données automatiquement.
 Le problème, ici, est qu'on a pu écrire une fonction pour annoter automatiquement les données.
 A quoi, donc, sert l'apprentissage automatique si notre système va apprendre cette même fonction?!
-En général, on peut utiliser cette approche pour enraichir les données (ajouter plus d'échantillons).
+En général, on peut utiliser cette approche pour enrichir les données (ajouter plus d'échantillons).
 
 Par exemple, on peut utiliser un algorithme de regroupement (clustering) pour avoir des groupes; ensuite, on annote quelques échantillons dans chaque groupe et on généralise.
 
@@ -127,11 +127,11 @@ Les inconvénients:
 
 [(Sommaire)](#sommaire)
 
-## II-2 Nétoyage des données
+## II-2 Nettoyage des données
 
 Les problèmes rencontrés dans les données peuvent être:
 
-- Valeurs omises (données non disponibles): des échantilons (enregistrements) avec des caractéristiques (attributs) sans valeurs. Les causes, entre autres, peuvent être:
+- Valeurs omises (données non disponibles): des échantillons (enregistrements) avec des caractéristiques (attributs) sans valeurs. Les causes, entre autres, peuvent être:
   - Mauvais fonctionnement de l'équipement
   - Incohérences avec d'autres données et donc supprimées
   - Non saisies car non (ou mal) comprises
@@ -170,7 +170,7 @@ Pour régler ces problèmes:
 ### II-3-1 Discrétisation en utilisant le groupement (binning, bucketing)
 
 La discrétisation est le fait de convertir les caractéristiques numériques en caractéristiques nominales. Elle est utilisée pour simplifier l'exploitation des données dans certains types d'algorithmes.
-- Dans le classifieur naif bayésien multinomial, les attributs doivent avoir des valeurs nominales.
+- Dans le classifieur naïf bayésien multinomial, les attributs doivent avoir des valeurs nominales.
 - Certaines caractéristiques numériques sont utiles pour estimer une tâche, mais il n'existe aucune relation linéaire entre ces caractéristiques et cette tâche.
 
 Prenant un exemple sur les prix des maisons suivant le latitude.
@@ -186,7 +186,7 @@ On peut diviser la plage de latitude sur 11 parties (si on veut plus de précisi
 |:--:|
 | *Binning de latitude avec des plages égales [ [Source](https://developers.google.com/machine-learning/crash-course/representation/cleaning-data) ]* |
 
-Donc, pour la caractéristique "latitude" les valeurs vont être représetée par une étiquette entre 1 et 11. Par exemple, ``
+Donc, pour la caractéristique "latitude" les valeurs vont être représentée par une étiquette entre 1 et 11. Par exemple, ``
 latitude 37.4 => 6
 ``
 
@@ -212,7 +212,7 @@ On remarque qu'il y a un seul échantillon pour les prix > 45000. Pour fixer ça
 
 #### Mise à l'échelle min-max
 
-La mise en échelle min-max transorme chaque valeur numérique *x* vers une autre valeur *x' ∈ [0,1]* en utilisant la valeur minimale et la valeur maximale dans les données. Cette normalisation conserve la distance proportionnelle entre les valeurs d'une caractéristique.
+La mise en échelle min-max transforme chaque valeur numérique *x* vers une autre valeur *x' ∈ [0,1]* en utilisant la valeur minimale et la valeur maximale dans les données. Cette normalisation conserve la distance proportionnelle entre les valeurs d'une caractéristique.
 
 ![II-3-min-max]
 
@@ -261,13 +261,13 @@ C'est utile quand il y a quelques valeurs aberrantes, mais pas si extrême qu'on
 Dans certaines ouvrages, cette transformation n'est pas classifiée comme une "normalisation" mais comme étant une "standardisation".
 Cela est due au fait qu'elle transforme l'ancienne distribution à une distribution normale.
 
-Etant donnée une caractéristique avec des valeurs *x*, les nouvelles valeurs *x'* peuvent être exprimer par *x*, la moyenne des valeurs *μ* et leurs écart type *σ*.
+Étant donnée une caractéristique avec des valeurs *x*, les nouvelles valeurs *x'* peuvent être exprimer par *x*, la moyenne des valeurs *μ* et leurs écart type *σ*.
 
 ![II-3-z-score]
 
 ### II-3-3 Binarisation
 
-Il existe des cas où on n'a pas besoin des fréquences (nombre d'occurences) d'une caractéristique pour créer un modèle; on a besoin seulement de savoir si cette caractéristique a apparue une fois au moins pour un échantillon. Dans le cas général, on veut vérifier si la fréquence a dépassé un certain seuil **a** ou non. Dans ce cas, on binarise les valeurs de cette caractéristique.
+Il existe des cas où on n'a pas besoin des fréquences (nombre d'occurrences) d'une caractéristique pour créer un modèle; on a besoin seulement de savoir si cette caractéristique a apparue une fois au moins pour un échantillon. Dans le cas général, on veut vérifier si la fréquence a dépassé un certain seuil **a** ou non. Dans ce cas, on binarise les valeurs de cette caractéristique.
 
 ![II-3-bin]
 
@@ -283,7 +283,7 @@ Par exemple, une équation de régression linéaire simple peut modélise la sor
 
 Dans ce cas, on a modélisé la sortie en se basant sur des entrées indépendantes l'une de l'autre.
 Cependant, souvent dans plusieurs scénarios réels, il est judicieux d'essayer également de capturer les interactions entre les caractéristiques.
-Donc, on peut créer de nouvelles caractéristiques en multipliants les anciennes deux à deux (ou encore plus).
+Donc, on peut créer de nouvelles caractéristiques en multipliant les anciennes deux à deux (ou encore plus).
 Notre équation de régression linéaire sera comme suit:
 
 ![II-3-reg2]
@@ -299,13 +299,93 @@ Notre équation de régression linéaire sera comme suit:
 
 [(Sommaire)](#sommaire)
 
-## II-4 Réduction des données
+## II-4 Echantillonage et fractionnement des données
 
-### II-4-1 Données imbalancées
+### II-4-1 Données déséquilibrées
 
-### II-4-2 Partitionnement des données
+Dans la classification, les données d'entraînement peuvent avoir des classes avec des proportions asymétriques.
+Les classes qui constituent une grande (petite) proportion de données sont appelées classes majoritaires (minoritaires) respectivement.
+D'après [le tutorial de Google](https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data), le degré de déséquilibre peut aller de léger à extrême, comme le montre le tableau suivant:
 
-### II-4-3 Randomisation
+| degré de déséquilibre | Proportion de classe minoritaire |
+| :---: | :---: |
+| léger | 20-40%  de données |
+| modéré | 1-20% de données |
+| extrême | <1% de données |
+
+Par exemple, dans le cas de la détection de fraude, les cas positifs (il y a un fraude) sont rares par rapport au cas négatif (pas de fraude). On va finir par une distribution de données comme dans le schéma suivant (200 négatifs et 1 positif).
+
+| ![Données déséquilibrées](https://developers.google.com/machine-learning/data-prep/images/distribution-true-v2.svg) |
+|:--:|
+| *Exemple des données déséquilibrées pour la détection de fraudes [ [Source](https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data) ]* |
+
+Lors de la phase d'entrainement, le système va prendre plus de temps à apprendre le cas négatif (pas de fraude) que le cas positif. Même si on a ce problème, on essaye d'entrainer notre système. Si le modèle ne donne  pas de bonnes résultats lors du test, on essaye de régler ça.
+
+#### Sous-échantillonnage
+
+Le sous-échantillonnage équilibre le jeu de données en réduisant la taille de la classe majoritaire.
+Cette méthode est utilisée lorsque la quantité de données est suffisante, donc on peut supprimer des échantillons de  la classe majoritaire au hasard.
+Cela peut aider le système à converger rapidement et, aussi, préserver l'espace de stockage du modèle généré.
+Dans l'exemple précédent, on peut diminuer la taille des négatifs 10 fois pour avoir 20 échantillons.
+
+| ![Données sous-échantillonnées](https://developers.google.com/machine-learning/data-prep/images/distribution-downsampled-v2.svg) |
+|:--:|
+| *Exemple d'un sous échantillonnage pour la détection de fraudes [ [Source](https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data) ]* |
+
+Pour calibrer le modèle, on peut donner un poids élevé aux scores générés par la classe sous-échantillonnée.
+
+#### Sur-échantillonnage
+
+Le sous-échantillonnage équilibre le jeu de données en augmentant la taille de la classe minoritaire.
+Cette méthode est utilisée lorsque la quantité de données est insuffisante.
+On peut augmenter la taille de la classe minoritaire en utilisant plusieurs techniques:
+- Répétition: réplication aléatoire des échantillons de la classe minoritaire
+- [Techniques de bootstrap](https://fr.wikipedia.org/wiki/Bootstrap_\(statistiques\))
+- [SMOTE (Synthetic Minority Over-Sampling Technique)](arxiv.org/pdf/1106.1813.pdf)
+
+#### Ré-échantillonage en ensembles de données équilibrées
+
+Dans ce cas, on peut créer plusieurs ensembles de données en divisant la classe majoritaire sur plusieurs ensemble et fusionnant la classe minoritaire avec chaque ensemble.
+Ensuite, on peut entrainer plusieurs modèles sur ces ensembles.
+
+| ![ensemble ré-échantillonnés](https://www.kdnuggets.com/wp-content/uploads/imbalanced-data-2.png) |
+|:--:|
+| *Exemple ré-échantillonnage en ensembles de données équilibrées [ [Source](https://www.kdnuggets.com/2017/06/7-techniques-handle-imbalanced-data.html) ]* |
+
+#### Ré-échantillonnage en ensembles de données avec ratios
+
+On peut, aussi, créer plusieurs ensembles de données en jouant sur le ratio entre la classe minoritaire et la classe majoritaire.
+Ensuite, on peut entrainer plusieurs modèles sur ces ensembles.
+
+| ![ensemble ré-échantillonnés](https://www.kdnuggets.com/wp-content/uploads/imbalanced-data-3.png) |
+|:--:|
+| *Exemple ré-échantillonnage en ensembles de données avec ratios [ [Source](https://www.kdnuggets.com/2017/06/7-techniques-handle-imbalanced-data.html) ]* |
+
+### II-4-2 Fractionnement des données
+
+Dans le cas d'apprentissage supervisé, il ne faut pas entrainer et tester votre modèle sur les mêmes données.
+Le système doit être tester sur des données qu'il n'a pas encore rencontré pour tester s'il a bien généralisé à partir des données qu'il a vu déjà. Donc, on a besoin de diviser notre ensemble de données sur deux sous-ensembles:
+- Données d'entrainement avec une majorité des échantillons (70-80%)
+- Données de test avec une minorité des échantillons (30-20%)
+
+Lors du fractionnement, il faut prendre en considération ces deux conditions:
+- Les données de test sont suffisantes pour avoir des résultats significatifs.
+- Les données de test sont représentatives. Il ne faut pas prendre un ensemble avec des caractéristiques différentes de celles des données d'entrainement.
+
+| ![fractionnement](https://developers.google.com/machine-learning/crash-course/images/TrainingDataVsTestData.svg) |
+|:--:|
+| *Exemple de fractionnement des données [ [Source](https://developers.google.com/machine-learning/crash-course/training-and-test-sets/splitting-data) ]* |
+
+Parfois, lorsqu'on teste notre modèle et on rend compte qu'il donne des résultats médiocres, on veut refaire la phase d'entrainement en changeant les paramètres de notre système.
+En faisant ça plusieurs fois, notre modèle sera ajusté aux données de test.
+Pour faire face à ce problème, on peut créer un troisième ensemble pour la validation.
+Les processus d'apprentissage sera comme suit:
+1. Entrainer le système sur l'ensemble des données d'entrainement pour avoir un modèle
+1. Tester le modèle sur l'ensemble des données de validation
+  - Si la performance est bonne, aller vers l'étape suivante
+  - Sinon, changer les paramètres de votre système et refaire l'étape précédente
+1. Tester le modèle sur l'ensemble de test pour calculer la performance de votre système et comparer avec les autres systèmes existants.
+
 
 [(Sommaire)](#sommaire)
 
@@ -330,12 +410,12 @@ import pandas
 ```
 
 Ici, on va utiliser l'ensemble des données [Census Income Data Set (Adult)](https://archive.ics.uci.edu/ml/datasets/Census+Income).
-Les données se composent de 14 caractéristiques et de 48842 échantilons.
-Dans le but de l'exercice, on a réduit le nombre des caractéristiques à 7 et quelques échantillons dispercés sur plusieurs formats de fichiers.
+Les données se composent de 14 caractéristiques et de 48842 échantillons.
+Dans le but de l'exercice, on a réduit le nombre des caractéristiques à 7 et quelques échantillons dispersés sur plusieurs formats de fichiers.
 
 #### Fichier adult1.csv
 
-Le premier fichier (data/adult1.csv) est un fichier CSV avec des colonnes séparées par des virgules (50 échantilons).
+Le premier fichier (data/adult1.csv) est un fichier CSV avec des colonnes séparées par des virgules (50 échantillons).
 Le fichier contient les colonnes suivantes (avec l'entête: titres des colonnes) dans l'ordre:
 1. age: entier.
 1. workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.  
@@ -406,7 +486,7 @@ Les valeurs possibles des champs (les valeurs non définies sont marquées par "
 1. class: Y, N
 
 Pour lire les données d'une base de données, on va utiliser la méthode **read_sql_query** de pandas.
-L'SGBD peut être intérrogé en utilisant le module **sqlite3**.
+L'SGBD peut être interrogé en utilisant le module **sqlite3**.
 Les valeurs "?" veulent dire "pas définies".
 Pour être cohérent avec les données précédentes, on doit remplacer les "?" par la valeur "NaN" de **numpy**.
 
@@ -436,7 +516,7 @@ Le 4ième fichier est de format XML dont la [DTD](https://fr.wikipedia.org/wiki/
 <!ELEMENT class #PCDATA>
 ```
 
-- Les valeurs possibles des champs nominals sont comme celles de la base de données sqlite (fichier adult3.db).
+- Les valeurs possibles des champs nominaux sont comme celles de la base de données sqlite (fichier adult3.db).
 - Les valeurs non définies sont représentées par l'absence de leurs balises respectives dans le fichier XML.
 
 Pour valider le fichier XML, on a utilisé la bibliothèque **lxml**.
@@ -466,16 +546,16 @@ Traceback (most recent call last):
 lxml.etree.XMLSyntaxError: Element candidat content does not follow the DTD, expecting (age , workclass , education , marital-status , sex , hours-per-week , class), got (age education marital-status sex hours-per-week class ), line 51, column 12
 ```
 
-Il est évident que le champs "workclass" n'exist pas dans un enregistrement.
+Il est évident que le champs "workclass" n'existe pas dans un enregistrement.
 Le problème, ici, est que celui qui a créé ce fichier XML n'a pas respecté sa propre définition DTD.
-Il falait qu'il crée des balises vides ou avec un symbole spécifique même si la valeur est absente.
+Il fallait qu'il crée des balises vides ou avec un symbole spécifique même si la valeur est absente.
 Pour traiter ça, on va modifier le fichier DTD afin qu'il accepte des éléments de moins.
 
 ```xml
 <!ELEMENT candidat (age?, workclass?, education?, marital-status?, sex?, hours-per-week?, class)>
 ```
 
-Pour traiter un noeud XML, on va définir une fonction qui retourne son texte s'il existe, sinon la valeur "NaN" de **numpy**.
+Pour traiter un nœud XML, on va définir une fonction qui retourne son texte s'il existe, sinon la valeur "NaN" de **numpy**.
 
 ```python
 def valeur_noeud(noeud):
@@ -517,14 +597,14 @@ Voici la liste des problèmes rencontrés:
 
 1. Problème d'échelle: dans la caractéristique "adult3.hours-per-day" qui est représetée par "hours-per-week" dans les autres schémas. On multiplie les valeurs par 5 (nous avons supposé 5 jours/semaines) et on renomme la colonne "hours-per-week".
 
-1. Echantillons (enregistrement) redondants: les schémas de "adult3.db" et "adult4.xml" contiennent une caractéristique: "num" et "id" respectivement (qu'on a unifié dans l'étape précédente).
+1. Échantillons (enregistrement) redondants: les schémas de "adult3.db" et "adult4.xml" contiennent une caractéristique: "num" et "id" respectivement (qu'on a unifié dans l'étape précédente).
 Ici, on ne veut pas qu'une personne se répète plus d'une fois.
   - Supprimer une des deux échantillons redondants
   - On remarque qu'il y a des échantillons dupliqués où un est plus complet (ne contient pas de valeurs manquantes) que l'autre. Donc, on garde le plus complet.
 1. Caractéristiques inutiles (de plus): adult1.csv contient la caractéristique "occupation" qui ne figure pas chez les autres fichiers.
   - Supprimer la colonne
 1. Conflits de valeurs, les caractéristiques suivantes ont des différentes valeurs possibles entre les schémas (solution: unifier les valeurs).
-  - marital-status: on gardre les valeurs les plus restraintes (married, divorced, widowed, single). Les autres valeurs seront transformées à une de ces 4.
+  - marital-status: on garde les valeurs les plus restreintes (married, divorced, widowed, single). Les autres valeurs seront transformées à une de ces 4.
   - sex: on garde les valeurs avec moins de taille (F, M)
   - class: on garde les valeurs avec moins de taille (Y, N)
 
@@ -666,7 +746,7 @@ print adult34["marital-status"].unique()
 ```
 
 Ceci est dû au problème rencontré lors du chargement du fichier "adult2.csv" (les colonnes séparées par des virgules or elles doivent être séparées par des points-virgules).
-On laisse ça puisqu'on va nétoyer les enregistrements avec des champs vides.
+On laisse ça puisqu'on va nettoyer les enregistrements avec des champs vides.
 Sinon, on peut appliquer la même chose que sur "adult1" pour avoir des "NaN" là où il y a un problème.
 
 ```python
@@ -706,15 +786,15 @@ class              0
 dtype: int64
 ```
 
-On va, donc, nétoyer tous les enregistrements avec une valeur "NaN" sauf la colonne "age", on va la traiter autrement.
+On va, donc, nettoyer tous les enregistrements avec une valeur "NaN" sauf la colonne "age", on va la traiter autrement.
 
 ```python
 adult.dropna(subset=["workclass", "education", "marital-status", "sex", "hours-per-week", "class"], inplace=True)
 ```
 
-Pour les valeurs de absentes de "age", on va faire un laissage par moyenne:
+Pour les valeurs de absentes de "age", on va faire un lissage par moyenne:
 - Transformer les valeurs de "age" comme numériques
-- On regroupe les enregistrements par "class" et "education". Ceci en supposant que les individus avec la même class et le même niveau d'éducation ont le même age. Si on veut être plus sûre, on peut tracer des graphes entre "age" et les autres attributs.
+- On regroupe les enregistrements par "class" et "education". Ceci en supposant que les individus avec la même classe et le même niveau d'éducation ont le même age. Si on veut être plus sûr, on peut tracer des graphes entre "age" et les autres attributs.
 - On calcule la moyenne et l'arrondir
 - On l'affecte aux valeurs indéfinies
 
@@ -757,3 +837,4 @@ adult["hours-per-week"] = pandas.to_numeric(adult["hours-per-week"])
 - https://pandas.pydata.org/pandas-docs/stable/io.html
 - https://www.kdnuggets.com/2018/05/data-labeling-machine-learning.html
 - http://www.ml.ist.i.kyoto-u.ac.jp/wp/wp-content/uploads/2015/05/PAKDD2015_kashima.pdf
+- https://www.kdnuggets.com/2017/06/7-techniques-handle-imbalanced-data.html
