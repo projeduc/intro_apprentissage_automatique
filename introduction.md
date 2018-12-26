@@ -63,7 +63,7 @@ Lorsque le résultat attendu est une classe (groupe).
 | :--: |
 | Classer un animal comme: chat, chien, vache ou autre en se basant sur le poids, la longueur et le type de nourriture.  |
 
-TODO: recall, precision, evaluation methods 
+TODO: recall, precision, evaluation methods
 
 #### Régression
 
@@ -127,7 +127,7 @@ L'algorithme de réduction de dimension a comme but d'apprendre comment représe
 
 ## I-5 Outils de l'apprentissage automatique
 
-### I-5-1 frameworks et bibliothèques logicielles
+### I-5-1 frameworks et bibliothèques de programmation
 
 #### Deep Learning
 
@@ -157,13 +157,19 @@ La liste suivante contient les outils avec plusieurs algorithmes d'apprentissage
 | Outil | Licence | écrit en | interfaces |
 | :---: | :---: | :---: | :---: |
 | [Data Analytics Acceleration Library(Intel)](http://software.intel.com/intel-daal) | Apache 2.0 | C++, Python, Java | C++, Python, Java |
+| [Encog](https://www.heatonresearch.com/encog/) |  | C#, Java | C#, Java |
+|[Java Statistical Analysis Tool (JSAT)](https://github.com/EdwardRaff/JSAT)| GPL 3 | Java | Java |
 | [MLLib(Apache Spark)](http://spark.apache.org/mllib/) | Apache 2.0 | - | Java, R, Python, Scala |
 | [ScalaNLP Breeze](https://github.com/scalanlp/breeze) | Apache 2.0 | Scala | Scala |
 | [Scikit-learn](https://scikit-learn.org/stable/) | BSD | Python | Python |
 | [Shogun](http://www.shogun-toolbox.org) | - | C++ | C++, C#, Java, Lua, Octave, Python, R, Ruby |
 
 
-### I-5-2 Apprentissage automatique comme un service
+### I-5-2 Logiciels
+
+- [Weka](https://www.cs.waikato.ac.nz/ml/weka/) 
+
+### I-5-3 Apprentissage automatique comme un service
 
 Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service):
 - [Amazon Machine Learning](https://aws.amazon.com/aml/)

@@ -391,10 +391,26 @@ Les processus d'apprentissage sera comme suit:
 
 ## II-5 Outils de préparation des données
 
+### Bibliothèques de programmation
+
 | Outil | Licence | Langage |
 | :---: | :---: | :---: |
+| [Encog](https://www.heatonresearch.com/encog/) |  | C#, Java |
+|[Java Statistical Analysis Tool (JSAT)](https://github.com/EdwardRaff/JSAT)| GPL 3 | Java |
 | [pandas](https://pandas.pydata.org) | BSD | Python |
 | [scikit-learn](https://scikit-learn.org/stable/) | BSD | Python |
+
+
+### Logiciels
+
+- [Alteryx designer](https://www.alteryx.com/products/alteryx-platform/alteryx-designer) Payant, Windows
+- [Rapidminer studio](https://rapidminer.com/products/studio/) Freemium, 
+- [Weka](https://www.cs.waikato.ac.nz/ml/weka/) Licence GPL, Java
+
+### Services
+
+- [Paxata](https://www.paxata.com)
+-
 
 [(Sommaire)](#sommaire)
 
