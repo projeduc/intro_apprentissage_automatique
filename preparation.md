@@ -41,8 +41,88 @@ Quand on joint deux schémas de données, on doit vérifier:
 - Redondance: les attributs qu'on puisse déduire des autres, les enregistrements identiques.
 - Types différents des attributs
 
-### II-1-3 Annotation des données
+### II-1-3 Annotation (Étiquetage) des données
 
+L'annotation des données est la plus importante tâche dans l'apprentissage automatique.
+Si les données sont mal annotées, la performance de notre système d'apprentissage va diminuer.
+[ImageNet](http://image-net.org) (une base des images) a pris 9 années pour être annotée manuellement, avec un nombre de 14 millions images.
+
+#### Approche 1: Annotation interne
+
+Dans cette approche, on annote les données avec sa propre équipe.
+
+Parmi ces avantages, on peut citer:
+- Capacité à suivre le progrès: On peut vérifier le progrès de son équipe pour assurer qu'elle respecte le calendrier du projet.
+- Bonne qualité: On peut vérifier la qualité de quelques données pendant l'annotation, identifier les annotateurs qui n'offrent pas une bonne qualité et guider la tâche en donnant des instructions sur les mauvais et les bons exemples qu'il faut suivre.
+
+Les inconvénients:
+- L'annotation est trop lente: si on gagne de la qualité, on va perdre du temps.
+
+En résumé, si vous êtes une entreprise qui a suffisamment de ressources humaines, financières et du temps, cette approche est la votre.
+
+#### Approche 2: L'externalisation (Outsourcing)
+
+Si on ne dispose pas d'une équipe qualifiée pour l'annotation (pourtant l'annotation n'exige pas une grande expertise) ou on n'a pas assez de ressources humaines, on peut embaucher des travailleurs indépendants (freelancers).
+- Préparer les données et fixer le temps exigé pour les annoter
+- Diviser les sur des sous ensembles en supposant que ce temps est suffisant pour qu'une personne puisse terminer l'annotation d'un sous-ensemble
+- publier des offres d'emploi sur les médias sociaux (LinkedIn par exemple)
+
+Les avantages de cette approche:
+- On sait ceux qu'on a embauché: On peut vérifier leurs compétences à l'aide de tests et on peut contrôler leur travail.
+
+Les inconvénients de cette approche:
+- On doit préparer des instructions détaillée sur le processus d'annotation pour que les annotateurs puissent comprendre comment faire la tâche correctement.
+- On aura besoin de plus de temps pour soumettre et vérifier les tâches terminées.
+- On doit créer un flux de travail: une interface qui aide les annotateurs.
+
+#### Approche 3: Crowdsourcing
+
+Si on ne veut pas gaspiller plus de temps pour recruter des gens et suivre leurs travaux, on peut toujours utiliser des plateformes de crowdsourcing.
+Ce sont des plateformes qui gèrent un grand nombre de contracteurs offrant la main d'œuvre à la demande.
+ils offrent des interfaces graphiques simples à utiliser pour créer des tâches d'annotation.
+Parmi les plateformes, on peut citer: [Amazon Mechanical Turk (MTurk)](https://www.mturk.com/) et [Clickworker](https://www.clickworker.com/).
+
+Les avantages:
+- Des résulats rapides
+- Coûts abordables
+
+Les inconvénients:
+- La qualité des annotations: lorsque le revenu quotidien dépend du nombre de tâches accomplies, les gens essayent de terminer le plus nombre possible de tâche. Les plateformes de crowdsourcing utilisent des mesures de gestion de la qualité pour faire face à ce problème.
+- On doit préparer des instructions détaillée sur le processus d'annotation pour que les annotateurs puissent comprendre comment faire la tâche correctement.
+
+Il y a deux types de crowdsourcing:
+- Explicite: En demandant directement des contributions
+- Implicite: En intègrant des tâches dans d'autres formes afin de motiver la participation
+  - Tâches inévitables (par exemple, reCAPTCHA)
+  - Jeux ayant des objectifs (par exemple, jeu ESP)
+
+#### Approche 4: Données synthétiques
+
+Cette approche consiste à générer des données qui imitent les données réelles en termes de paramètres essentiels définis par un utilisateur. Les données synthétiques sont produites par un modèle génératif construit et validé sur un jeu de données original.
+Par exemple, générer des visages pour la reconnaissance faciale.
+
+Les avantages:
+- Gain de temps et de coûts
+- L'utilisation de données non sensibles: parfois, il faut demander la permission pour utiliser certaines données.
+
+Les inconvénients:
+- La nécessité pour le calcul haute performance
+- Problèmes de qualité des données: Les données synthétiques peuvent ne pas ressembler aux données réelles.
+
+#### Approche 5: Par programmation
+
+Cette approche consite à écrire des programmes qui annotent les données automatiquement.
+Le problème, ici, est qu'on a pu écrire une fonction pour annoter automatiquement les données.
+A quoi, donc, sert l'apprentissage automatique si notre système va apprendre cette même fonction?!
+En général, on peut utiliser cette approche pour enraichir les données (ajouter plus d'échantillons).
+
+Par exemple, on peut utiliser un algorithme de regroupement (clustering) pour avoir des groupes; ensuite, on annote quelques échantillons dans chaque groupe et on généralise.
+
+Les avantages:
+- Moins d'annotation manuelle
+
+Les inconvénients:
+- précision faible des étiquettes
 
 
 [(Sommaire)](#sommaire)
@@ -675,3 +755,5 @@ adult["hours-per-week"] = pandas.to_numeric(adult["hours-per-week"])
 - https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/prepare-data
 - https://www.simplilearn.com/data-preprocessing-tutorial
 - https://pandas.pydata.org/pandas-docs/stable/io.html
+- https://www.kdnuggets.com/2018/05/data-labeling-machine-learning.html
+- http://www.ml.ist.i.kyoto-u.ac.jp/wp/wp-content/uploads/2015/05/PAKDD2015_kashima.pdf
