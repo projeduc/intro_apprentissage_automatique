@@ -53,12 +53,18 @@ Techniquement, on utilise l'espace logarithmique puisque le produit des probabil
 ![III-1-bayes7]
 
 [III-1-bayes]: https://latex.codecogs.com/png.latex?\overbrace{P(A|B)}^{\text{post\'erieure}}=\frac{\overbrace{P(A)}^{\text{ant\'erieure}}\overbrace{P(B|A)}^{\text{vraisemblance}}}{\underbrace{P(B)}_{\text{\'evidence}}}
+
 [III-1-bayes2]: https://latex.codecogs.com/png.latex?P(c_i|\overrightarrow{f})=\frac{P(c_i)P(\overrightarrow{f}|c_i)}{P(\overrightarrow{f})}
-[III-1-bayes3]: https://latex.codecogs.com/png.latex?P(c_i\|\overrightarrow{f})&space;\propto&space;P(\overrightarrow{f}\|c_i)&space;P(c_i)
-[III-1-bayes4]: https://latex.codecogs.com/png.latex?P(c_i\|\overrightarrow{f})&space;\propto&space;P(c_i)&space;\prod\limits_{f_j&space;\in&space;\overrightarrow{f}}&space;P(f_j\|c_i)
-[III-1-bayes5]: https://latex.codecogs.com/png.latex?c&space;=&space;\arg\max\limits_{ci}&space;P(c_i\|\overrightarrow{f})
-[III-1-bayes6]: https://latex.codecogs.com/png.latex?c&space;=&space;\arg\max\limits_{ci}&space;P(c_i)&space;\prod\limits_{f_j&space;\in&space;\overrightarrow{f}}&space;P(f_j\|c_i)
-[III-1-bayes7]: https://latex.codecogs.com/png.latex?c=\arg\max\limits_{ci}\;\log(P(c_i))+\sum\limits_{f_j\in\overrightarrow{f}}\log(P(f_j\|c_i))
+
+[III-1-bayes3]: https://latex.codecogs.com/png.latex?P(c_i|\overrightarrow{f})&space;\propto&space;P(\overrightarrow{f}|c_i)&space;P(c_i)
+
+[III-1-bayes4]: https://latex.codecogs.com/png.latex?P(c_i|\overrightarrow{f})&space;\propto&space;P(c_i)&space;\prod\limits_{f_j&space;\in&space;\overrightarrow{f}}&space;P(f_j|c_i)
+
+[III-1-bayes5]: https://latex.codecogs.com/png.latex?c&space;=&space;\arg\max\limits_{ci}&space;P(c_i|\overrightarrow{f})
+
+[III-1-bayes6]: https://latex.codecogs.com/png.latex?c&space;=&space;\arg\max\limits_{ci}&space;P(c_i)&space;\prod\limits_{f_j&space;\in&space;\overrightarrow{f}}&space;P(f_j|c_i)
+
+[III-1-bayes7]: https://latex.codecogs.com/png.latex?c=\arg\max\limits_{ci}\;\log(P(c_i))+\sum\limits_{f_j\in\overrightarrow{f}}\log(P(f_j|c_i))
 
 [(Sommaire)](#sommaire)
 
@@ -107,13 +113,19 @@ Donc, la probabilité qu'une caractéristique ![f-j] ait une valeur *x* sachant 
 
 ![III-2-normal]
 
-[III-2-pci]: https://latex.codecogs.com/png.latex?P(c_i)&space;=&space;\frac{\|c_i\|}{N}
-[III-2-mult1]: https://latex.codecogs.com/png.latex?\|c_i\|_{f_j}
-[III-2-mult2]: https://latex.codecogs.com/png.latex?P(f_j\|c_i)&space;=&space;\frac{\|c_i\|_{f_j}}{\sum_{c_j}&space;\|c_j\|_{f_j}}
-[III-2-mult3]: https://latex.codecogs.com/png.latex?P(f_j\|c_i)&space;=&space;\frac{\|c_i\|_{f_j}+\alpha}{\sum_{c_j}&space;\|c_j\|_{f_j}+\alpha\|\overrightarrow{f}\|}
-[III-2-mu]: https://latex.codecogs.com/png.latex?\mu_{ij}=\frac{1}{\|c_i\|}\sum\limits_{k=1}^{\|c_i\|}x_k\;/\;x_k\;\in\;f_j\,\cap\,c_i
-[III-2-sigma]: https://latex.codecogs.com/png.latex?\sigma^2_{ij}=\frac{1}{\|c_i\|-1}\sum\limits_{k=1}^{\|c_i\|}(x_k-\mu_{ij})^2\;/\;x_k\;\in\;f_j\,\cap\,c_i
-[III-2-normal]: https://latex.codecogs.com/png.latex?P(f_j=x\|c_i)=\frac{1}{2\pi\sigma^2_{ij}}e^{-\frac{(x-\mu_{ij})^2}{2\sigma^2_{ij}}}
+[III-2-pci]: https://latex.codecogs.com/png.latex?P(c_i)&space;=&space;\frac{|c_i|}{N}
+
+[III-2-mult1]: https://latex.codecogs.com/png.latex?|c_i|_{f_j}
+
+[III-2-mult2]: https://latex.codecogs.com/png.latex?P(f_j|c_i)&space;=&space;\frac{|c_i|_{f_j}}{\sum_{c_j}&space;|c_j|_{f_j}}
+
+[III-2-mult3]: https://latex.codecogs.com/png.latex?P(f_j|c_i)&space;=&space;\frac{|c_i|_{f_j}+\alpha}{\sum_{c_j}&space;|c_j|_{f_j}+\alpha|\overrightarrow{f}|}
+
+[III-2-mu]: https://latex.codecogs.com/png.latex?\mu_{ij}=\frac{1}{|c_i|}\sum\limits_{k=1}^{|c_i|}x_k\;/\;x_k\;\in\;f_j\,\cap\,c_i
+
+[III-2-sigma]: https://latex.codecogs.com/png.latex?\sigma^2_{ij}=\frac{1}{|c_i|-1}\sum\limits_{k=1}^{|c_i|}(x_k-\mu_{ij})^2\;/\;x_k\;\in\;f_j\,\cap\,c_i
+
+[III-2-normal]: https://latex.codecogs.com/png.latex?P(f_j=x|c_i)=\frac{1}{2\pi\sigma^2_{ij}}e^{-\frac{(x-\mu_{ij})^2}{2\sigma^2_{ij}}}
 
 [(Sommaire)](#sommaire)
 
