@@ -404,13 +404,13 @@ Les processus d'apprentissage sera comme suit:
 ### Logiciels
 
 - [Alteryx designer](https://www.alteryx.com/products/alteryx-platform/alteryx-designer) Payant, Windows
-- [Rapidminer studio](https://rapidminer.com/products/studio/) Freemium, 
+- [Rapidminer studio](https://rapidminer.com/products/studio/) Freemium,
 - [Weka](https://www.cs.waikato.ac.nz/ml/weka/) Licence GPL, Java
 
 ### Services
 
 - [Paxata](https://www.paxata.com)
--
+
 
 [(Sommaire)](#sommaire)
 
@@ -443,8 +443,7 @@ Le fichier contient les colonnes suivantes (avec l'entête: titres des colonnes)
 1. class: <=50K, >50K
 
 On sait que le fichier est bien formé; donc, on ne va pas vérifier le format.
-On ignore les espaces qui suivent les séparateurs.
-Aussi, on va définir le type de chaque colonne
+On va ignorer les espaces qui suivent les séparateurs.
 
 ```python
 adult1 = pandas.read_csv("../../data/adult1.csv", skipinitialspace=True)
