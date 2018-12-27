@@ -52,8 +52,8 @@ Techniquement, on utilise l'espace logarithmique puisque le produit des probabil
 
 ![III-1-bayes7]
 
-[III-1-bayes]: https://latex.codecogs.com/png.latex?\overbrace{P(A\|B)}^{\text{post\'erieure}}=\frac{\overbrace{P(A)}^{\text{ant\'erieure}}\overbrace{P(B\|A)}^{\text{vraisemblance}}}{\underbrace{P(B)}_{\text{\'evidence}}}
-[III-1-bayes2]: https://latex.codecogs.com/png.latex?P(c_i\|\overrightarrow{f})=\frac{P(c_i)P(\overrightarrow{f}\|c_i)}{P(\overrightarrow{f})}
+[III-1-bayes]: https://latex.codecogs.com/png.latex?\overbrace{P(A|B)}^{\text{post\'erieure}}=\frac{\overbrace{P(A)}^{\text{ant\'erieure}}\overbrace{P(B|A)}^{\text{vraisemblance}}}{\underbrace{P(B)}_{\text{\'evidence}}}
+[III-1-bayes2]: https://latex.codecogs.com/png.latex?P(c_i|\overrightarrow{f})=\frac{P(c_i)P(\overrightarrow{f}|c_i)}{P(\overrightarrow{f})}
 [III-1-bayes3]: https://latex.codecogs.com/png.latex?P(c_i\|\overrightarrow{f})&space;\propto&space;P(\overrightarrow{f}\|c_i)&space;P(c_i)
 [III-1-bayes4]: https://latex.codecogs.com/png.latex?P(c_i\|\overrightarrow{f})&space;\propto&space;P(c_i)&space;\prod\limits_{f_j&space;\in&space;\overrightarrow{f}}&space;P(f_j\|c_i)
 [III-1-bayes5]: https://latex.codecogs.com/png.latex?c&space;=&space;\arg\max\limits_{ci}&space;P(c_i\|\overrightarrow{f})
