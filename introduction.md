@@ -84,6 +84,14 @@ Un résulat obtenu par un un système de classification binaire peut être:
 - **Faux positif** (False positive): Le modèle prédit incorrectement la classe positive. Le modèle prédit incorrectement qu'un message est indésirable.
 - **Faux négatif** (False negative): Le modèle prédit incorrectement la classe négative. Le modèle prédit incorrectement qu'un message est désirable.
 
+La [matrice de confusion](https://fr.wikipedia.org/wiki/Matrice_de_confusion) d'un système de classification binaire est:
+
+| |  classe réelle positive | classe réelle négative |
+| :---: | :---: | :---: |
+| classe prédite positive | vrai positif (VP)  | faux positif (FP)  |
+| classe prédite négative | faux négatif (FN)  | vrai négtif (VN)  |
+
+
 ##### Justesse
 
 La justesse d'un modèle de classification est la proportion de ces prédictions correctes. C'est le nombre des prédictions correctes divisé par le nombre total des prédictions.
@@ -92,8 +100,11 @@ En terme de classification binaire et en utilisant les 4 types des résulats, on
 ![I-3-just]
 
 La justesse seule n'ai pas suffisante comme mesure de performance, surtout pour les ensembles de données avec des classes imbalancées.
-Revenant au système de classification des courriels. Supposant qu'on a 20 données de test: 3 indésirables et 17 désirables. Le modèle qu'on a entrainé a pu détecter toutes les 17 classes désirables et seulement 1 classe indésirable.
-Dans ce cas, la justesse est (17+1)/20 = 90%.
+Revenant au système de classification des courriels.
+
+Supposant qu'on a 20 données de test: 3 indésirables et 17 désirables. Le modèle qu'on a entrainé a pu détecter toutes les 17 classes désirables et seulement 1 classe indésirable.
+Dans ce cas, la justesse est (1 + 17)/20 = 90%.
+
 Le problème est que ce modèle puisse bien détecter les couriers désirables contrairement aux courriers indésirables.
 Or, notre but est de détecter les courrier indésirables afin de les filtrer.
 
@@ -115,13 +126,29 @@ Le rappel est la proportion des prédictions positives correctes par rapport aux
 Le rapperl de notre modèle précédent est 1/(1 + 3) = 25%.
 En d'autre termes, il peut prédire seulement 25% des couriers indésirables.
 
-##### F1 score
+##### F1 mesure
 
-C'est la moyenne harmonique entre le rapperl et la précision.
+C'est la moyenne harmonique entre le rappel et la précision.
 
 ![I-3-f1]
 
-Le F1 score de notre modèle précédent est (2 \* 5.56 \* 25)/(5.56 + 25) = 278/30.56 = 9.1 %.
+Le F1 mesure de notre modèle précédent est (2 \* 5.56 \* 25)/(5.56 + 25) = 278/30.56 = 9.1 %.
+
+##### La corrélation de matthews
+
+C'est un coéfficient pour mesurer de qualité en tenant compte des données imbalancées.
+Cette mesure est connue, aussi, sous le nom: coefficient Phi.
+Un modèle peut avoir des coefficients allant de -1 jusqu'à +1:
+- -1: les prédictions sont totalement irronnées.
+- 0: la performance du modèle est comparable avec un système aléatoire (random).
+- 1: les prédictions sont parfaites.
+
+Pour un système de classification binaire, sa formule exprimé en terme de la matrice de confusion est:
+
+![I-3-matthews]
+
+Le CCM de notre modèle précédent est (1 \* 17 - 3 \* 2)/rac((1 + 3)(1 + 2)(17 + 3)(17 + 2)) = 11/rac(4 \* 3 \* 20 \* 19) = 11/rac(4560) = 0.163.
+En d'autre termes, la qualité de notre modèle est un peu plus que le système aléatoire, mais reste toujours mauvaise.
 
 ##### Cas multi-classes
 
@@ -129,10 +156,10 @@ Supposant, on a entrainer un modèle pour détecter à partir d'une image donné
 Dans le cas de la justesse, c'est le nombre des classes correctement détectées divisé par le nombre des examples.
 Mais, comment calculer la précision et le rappel?
 
-Ces deux métriques sont calculés par rapport une classe donnée. Dans ce cas, cette classe sera la classe positive et le reste des classe comme négatives.
+Ces deux métriques sont calculés par rapport une classe donnée. Le rappel (précision) du modèle est la moyenne arithmétique des rappels (précisions) de toutes les classes.
 
 Supposant les données de test sont 60 examples uniformément distribuées sur les classes (20 par classe).
-Voici la [matrice de confusion](https://fr.wikipedia.org/wiki/Matrice_de_confusion)
+Voici la matrice de confusion:
 
 |  | chat (réel) | chien (réel) | vache (réel) | Total (prédit) |
 | :---: | :---: | :---: | :---: | :---: |
@@ -147,7 +174,7 @@ Le rappel de la classe "chat" est 10/20 = 50%. Donc, on peut confirmer que notre
 
 La précision de la classe "chat" est 10/15 = 67%. Donc, on peut confirmer que 67% des données marquées comme "chat" par notre modèle sont réelement de la classe "chat".
 
-De la meme façon:
+De la même façon:
 
 Rappel(chien) = 13/20 = 65%.
 
@@ -157,14 +184,17 @@ Rappel(vache) = 17/20 = 85%
 
 Précision(vache) = 17/21 = 81%
 
+Rappel = (50 + 65 + 85)/3 = 67%
 
+Précision = (67 + 54 + 81)/3 = 67%
+
+
+[I-3-matthews]: https://latex.codecogs.com/png.latex?CCM=\frac{VP*VN-FP*FN}{\sqrt{(VP+FP)(VP+FN)(VN+FP)(VN+FN)}}
 [I-3-f1]: https://latex.codecogs.com/png.latex?F1=\frac{1}{\frac{1}{P}+\frac{1}{R}}=2*\frac{P*R}{P+R}
 [I-3-r]: https://latex.codecogs.com/png.latex?P=\frac{VP}{VP+VN}
 [I-3-p]: https://latex.codecogs.com/png.latex?P=\frac{VP}{VP+FP}
 [I-3-just]: https://latex.codecogs.com/png.latex?Justesse=\frac{VP+VN}{VP+VN+FP+FN}
 
-
-TODO: recall, precision, evaluation methods
 
 #### Régression
 
@@ -385,3 +415,5 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 - https://developers.google.com/machine-learning/crash-course/prereqs-and-prework?hl=fr
 - https://towardsdatascience.com/supervised-machine-learning-classification-5e685fe18a6d
 - http://text-analytics101.rxnlp.com/2014/10/computing-precision-and-recall-for.html
+- https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html
+- https://en.wikipedia.org/wiki/Matthews_correlation_coefficient
