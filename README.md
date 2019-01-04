@@ -9,6 +9,7 @@
   - [I-4 Limites de l'apprentissage automatique](introduction.md#i-4-limites-de-lapprentissage-automatique)
   - [I-5 Outils de l'apprentissage automatique](introduction.md#i-5-outils-de-lapprentissage-automatique)
   - [I-6 Méthodologies de science des données](introduction.md#i-6-méthodologies-de-science-des-données)
+ - [I-7 Un peu de programmation](introduction.md#i-7-un-peu-de-programmation)
 
 
 - [Chapitre II: Préparation des données](preparation.md)

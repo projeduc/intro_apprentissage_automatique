@@ -11,7 +11,7 @@
   - [I-4 Limites de l'apprentissage automatique](#i-4-limites-de-lapprentissage-automatique)
   - [I-5 Outils de l'apprentissage automatique](#i-5-outils-de-lapprentissage-automatique)
   - [I-6 Méthodologies de science des données](#i-6-méthodologies-de-science-des-données)
-
+  - [I-7 Un peu de programmation](#i-7-un-peu-de-programmation)
 
 | ![apprentissage automatique](IMG/AA.png) |
 |:--:|
@@ -69,7 +69,7 @@ Or, l'intérêt des données de test est d'évaluer le modèle sur des nouvelles
 
 Selon le type d'annotation, on peut remarquer deux types des algorithmes d'apprentissage automatique: classement et régression.
 
-#### Classement (Classification supervisée)
+#### A) Classement (Classification supervisée)
 
 Lorsque le résultat attendu est une classe (groupe).
 
@@ -103,8 +103,14 @@ La justesse seule n'ai pas suffisante comme mesure de performance, surtout pour 
 Revenant au système de classification des courriels.
 
 Supposant qu'on a 20 données de test: 3 indésirables et 17 désirables. Le modèle qu'on a entrainé a pu détecter toutes les 17 classes désirables et seulement 1 classe indésirable.
-Dans ce cas, la justesse est (1 + 17)/20 = 90%.
 
+|  | indésirable (réel) | désirable (réel) | Total (prédit) |
+| :---: | :---: | :---: | :---: |
+| indésirable (modèle) | 1 | 1 | 2 |
+| désirable (modèle) | 2 | 16 | 18 |
+| Total (réel) | 3 | 17 |  |
+
+Dans ce cas, la justesse est (1 + 16)/20 = 85%.
 Le problème est que ce modèle puisse bien détecter les couriers désirables contrairement aux courriers indésirables.
 Or, notre but est de détecter les courrier indésirables afin de les filtrer.
 
@@ -114,8 +120,8 @@ La précision est la proportion des prédictions positives correctes par rapport
 
 ![I-3-p]
 
-La précision de notre modèle précédent est 1/(1 + 17) = 5.56%.
-En d'autre termes, parmi les prédictions qu'il puisse prédire correctement, les couriers indésirables forment seulement 5.56%.
+La précision de notre modèle précédent est 1/(1 + 1) = 50%.
+En d'autre termes, parmi les prédictions qu'il puisse prédire correctement, les couriers indésirables forment 50%.
 
 ##### Rappel
 
@@ -123,8 +129,8 @@ Le rappel est la proportion des prédictions positives correctes par rapport aux
 
 ![I-3-r]
 
-Le rapperl de notre modèle précédent est 1/(1 + 3) = 25%.
-En d'autre termes, il peut prédire seulement 25% des couriers indésirables.
+Le rapperl de notre modèle précédent est 1/(1 + 2) = 33%.
+En d'autre termes, il peut prédire seulement 33% des couriers indésirables.
 
 ##### F1 mesure
 
@@ -132,7 +138,7 @@ C'est la moyenne harmonique entre le rappel et la précision.
 
 ![I-3-f1]
 
-Le F1 mesure de notre modèle précédent est (2 \* 5.56 \* 25)/(5.56 + 25) = 278/30.56 = 9.1 %.
+Le F1 mesure de notre modèle précédent est (2 \* 50 \* 33)/(50 + 33) = 3300/83 = 40 %.
 
 ##### La corrélation de matthews
 
@@ -147,7 +153,7 @@ Pour un système de classification binaire, sa formule exprimé en terme de la m
 
 ![I-3-matthews]
 
-Le CCM de notre modèle précédent est (1 \* 17 - 3 \* 2)/rac((1 + 3)(1 + 2)(17 + 3)(17 + 2)) = 11/rac(4 \* 3 \* 20 \* 19) = 11/rac(4560) = 0.163.
+Le CCM de notre modèle précédent est (1 \* 16 - 1 \* 2)/rac((1 + 1)(1 + 2)(16 + 1)(16 + 2)) = 14/rac(2 \* 3 \* 17 \* 18) = 14/rac(1836) = 0.33.
 En d'autre termes, la qualité de notre modèle est un peu plus que le système aléatoire, mais reste toujours mauvaise.
 
 ##### Cas multi-classes
@@ -196,7 +202,7 @@ Précision = (67 + 54 + 81)/3 = 67%
 [I-3-just]: https://latex.codecogs.com/png.latex?Justesse=\frac{VP+VN}{VP+VN+FP+FN}
 
 
-#### Régression
+#### B) Régression
 
 Lorsque le résultat attendu est une valeur.
 
@@ -216,7 +222,7 @@ En résumé:
 
 Selon le type de structure que l'algorithme va découvrir, on peut avoir: le regroupement et la réduction de dimension.
 
-#### Clustering (Regroupement)
+#### A) Clustering (Regroupement)
 
 L'algorithme de regroupement sert à assigner les échantillons similaires dans le même groupe.
 Donc, le résultat est un ensemble de groupes contenants les échantillons.
@@ -225,7 +231,7 @@ Donc, le résultat est un ensemble de groupes contenants les échantillons.
 | :--: |
 | Regrouper les plantes similaires en se basant sur la couleur, la taille, etc.  |
 
-#### Réduction de dimension
+#### B) Réduction de dimension
 
 L'algorithme de réduction de dimension a comme but d'apprendre comment représenter des données en entrée avec moins de valeurs.
 
@@ -397,6 +403,61 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 | ![TDSP](https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/media/overview/tdsp-lifecycle2.png) |
 |:--:|
 | *TDSP [ [Source](https://docs.microsoft.com/fr-fr/azure/machine-learning/team-data-science-process/overview) ]* |
+
+[(Sommaire)](#sommaire)
+
+## I-7 Un peu de programmation
+
+### Evaluation du classement
+
+Ici, on va utiliser l'outil **scikit-learn** pour l'évaluation.
+On va créer une liste des résulats attendus et une autre qu'on suppose être la liste des résulatats générés par notre modèle.
+
+#### Exemple 1: classement binaire
+
+Consulter le fichier [codes/eval/classer1.py](codes/eval/classer1.py)
+
+On a entrainé un modèle pour classer les emails comme indésirables ou non.
+Ensuite, on a testé ce modèle avec 20 examples qui a donné la matrice de confusion suivante:
+
+|  | indésirable (réel) | désirable (réel) | Total (prédit) |
+| :---: | :---: | :---: | :---: |
+| indésirable (modèle) | 1 | 1 | 2 |
+| désirable (modèle) | 2 | 16 | 18 |
+| Total (réel) | 3 | 17 |  |
+
+On annote les courniers indésirables avec 1 et ceux désirables avec 0.
+Dans la classification binaire de **scikit-learn**, la classe positive est annotée par 1 par défaut.
+Cela peut être changé en utilisant l'option **pos_label**.
+La fonction **str** est juste pour transformer un nombre vers une chaîne de charactères.
+
+```python
+#imortation des fonctions nécessaires
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, matthews_corrcoef
+
+# créer une liste de 3 "1" suivis de 17 "0"
+reel = [1] * 3 + [0] * 17
+# créer une list [1, 0, 0, 1] concaténée avec 16 "0"
+predit = [1, 0, 0, 1] + [0] * 16
+
+print "La justesse: " + str(accuracy_score(reel, predit))
+print "La précision: " + str(precision_score(reel, predit))
+print "Le rappel: " + str(recall_score(reel, predit))
+print "La mesure F1: " + str(f1_score(reel, predit))
+print "corrélation de matthews: " + str(matthews_corrcoef(reel, predit))
+
+```
+
+#### Exemple 2: classement multi-classes
+
+|  | chat (réel) | chien (réel) | vache (réel) | Total (prédit) |
+| :---: | :---: | :---: | :---: | :---: |
+| chat(modèle) | 10 | 5 | 0 | 15 |
+| chien(modèle) | 8 | 13 | 3 | 24 |
+| vache(modèle) | 2 | 2 | 17 | 21 |
+| Total (réel) | 20 | 20 | 20 | |
+
+
 
 [(Sommaire)](#sommaire)
 
