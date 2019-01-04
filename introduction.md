@@ -42,16 +42,30 @@
 
 ### I-3-1 Apprentissage supervisé
 
-Lorsque nous disposons d'un ensemble de données avec les résultats attendus, on peut entrainer un système sur ces données pour inférer la fonction utilisée pour avoir ces résultats.
+Lorsqu'on dispose d'un ensemble de données avec les résultats attendus, on peut entrainer un système sur ces données pour inférer la fonction utilisée pour avoir ces résultats.
 En résumé:
 
 - **Source d'apprentissage:** des données annotées (nous avons les résultats attendus)
 - **Retour d'information:** direct; à partir des résultats attendues.
 - **Fonction:** prédire les future résultats
 
+Etant donné un ensemble de données annotées (avec les résultats attendues):
+1. On divise cet ensemble en 2 parties: données d'entrainement et données de test (évaluation).
+On peut avoir les données de validation comme troisième partie.
+1. On fait entrainer notre système sur les données d'apprentissage pour avoir un modèle
+1. Si on utilise des données de validation, on teste la performance de notre modèle.
+Si la performance dépasse un certain seuil, on passe vers l'étape suivante.
+Sinon, on change les paramètres de l'algorithme d'apprentissage ou on on récupère plus de données d'entrainement, et on refaire l'étape précédente.
+1. On utilise les données de test (évaluation) afin de décider la performance du modèle et le comparer avec un système de base.
+Si on n'a pas utilisé des données de validation, on peut faire l'étape précédente ici.
+Mais, il faut faire attention: si on valide plusieurs fois sur les données de test, le système va être adapté aux données de test.
+Or, l'intérêt des données de test est d'évaluer le modèle sur des nouvelles données qu'il n'a pas rencontré.
+
+
 | ![apprentissage supervisé](IMG/AA-supervise.svg)|
 |:--:|
 | *Apprentissage supervisé* |
+
 
 Selon le type d'annotation, on peut remarquer deux types des algorithmes d'apprentissage automatique: classement et régression.
 
@@ -62,6 +76,93 @@ Lorsque le résultat attendu est une classe (groupe).
 | Par exemple: |
 | :--: |
 | Classer un animal comme: chat, chien, vache ou autre en se basant sur le poids, la longueur et le type de nourriture.  |
+
+Supposant, on veut évaluer un système de classification des courriers indésirables: indésirable ou non.
+Un résulat obtenu par un un système de classification binaire peut être:
+- **Vrai positif** (True positive): Le modèle prédit correctement la classe positive. Le modèle prédit correctement qu'un message est indésirable.
+- **Vrai négatif** (True negative): Le modèle prédit correctement la classe négative. Le modèle prédit correctement qu'un message est désirable.
+- **Faux positif** (False positive): Le modèle prédit incorrectement la classe positive. Le modèle prédit incorrectement qu'un message est indésirable.
+- **Faux négatif** (False negative): Le modèle prédit incorrectement la classe négative. Le modèle prédit incorrectement qu'un message est désirable.
+
+##### Justesse
+
+La justesse d'un modèle de classification est la proportion de ces prédictions correctes. C'est le nombre des prédictions correctes divisé par le nombre total des prédictions.
+En terme de classification binaire et en utilisant les 4 types des résulats, on peut l'écrire sous forme:
+
+![I-3-just]
+
+La justesse seule n'ai pas suffisante comme mesure de performance, surtout pour les ensembles de données avec des classes imbalancées.
+Revenant au système de classification des courriels. Supposant qu'on a 20 données de test: 3 indésirables et 17 désirables. Le modèle qu'on a entrainé a pu détecter toutes les 17 classes désirables et seulement 1 classe indésirable.
+Dans ce cas, la justesse est (17+1)/20 = 90%.
+Le problème est que ce modèle puisse bien détecter les couriers désirables contrairement aux courriers indésirables.
+Or, notre but est de détecter les courrier indésirables afin de les filtrer.
+
+##### Précision
+
+La précision est la proportion des prédictions positives correctes par rapport aux prédictions postives (correctes ou non).
+
+![I-3-p]
+
+La précision de notre modèle précédent est 1/(1 + 17) = 5.56%.
+En d'autre termes, parmi les prédictions qu'il puisse prédire correctement, les couriers indésirables forment seulement 5.56%.
+
+##### Rappel
+
+Le rappel est la proportion des prédictions positives correctes par rapport aux prédictions correctes (négatives et positives).
+
+![I-3-r]
+
+Le rapperl de notre modèle précédent est 1/(1 + 3) = 25%.
+En d'autre termes, il peut prédire seulement 25% des couriers indésirables.
+
+##### F1 score
+
+C'est la moyenne harmonique entre le rapperl et la précision.
+
+![I-3-f1]
+
+Le F1 score de notre modèle précédent est (2 \* 5.56 \* 25)/(5.56 + 25) = 278/30.56 = 9.1 %.
+
+##### Cas multi-classes
+
+Supposant, on a entrainer un modèle pour détecter à partir d'une image donnée s'il s'agit d'un chat, un chien ou une vache.
+Dans le cas de la justesse, c'est le nombre des classes correctement détectées divisé par le nombre des examples.
+Mais, comment calculer la précision et le rappel?
+
+Ces deux métriques sont calculés par rapport une classe donnée. Dans ce cas, cette classe sera la classe positive et le reste des classe comme négatives.
+
+Supposant les données de test sont 60 examples uniformément distribuées sur les classes (20 par classe).
+Voici la [matrice de confusion](https://fr.wikipedia.org/wiki/Matrice_de_confusion)
+
+|  | chat (réel) | chien (réel) | vache (réel) | Total (prédit) |
+| :---: | :---: | :---: | :---: | :---: |
+| chat(modèle) | 10 | 5 | 0 | 15 |
+| chien(modèle) | 8 | 13 | 3 | 24 |
+| vache(modèle) | 2 | 2 | 17 | 21 |
+| Total (réel) | 20 | 20 | 20 | |
+
+La justesse est (10 + 13 + 17)/60 = 50%.
+
+Le rappel de la classe "chat" est 10/20 = 50%. Donc, on peut confirmer que notre modèle peut détecter 50% des "chat" de l'ensemble de données.
+
+La précision de la classe "chat" est 10/15 = 67%. Donc, on peut confirmer que 67% des données marquées comme "chat" par notre modèle sont réelement de la classe "chat".
+
+De la meme façon:
+
+Rappel(chien) = 13/20 = 65%.
+
+Précision(chien) = 13/24 = 54%
+
+Rappel(vache) = 17/20 = 85%
+
+Précision(vache) = 17/21 = 81%
+
+
+[I-3-f1]: https://latex.codecogs.com/png.latex?F1=\frac{1}{\frac{1}{P}+\frac{1}{R}}=2*\frac{P*R}{P+R}
+[I-3-r]: https://latex.codecogs.com/png.latex?P=\frac{VP}{VP+VN}
+[I-3-p]: https://latex.codecogs.com/png.latex?P=\frac{VP}{VP+FP}
+[I-3-just]: https://latex.codecogs.com/png.latex?Justesse=\frac{VP+VN}{VP+VN+FP+FN}
+
 
 TODO: recall, precision, evaluation methods
 
@@ -167,7 +268,7 @@ La liste suivante contient les outils avec plusieurs algorithmes d'apprentissage
 
 ### I-5-2 Logiciels
 
-- [Weka](https://www.cs.waikato.ac.nz/ml/weka/) 
+- [Weka](https://www.cs.waikato.ac.nz/ml/weka/)
 
 ### I-5-3 Apprentissage automatique comme un service
 
@@ -281,3 +382,6 @@ Apprentissage automatique comme un service (MLaaS: Machine Learning as a Service
 - https://www.ibm.com/support/knowledgecenter/en/SSEPGG_9.5.0/com.ibm.im.easy.doc/c_dm_process.html
 - ftp://public.dhe.ibm.com/software/analytics/spss/documentation/modeler/18.0/en/ModelerCRISPDM.pdf
 - https://medium.com/datadriveninvestor/the-50-best-public-datasets-for-machine-learning-d80e9f030279
+- https://developers.google.com/machine-learning/crash-course/prereqs-and-prework?hl=fr
+- https://towardsdatascience.com/supervised-machine-learning-classification-5e685fe18a6d
+- http://text-analytics101.rxnlp.com/2014/10/computing-precision-and-recall-for.html

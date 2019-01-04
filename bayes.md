@@ -320,7 +320,7 @@ print "précision: ", modele.score(X_test, y_test)
 
 ### Sauvegarder le modèle
 
-Après avoir entrainer un modèle, il est souhaitable de le conserver pour un usage ultérieur sans avoir besoin d'entrainer une deuxième fois.
+Après avoir entrainé un modèle, il est souhaitable de le conserver pour un usage ultérieur sans avoir besoin d'entrainer une deuxième fois.
 Il y a deux façons de le faire selon [la doc de scikit-learn ](https://scikit-learn.org/stable/modules/model_persistence.html):
 - la sérialisation pickle
 - la sérialisation joblib

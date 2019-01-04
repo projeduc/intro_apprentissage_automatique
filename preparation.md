@@ -299,7 +299,7 @@ Notre équation de régression linéaire sera comme suit:
 
 [(Sommaire)](#sommaire)
 
-## II-4 Echantillonage et fractionnement des données
+## II-4 Échantillonnage et fractionnement des données
 
 ### II-4-1 Données déséquilibrées
 
