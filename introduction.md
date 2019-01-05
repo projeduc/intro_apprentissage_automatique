@@ -174,7 +174,7 @@ Voici la matrice de confusion:
 | vache(modèle) | 2 | 2 | 17 | 21 |
 | Total (réel) | 20 | 20 | 20 | |
 
-La justesse est (10 + 13 + 17)/60 = 50%.
+La justesse est (10 + 13 + 17)/60 = 67%.
 
 Le rappel de la classe "chat" est 10/20 = 50%. Donc, on peut confirmer que notre modèle peut détecter 50% des "chat" de l'ensemble de données.
 
@@ -433,7 +433,8 @@ La fonction **str** est juste pour transformer un nombre vers une chaîne de cha
 
 ```python
 #imortation des fonctions nécessaires
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, matthews_corrcoef
+from sklearn.metrics import accuracy_score, precision_score
+from sklearn.metrics import recall_score, f1_score, matthews_corrcoef
 
 # créer une liste de 3 "1" suivis de 17 "0"
 reel = [1] * 3 + [0] * 17
@@ -445,10 +446,56 @@ print "La précision: " + str(precision_score(reel, predit))
 print "Le rappel: " + str(recall_score(reel, predit))
 print "La mesure F1: " + str(f1_score(reel, predit))
 print "corrélation de matthews: " + str(matthews_corrcoef(reel, predit))
+```
 
+**scikit-learn** offre la possibilié de récupérer la matrice de confusion
+
+```python
+#imortation des fonctions nécessaires
+from sklearn.metrics import confusion_matrix
+# récupérer et afficher la matrice de confusion
+mat_conf = confusion_matrix(reel, predit)
+print mat_conf
+# récupérer le nombre des VN, FP, FN, TP
+vn, fp, fn, vp = mat_conf.ravel()
+print vn, fp, fn, vp
+```
+
+Ceci va afficher:
+
+```
+[[16  1]
+ [ 2  1]]
+16 1 2 1
+```
+
+On peut, aussi, récupérer un rapport de classification.
+
+```python
+from sklearn.metrics import classification_report
+noms_classes = ["desirable", "indesirable"]
+print(classification_report(reel, predit, target_names=noms_classes))
+```
+
+Ceci va afficher:
+
+```
+                precision   recall   f1-score   support
+
+desirable       0.89        0.94      0.91        17
+indesirable     0.50        0.33      0.40         3
+
+micro avg       0.85        0.85      0.85        20
+macro avg       0.69        0.64      0.66        20
+weighted avg    0.83        0.85      0.84        20
 ```
 
 #### Exemple 2: classement multi-classes
+
+Consulter le fichier [codes/eval/classer2.py](codes/eval/classer2.py)
+
+Reprenons l'exemple des classification des animaux en chat, chien ou vache.
+Supposant notre test a donné la matrice de confusion suivante:
 
 |  | chat (réel) | chien (réel) | vache (réel) | Total (prédit) |
 | :---: | :---: | :---: | :---: | :---: |
@@ -457,7 +504,43 @@ print "corrélation de matthews: " + str(matthews_corrcoef(reel, predit))
 | vache(modèle) | 2 | 2 | 17 | 21 |
 | Total (réel) | 20 | 20 | 20 | |
 
+On crée les deux listes:
+- reel: la liste des résulats attendus avec 60 éléments
+- predit: la liste des résultats générés par le système
 
+On attribut à chaque classe un numéro: chat(0), chien(1) et vache(2)
+
+```python
+# 20 chats, 20 chiens et 20 vaches
+reel = [0] * 20 + [1] * 20 + [2] * 20
+# les 20 chats sont prédites comme 10 chats, 8 chiens et 2 vaches
+predit = [0] * 10 + [1] * 8 + [2] * 2
+# les 20 chiens sont prédites comme 5 chats, 13 chiens et 2 vaches
+predit += [0] * 5 + [1] * 13 + [2] * 2
+# les 20 vaches sont prédites comme 0 chats, 3 chiens et 17 vaches
+predit += [1] * 3 + [2] * 17
+```
+
+La justesse est calculée comme dans la clasification binaire
+
+```python
+print "La justesse: ", accuracy_score(reel, predit)
+```
+
+La présion, le rappel et le f1-score dans le cas muti-classes peuvent être calculés selons plusieurs méthodes, celle qu'on décrit précédement s'appelle "macro"
+
+```python
+print "La précision: ", precision_score(reel, predit, average="macro")
+print "Le rappel: " , recall_score(reel, predit, average="macro")
+print "La mesure F1: " , f1_score(reel, predit, average="macro")
+```
+
+On peut sélectionner les classes qu'on veut prendre en considération. Supposant, on veut calculer la précision pour les classes: chat et chien et ignorer la classe vache.
+On peut, même, ajouter des classes qui ne sont pas présentes dans les données de test.
+
+```python
+print "La précision (chat, chien): ", precision_score(reel, predit, labels=[0, 1], average="macro")
+```
 
 [(Sommaire)](#sommaire)
 
