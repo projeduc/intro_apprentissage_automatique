@@ -42,7 +42,7 @@
 
 ### I-3-1 Apprentissage supervisé
 
-Lorsqu'on dispose d'un ensemble de données avec les résultats attendus, on peut entrainer un système sur ces données pour inférer la fonction utilisée pour avoir ces résultats.
+Lorsqu'on se dispose d'un ensemble de données avec les résultats attendus, on peut entrainer un système sur ces données pour inférer la fonction utilisée pour avoir ces résultats.
 En résumé:
 
 - **Source d'apprentissage:** des données annotées (nous avons les résultats attendus)

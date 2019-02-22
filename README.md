@@ -27,18 +27,29 @@
   - [III-3 Exemples](bayes.md#iii-3-exemples)
   - [III-4 Avantages](bayes.md#iii-4-avantages)
   - [III-5 Limites](bayes.md#iii-5-limites)
-  - [III-6 un peu de programmation](bayes.md#iii-6-un-peu-de-programmation)
+  - [III-6 Un peu de programmation](bayes.md#iii-6-un-peu-de-programmation)
 
 
-- [Chapitre IV: Machine à vecteurs de support](#chapitre-iv-machine-à-vecteurs-de-support)
-- [Chapitre V: Arbre de décision](#chapitre-v-arbre-de-décision)
-- [Chapitre VI: Régression linéaire](#chapitre-vi-régression-linéaire)
-- [Chapitre VII: Régression logistique](#chapitre-vii-régression-logistique)
-- [Chapitre VIII: Perceptron](#chapitre-viii-perceptron): peut être il faut fusionner ça avec le réseau de neurones
-- [Chapitre IX: Réseau de neurones artificiels](#chapitre-ix-réseau-de-neurones-artificiels)
-- [Chapitre X: Regroupement K-Means](#chapitre-x-regroupement-k-means)
-- [Chapitre XI: Auto-encodeur](#chapitre-xi*auto-encodeur)
-- [Chapitre XII: Apprentissage par renforcement](#chapitre-xii-apprentissage-par-renforcement)
+- [Chapitre IV: Machine à vecteurs de support](svm.md)
+
+
+- [Chapitre V: Arbre de décision](arbres.md)
+
+
+- [Chapitre VI: Régression](regression.md)
+
+
+- [Chapitre VII: Réseau de neurones artificiels](neurones.md)
+
+
+- [Chapitre VII: Regroupement K-Means](kmean.md)
+
+
+- [Chapitre IX: Auto-encodeur](autoencodeur.md)
+
+
+- [Chapitre X: Apprentissage par renforcement](renforcement.md)
+
 
 ## Glossaire
 
@@ -47,35 +58,3 @@
 - **échantillon** [sample] Dans une base de données, c'est l'équivalent de "enregistrement"
 - **entraînement** [training]
 - **regroupement** [clustering] le regroupement fait référence à l'action de diviser un ensemble de données en différents "paquets" homogènes qui partagent des caractéristiques communes.
-
-
-# Les chapitres programmés
-
-## Chapitre IV: Machine à vecteurs de support
-
-## Chapitre V: Arbre de décision
-
-## Chapitre VI: Régression linéaire
-
-## Chapitre VII: Régression logistique
-
-## Chapitre VIII: Perceptron
-
-### Bibliographie
-- https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975
-
-## Chapitre IX: Réseau de neurones artificiels
-
-## Chapitre X: Regroupement
-
-### X-1 Regroupement hiérarchique
-
-### X-2 K-Means
-
-### Bibliographie
-
-- https://towardsdatascience.com/unsupervised-learning-with-python-173c51dc7f03
-
-## Chapitre XI: Auto-encodeur (Maybe not!!)
-
-## Chapitre XII: Apprentissage par renforcement

@@ -443,7 +443,7 @@ Le fichier contient les colonnes suivantes (avec l'entête: titres des colonnes)
 1. class: <=50K, >50K
 
 On sait que le fichier est bien formé; donc, on ne va pas vérifier le format.
-On va ignorer les espaces qui suivent les séparateurs.
+On va ignorer les espaces qui suivent les séparateurs en utilisant l'option *skipinitialspace*.
 
 ```python
 adult1 = pandas.read_csv("../../data/adult1.csv", skipinitialspace=True)
@@ -462,7 +462,9 @@ Voici le sens des colonnes dans l'ordre:
 1. hours-per-week: entier.
 1. marital-status: Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
 
-Dans ce cas, on va spécifier que le séparateur est ";", il n'y a pas d'entête (la première ligne contient des données et pas les noms des colonnes) et on spécifie les noms des colonnes.
+Dans ce cas, on va créer une liste des noms des colonnes (*noms*) et l'assigner comme entête en utilisant l'option *names*.
+Aussi, il faut spécifier quil n'y a pas d'entête (la première ligne contient des données et pas les noms des colonnes) en utilisant l'option *header=None*.
+Le séparateur du fichier CSV peut être spécifié en utilisant l'option *sep*.
 
 ```python
 noms = ["class", "age", "sex", "workclass", "education", "hours-per-week", "marital-status"]
@@ -508,8 +510,11 @@ Pour être cohérent avec les données précédentes, on doit remplacer les "?" 
 ```python
 import sqlite3
 import numpy
+#établir la connexion avec la base de données
 con = sqlite3.connect("../../data/adult3.db")
+#récupérer le résultat d'une réquête SQL sur cette connexion
 adult3 = pandas.read_sql_query("SELECT * FROM income", con)
+#remplacer les valeurs "?" par NaN de numpy
 adult3 = adult3.replace('?', numpy.nan)
 ```
 
@@ -534,11 +539,13 @@ Le 4ième fichier est de format XML dont la [DTD](https://fr.wikipedia.org/wiki/
 - Les valeurs possibles des champs nominaux sont comme celles de la base de données sqlite (fichier adult3.db).
 - Les valeurs non définies sont représentées par l'absence de leurs balises respectives dans le fichier XML.
 
-Pour valider le fichier XML, on a utilisé la bibliothèque **lxml**.
+Pour valider le fichier XML, on va utiliser la bibliothèque **lxml**.
 
 ```python
 from lxml import etree
+#créer le parser et spécifier qu'il doit valider le DTD
 parser = etree.XMLParser(dtd_validation=True)
+#analyser le fichier XML en utilisant ce parser
 arbre = etree.parse("../../data/adult4.xml", parser)
 ```
 
