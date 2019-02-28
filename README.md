@@ -31,7 +31,13 @@
 
 
 - [Chapitre IV: Arbre de décision](arbres.md)
-
+  - [IV-1 Description](#iv-1-description)
+  - [IV-2 ID3](#iv-2-id3)
+  - [IV-3 C4.5](#iv-3-c4.5)
+  - [IV-4 CART](#iv-4-cart)
+  - [IV-5 Avantages](#iv-5-avantages)
+  - [IV-6 Limites](#iv-6-limites)
+  - [IV-7 Un peu de programmation](#iv-7-un-peu-de-programmation)
 
 - [Chapitre V: Régression](regression.md)
 
