@@ -1,10 +1,10 @@
-﻿# Chapitre VII: Regroupement K-Means
+﻿# Chapitre VIII: Regroupement K-Means
 
 ## Sommaire
 
 [(Retour vers la page principale)](README.md)
 
-- Chapitre VII: Regroupement K-Means
+- Chapitre VIII: Regroupement K-Means
   - [V-1 Motivation](#iv-1-motivation)
   - [V-1 Classification](#iv-1-classification)
   - [V-2 Apprentissage](#iv-2-apprentissage)

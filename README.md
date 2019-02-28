@@ -30,19 +30,18 @@
   - [III-6 Un peu de programmation](bayes.md#iii-6-un-peu-de-programmation)
 
 
-- [Chapitre IV: Machine à vecteurs de support](svm.md)
+- [Chapitre IV: Arbre de décision](arbres.md)
 
 
-- [Chapitre V: Arbre de décision](arbres.md)
+- [Chapitre V: Régression](regression.md)
 
-
-- [Chapitre VI: Régression](regression.md)
-
+- [Chapitre VI: Machine à vecteurs de support](svm.md)
 
 - [Chapitre VII: Réseau de neurones artificiels](neurones.md)
+  - [VII-1 Motivation](#vii-1-motivation)
 
 
-- [Chapitre VII: Regroupement K-Means](kmean.md)
+- [Chapitre VIII: Regroupement K-Means](kmean.md)
 
 
 - [Chapitre IX: Auto-encodeur](autoencodeur.md)

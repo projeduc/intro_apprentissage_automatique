@@ -18,7 +18,7 @@
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="AA-supervise.svg">
   <title
-     id="title1366">CRISP-DM</title>
+     id="title1634">Aprentissage automatique supervisé</title>
   <defs
      id="defs2">
     <marker
@@ -200,8 +200,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="127.97625"
-     inkscape:cy="228.64243"
+     inkscape:cx="339.66216"
+     inkscape:cy="159.97143"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -221,7 +221,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>CRISP-DM</dc:title>
+        <dc:title>Aprentissage automatique supervisé</dc:title>
         <cc:license
            rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
         <dc:creator>
@@ -229,6 +229,11 @@
             <dc:title>Abdelkrime Aries</dc:title>
           </cc:Agent>
         </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>CC-BY-SA-4.0</dc:title>
+          </cc:Agent>
+        </dc:rights>
       </cc:Work>
       <cc:License
          rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
@@ -253,7 +258,8 @@
      id="layer1"
      transform="translate(0,-191.16665)">
     <g
-       id="g5311">
+       id="g5311"
+       transform="translate(1.0583333,-9.4494126)">
       <use
          height="100%"
          width="100%"
@@ -324,7 +330,7 @@
     </g>
     <use
        id="use5034-0-0"
-       transform="matrix(0.55552359,0,0,0.50104768,82.449842,270.16352)"
+       transform="matrix(0.55552359,0,0,0.50104768,83.508176,266.45933)"
        style="fill:#aaccee;stroke:#000000"
        xlink:href="#Document"
        x="0"
@@ -358,59 +364,36 @@
        y="0"
        width="100%"
        height="100%" />
-    <flowRoot
+    <text
        xml:space="preserve"
-       id="flowRoot5246"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,18.520839,193.28333)"><flowRegion
-         id="flowRegion5248"><rect
-           id="rect5250"
-           width="252.69568"
-           height="116.98142"
-           x="408.73288"
-           y="65.875717" /></flowRegion><flowPara
-         id="flowPara5252"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Entraînnement</flowPara></flowRoot>    <flowRoot
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="126.66463"
+       y="220.24574"
+       id="text1566"><tspan
+         sodipodi:role="line"
+         x="126.66463"
+         y="220.24574"
+         id="tspan1564"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:4.93888889px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"><tspan
+           x="126.66463"
+           y="220.24574"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888889px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1562">Entraînnement</tspan></tspan></text>
+    <text
        xml:space="preserve"
-       id="flowRoot5246-6"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,28.187905,251.32834)"><flowRegion
-         id="flowRegion5248-3"><rect
-           id="rect5250-9"
-           width="252.69568"
-           height="116.98142"
-           x="408.73288"
-           y="65.875717" /></flowRegion><flowPara
-         id="flowPara5252-3"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Modèle</flowPara></flowRoot>    <g
-       id="g5321"
-       transform="translate(3.1750001)">
-      <use
-         height="100%"
-         width="100%"
-         y="0"
-         x="0"
-         xlink:href="#Preparation"
-         style="fill:#aaccee;stroke:#000000"
-         transform="matrix(1.1561286,0,0,1,32.453282,226.50742)"
-         id="use5202" />
-      <flowRoot
-         transform="matrix(0.26458333,0,0,0.26458333,-66.105351,222.18697)"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         id="flowRoot5246-6-1"
-         xml:space="preserve"><flowRegion
-           style="line-height:50%"
-           id="flowRegion5248-3-2"><rect
-             style="line-height:50%"
-             y="65.875717"
-             x="408.73288"
-             height="116.98142"
-             width="252.69568"
-             id="rect5250-9-4" /></flowRegion><flowPara
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
-           id="flowPara5252-3-7">Partitionn-</flowPara><flowPara
-           id="flowPara5313"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">ement</flowPara></flowRoot>    </g>
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="136.3317"
+       y="278.29074"
+       id="text1602"><tspan
+         sodipodi:role="line"
+         x="136.3317"
+         y="278.29074"
+         id="tspan1600"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:4.93888889px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"><tspan
+           x="136.3317"
+           y="278.29074"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888889px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1598">Modèle</tspan></tspan></text>
     <use
        id="use5341"
        transform="matrix(0.51153687,0,0,0.42354584,185.26288,271.01936)"
@@ -420,69 +403,114 @@
        y="0"
        width="100%"
        height="100%" />
-    <flowRoot
+    <text
        xml:space="preserve"
-       id="flowRoot5246-60"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,-106.14484,199.92358)"><flowRegion
-         id="flowRegion5248-2"
-         style="line-height:50%"><rect
-           id="rect5250-6"
-           width="252.69568"
-           height="116.98142"
-           x="408.73288"
-           y="65.875717"
-           style="line-height:50%" /></flowRegion><flowPara
-         id="flowPara5252-9"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Données </flowPara><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara5381">annotées</flowPara></flowRoot>    <flowRoot
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="4.115612"
+       y="200.69254"
+       id="text1542"><tspan
+         sodipodi:role="line"
+         x="4.115612"
+         y="200.69254"
+         id="tspan1536"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"><tspan
+           x="4.115612"
+           y="200.69254"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1532"
+           dx="0 0 0 0 0 0 0 0 0">Données </tspan></tspan><tspan
+         sodipodi:role="line"
+         x="4.115612"
+         y="206.1114"
+         id="tspan1540"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"><tspan
+           x="4.115612"
+           y="206.1114"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1538">annotées</tspan></tspan></text>
+    <text
        xml:space="preserve"
-       id="flowRoot5246-60-8"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,-30.553345,172.57066)"><flowRegion
-         id="flowRegion5248-2-7"
-         style="line-height:50%"><rect
-           id="rect5250-6-6"
-           width="252.69568"
-           height="116.98142"
-           x="408.73288"
-           y="65.875717"
-           style="line-height:50%" /></flowRegion><flowPara
-         id="flowPara5252-9-5"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Données </flowPara><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara5381-2">d'entraînnement</flowPara></flowRoot>    <flowRoot
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="77.590439"
+       y="195.56432"
+       id="text1554"><tspan
+         sodipodi:role="line"
+         x="77.590439"
+         y="195.56432"
+         id="tspan1548"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:4.93888889px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"><tspan
+           x="77.590439"
+           y="195.56432"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888889px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1544">Données </tspan></tspan><tspan
+         sodipodi:role="line"
+         x="77.590439"
+         y="200.98318"
+         id="tspan1552"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:4.93888889px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"><tspan
+           x="77.590439"
+           y="200.98318"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888889px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1550">d'entraînnement</tspan></tspan></text>
+    <text
        xml:space="preserve"
-       id="flowRoot5246-60-4"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,-24.127749,241.96712)"><flowRegion
-         id="flowRegion5248-2-0"
-         style="line-height:50%"><rect
-           id="rect5250-6-0"
-           width="252.69568"
-           height="116.98142"
-           x="408.73288"
-           y="65.875717"
-           style="line-height:50%" /></flowRegion><flowPara
-         id="flowPara5252-9-6"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Données </flowPara><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara5381-8">de test</flowPara></flowRoot>    <flowRoot
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="84.016037"
+       y="261.78574"
+       id="text1590"><tspan
+         sodipodi:role="line"
+         x="84.016037"
+         y="261.78574"
+         id="tspan1584"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"><tspan
+           x="84.016037"
+           y="261.78574"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1580"
+           dx="0 0 0 0 0 0 0 0 0">Données </tspan></tspan><tspan
+         sodipodi:role="line"
+         x="84.016037"
+         y="267.20459"
+         id="tspan1588"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"><tspan
+           x="84.016037"
+           y="267.20459"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1586">de test</tspan></tspan></text>
+    <text
        xml:space="preserve"
-       id="flowRoot5246-6-5"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,79.264291,241.91733)"><flowRegion
-         id="flowRegion5248-3-4"><rect
-           id="rect5250-9-9"
-           width="252.69568"
-           height="116.98142"
-           x="408.73288"
-           y="65.875717" /></flowRegion><flowPara
-         id="flowPara5252-3-4"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Résulat</flowPara></flowRoot>    <g
-       id="g4090"
-       transform="translate(-23.812509,-14.81667)">
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="187.40808"
+       y="268.87973"
+       id="text1596"><tspan
+         sodipodi:role="line"
+         x="187.40808"
+         y="268.87973"
+         id="tspan1594"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'sans-serif, Bold';font-family:sans-serif;font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:4.93888889px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"><tspan
+           x="187.40808"
+           y="268.87973"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888889px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1592">Résulat</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:517.00000763%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="108.85714"
+       y="249.37498"
+       id="text1606"><tspan
+         sodipodi:role="line"
+         id="tspan1604"
+         x="108.85714"
+         y="279.65131"
+         style="stroke-width:0.26458332px"></tspan><tspan
+         sodipodi:role="line"
+         x="108.85714"
+         y="334.36713"
+         style="stroke-width:0.26458332px"
+         id="tspan1608" /></text>
+    <g
+       id="g1670"
+       transform="translate(0.52916667,23.51012)">
       <use
          height="100%"
          width="100%"
@@ -490,7 +518,7 @@
          x="0"
          xlink:href="#InputOutput"
          style="fill:#aaccee;stroke:#000000"
-         transform="matrix(0.51153687,0,0,0.42354585,108.53371,235.67858)"
+         transform="matrix(0.51153687,0,0,0.42354585,1.18846,241.6506)"
          id="use5341-5" />
       <use
          height="100%"
@@ -499,7 +527,7 @@
          x="0"
          xlink:href="#InputOutput"
          style="fill:#aaccee;stroke:#000000"
-         transform="matrix(0.51153687,0,0,0.42354585,110.65039,238.32443)"
+         transform="matrix(0.51153687,0,0,0.42354585,3.30514,244.29645)"
          id="use5341-0" />
       <use
          height="100%"
@@ -508,20 +536,135 @@
          x="0"
          xlink:href="#InputOutput"
          style="fill:#aaccee;stroke:#000000"
-         transform="matrix(0.51153687,0,0,0.42354585,113.54037,240.93944)"
+         transform="matrix(0.51153687,0,0,0.42354585,5.6659533,246.38229)"
          id="use5341-2" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#InputOutput"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.51153687,0,0,0.42354585,8.4456187,248.83214)"
+         id="use5341-2-2" />
     </g>
-    <flowRoot
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#0000ff;stroke-width:0.4832195;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1672"
+       width="29.116209"
+       height="83.187248"
+       x="1.877841"
+       y="211.54488" />
+    <g
+       id="g1783"
+       transform="translate(0.39929386,-0.26735206)">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#InputOutput"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.51153687,0,0,0.42354585,85.965159,217.81173)"
+         id="use5341-5-0" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#InputOutput"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.51153687,0,0,0.42354585,88.081839,220.45758)"
+         id="use5341-0-2" />
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#InputOutput"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(0.51153687,0,0,0.42354585,90.442652,222.54343)"
+         id="use5341-2-1" />
+    </g>
+    <use
+       id="use5341-2-2-5"
+       transform="matrix(0.51153687,0,0,0.42354585,85.608494,280.95203)"
+       style="fill:#aaccee;stroke:#000000"
+       xlink:href="#InputOutput"
+       x="0"
+       y="0"
+       width="100%"
+       height="100%" />
+    <text
        xml:space="preserve"
-       id="flowRoot5246-6-5-1"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,-24.382293,217.65126)"><flowRegion
-         id="flowRegion5248-3-4-7"><rect
-           id="rect5250-9-9-4"
-           width="252.69568"
-           height="116.98142"
-           x="408.73288"
-           y="65.875717" /></flowRegion><flowPara
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
-         id="flowPara4116">Résulats attendus</flowPara></flowRoot>  </g>
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="3.9191649"
+       y="217.53407"
+       id="text1542-6"><tspan
+         sodipodi:role="line"
+         x="3.9191649"
+         y="222.95294"
+         id="tspan1540-0"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"><tspan
+           x="3.9191649"
+           y="222.95294"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1538-3">Entrées</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="4.4769492"
+       y="260.48416"
+       id="text1542-6-7"><tspan
+         sodipodi:role="line"
+         x="4.4769492"
+         y="265.90302"
+         id="tspan1540-0-6"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"><tspan
+           x="4.4769492"
+           y="265.90302"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1538-3-9">Sorties</tspan></tspan></text>
+    <g
+       id="g1774">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         xlink:href="#Process"
+         style="fill:#aaccee;stroke:#000000"
+         transform="matrix(1.2863139,0,0,0.74943289,27.391374,236.84669)"
+         id="use5143-0" />
+    </g>
+    <g
+       id="g5321"
+       transform="translate(-3.4017858,7.4083337)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:50%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="37.880695"
+         y="242.53481"
+         id="text1578"><tspan
+           sodipodi:role="line"
+           x="37.880695"
+           y="242.53481"
+           id="tspan1572"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"><tspan
+             x="37.880695"
+             y="242.53481"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;line-height:50%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+             id="tspan1568">Fractionnement</tspan></tspan><tspan
+           sodipodi:role="line"
+           x="37.880695"
+           y="247.97185"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1646">des données</tspan><tspan
+           sodipodi:role="line"
+           x="37.880695"
+           y="254.81999"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"
+           id="tspan1644" /></text>
+    </g>
+  </g>
 </svg>

@@ -4,7 +4,7 @@
 
 [(Retour vers la page principale)](README.md)
 
-- Chapitre I: Introduction
+- Chapitre I: Introduction 
   - [I-1 Motivation](#i-1-motivation)
   - [I-2 Applications](#i-2-applications)
   - [I-3 Types des algorithmes d'apprentissage](#i-3-types-des-algorithmes-dapprentissage)
