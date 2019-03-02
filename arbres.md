@@ -1,5 +1,11 @@
 ﻿# Chapitre V: Arbre de décision
 
+[vec-f]: https://latex.codecogs.com/png.latex?\overrightarrow{f}
+[c-i]: https://latex.codecogs.com/png.latex?c_i
+[S-j]: https://latex.codecogs.com/png.latex?S_j
+[f-j]: https://latex.codecogs.com/png.latex?f_j
+
+
 ## Sommaire
 
 [(Retour vers la page principale)](README.md)
@@ -15,7 +21,7 @@
 
 ## IV-1 Description
 
-
+**TODO**: More description HERE!!
 
 L'algorithme de création d'un arbre de décision:
 1. Déterminer la meilleure caractéristique dans l'ensemble de données d'entrainement.
@@ -27,6 +33,124 @@ L'algorithme de création d'un arbre de décision:
 [(Sommaire)](#sommaire)
 
 ## IV-2 ID3
+
+Il a été dévelopé en 1986 par Ross Quinlan.
+L'algorithme ne fonctionne que sur des caractéristiques nominales.
+Donc, si on a des caractéristiques continues, il faut appliquer la discritésation.
+
+
+### IV-2-1 sélectionner la meilleure caractéristique
+
+Cet algorithme utilise la fonction entropie et le gain d'information pour décider quelle est la meilleure caractéristique.
+Etant donnée un ensemble de classes **C**, l'entropie de ensemble de donnée **S** est exprimée par:
+
+![IV-2-entropy-s]
+
+Où (en divivant le nombre des échantillons d'une certaine classe sur le nombre de tous les échantillons dans les données d'entrainement):
+
+![IV-2-pci]
+
+Etant donnée un vecteur de caractéristiques ![vec-f], en utilisant les valuers d'une caractéristique ![f-j], on peut diviser l'ensemble de donnée **S** en plusieurs sous ensembles groupés dans un ensemble ![S-j].
+Le gain d'information est mesuré en se basant sur la différence entre l'entropie originale de **S** et celle après sa division en se basant sur une caractéristique ![f-j].
+
+![IV-2-ig]
+
+Où:
+
+![IV-2-psjk]
+
+### IV-2-2 Exemple
+
+On veut estimer une décision (jouer ou non) en se basant sur 4 caractéristiques: temps, température, humidité et vent.
+On va construire un arbre de décision en se basant sur les données suivants:
+
+| temps | température | humidité | vent | jouer |
+| :---: | :---: | :---: | :---: | :---: |
+| ensoleilé | chaude | haute | non | non |
+| ensoleilé | chaude | haute | oui | non |
+| nuageux | chaude | haute | non | oui |
+| pluvieux | douce | haute | non | oui |
+| pluvieux | fraîche | normale | non | oui |
+| pluvieux | fraîche | normale | oui | non |
+| nuageux | fraîche | normale | oui | oui |
+| ensoleilé | douce | haute | non | non |
+| ensoleilé | fraîche | normale | non | oui |
+| pluvieux | douce | normale | non | oui |
+| ensoleilé | douce | normale | oui | oui |
+| nuageux | douce | haute | oui | oui |
+| nuageux | chaude | normale | non | oui |
+| pluvieux | douce | haute | oui | non |
+
+On calcule la probabilité de chaque classe:
+
+P(jouer=oui) = 9/14
+
+P(jouer=non) = 5/14
+
+On calcule, ensuite, l'entropie de l'ensemble des données:
+
+H(S) = - P(jouer=oui) \* log2(P(jouer=oui)) - P(jouer=non) \* log2(P(jouer=non))
+
+H(S) = - 9/14 \* log2(9/14) - 5/14 \* log2(9/14)
+
+H(S) = 0.41 + 0.53 = 0.94
+
+Pour chaque caractéristique, on calcule le gain d'information.
+
+**temps:**
+
+Le caractéristique "temps" divise les données sur 3 sous ensembles. Voici le nombre des occurrences de chaque classe dans chaque sous-ensemble:
+
+| temps |  jouer (oui) | jouer (non) |
+| :---: | :---: | :---: |
+| ensoleilé | 2 | 3 |
+| nuageux | 4 | 0 |
+| pluvieux | 3 | 2 |
+
+On calcule la probabilité de chaque ensemble:
+
+P(S_ensoleilé) = |S_ensoleilé|/|S| = 5/14
+
+P(S_nuageux) = |S_nuageux|/|S| = 4/14
+
+P(S_pluvieux) = |S_pluvieux|/|S| = 5/14
+
+On calcule l'entropie de chaque ensemble:
+
+H(S_ensoleilé) = - 2/5 \* log2(2/5) - 3/5 \* log2(3/5) = 0.971
+
+P(S_nuageux) = - 4/4 \* log2(4/4) - 0/4 \* log2(0/4) = 0
+
+P(S_pluvieux) = - 3/5 \* log2(3/5) - 2/5 \* log2(2/5) = 0.971
+
+Le gain d'information de la caractéristique "temps":
+
+IG(S, temps) = H(S) - P(S_ensoleilé) \* H(S_ensoleilé) - P(S_nuageux) \* H(S_nuageux) - P(S_pluvieux) \* H(S_pluvieux)
+
+IG(S, temps) = 0.94 - 5/14 \* 0.971 - 4/14 \* 0 - 5/14 \* 0.971
+
+IG(S, temps) = 0.247
+
+En calculant le gain d'information des autres caractéristiques
+
+| | temps | température | humidité | vent |
+| :---: | :---: | :---: | :---: | :---: |
+| IG | 0.247 | 0.029 | 0.152 | 0.048 |
+
+Donc, la première caractéristique à vérifier dans l'arbre sera "temps".
+Comme l'entropie du temps étant "nuageux" est 0, cet ensemble contient des échantillons de la même classe.
+Donc, cet ensemble forme une feuille.
+
+| ![nbr-automobiles2](IMG/id3-init.svg) |
+|:--:|
+| *Division des données selon la caractéristique "temps" * |
+
+
+
+[IV-2-entropy-s]: https://latex.codecogs.com/png.latex?H(S)=\sum\limits_{c_i\in{C}}-P(c_i)log_{2}P(c_i)
+[IV-2-pci]: https://latex.codecogs.com/png.latex?P(c_i)=\frac{&#124;c_i&#124;}{&#124;S&#124;}
+[IV-2-ig]: https://latex.codecogs.com/png.latex?IG(S,f_j)=H(S)-\sum\limits_{S_{jk}\in{S_j}}P(S_{jk})H(S_{jk})
+[IV-2-psjk]: https://latex.codecogs.com/png.latex?P(S_{jk})=\frac{&#124;S_{jk}&#124;}{&#124;S&#124;}
 
 [(Sommaire)](#sommaire)
 
@@ -44,11 +168,18 @@ Parmi les avantages des arbres de décision:
 - Ils sont simples à comprendre et à interpréter. On peut visualiser les arbres. Aussi, on peut expliquer les résulats oubtenus facilement.
 - Ils peuvent travailler sur des données avec peu de préparation. Par exemple, ils n'ont pas besoin de la normalisation des données.
 - Ils acceptent les données numériques et nominales. Les autres algorithmes d'apprentissage sont spécialisés dans un seul type de données.
--
+- Ils donnent de bonne performance même si leurs hypothèses sont un peu violées par le modèle réel à partir duquel les données ont été générées.
 
 [(Sommaire)](#sommaire)
 
 ## IV-6 Limites
+
+Parmi les avantages des arbres de décision:
+- Ils peuvent être aussi complexes, ils ne généralisent pas bien (overfitting: surapprentissage). On peut régler ça en fixant le nombre minimum des échantillons dans les feuilles ou en fixant la profondeur maximale de l'arbre.
+- Ils peuvent être unstable à cause des variations des données.
+- Ils existe des conceptes qui sont un peu difficile à apprendre par les arbres de décision. Ils ne sont pas faciles à exprimer, par exemple: XOR.
+- Ils peuvent être biaisés à la classe dominante. Donc, il faut balancer les données avant d'entrainer le système.
+- Ce n'ai pas garanti de tomber sur l'arbre de décision optimal.
 
 [(Sommaire)](#sommaire)
 

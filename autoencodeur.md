@@ -6,7 +6,6 @@
 
 - Chapitre IX: Auto-encodeur
   - [V-1 Motivation](#iv-1-motivation)
-  - [V-1 Classification](#iv-1-classification)
   - [V-2 Apprentissage](#iv-2-apprentissage)
   - [V-3 Exemples](#iv-3-exemples)
   - [V-4 Avantages](#iv-4-avantages)
