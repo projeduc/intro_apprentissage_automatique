@@ -109,11 +109,11 @@ Le caractéristique "temps" divise les données sur 3 sous ensembles. Voici le n
 
 On calcule la probabilité de chaque ensemble:
 
-P(S_ensoleilé) = |S_ensoleilé|/|S| = 5/14
+P(S_ensoleilé) = 5/14
 
-P(S_nuageux) = |S_nuageux|/|S| = 4/14
+P(S_nuageux)  = 4/14
 
-P(S_pluvieux) = |S_pluvieux|/|S| = 5/14
+P(S_pluvieux)  = 5/14
 
 On calcule l'entropie de chaque ensemble:
 
@@ -141,11 +141,15 @@ Donc, la première caractéristique à vérifier dans l'arbre sera "temps".
 Comme l'entropie du temps étant "nuageux" est 0, cet ensemble contient des échantillons de la même classe.
 Donc, cet ensemble forme une feuille.
 
-| ![nbr-automobiles2](IMG/id3-init.svg) |
+| ![id3-init](IMG/id3-init.svg) |
 |:--:|
-| *Division des données selon la caractéristique "temps" * |
+| *Division des données selon la caractéristique "temps"* |
 
+On fait la même chose sur les sous ensembles.
 
+| ![id3-final](IMG/id3-final.svg) |
+|:--:|
+| *L'arbre de décision en utilisant ID3* |
 
 [IV-2-entropy-s]: https://latex.codecogs.com/png.latex?H(S)=\sum\limits_{c_i\in{C}}-P(c_i)log_{2}P(c_i)
 [IV-2-pci]: https://latex.codecogs.com/png.latex?P(c_i)=\frac{&#124;c_i&#124;}{&#124;S&#124;}
@@ -155,6 +159,13 @@ Donc, cet ensemble forme une feuille.
 [(Sommaire)](#sommaire)
 
 ## IV-3 C4.5
+
+Cet algorithme est une amélioration sur l'algorithme ID3.
+Parmi les améliorations:
+- Transformer les caractéristiques continues (numériques) en caractéristiques nominales dynamiquement.
+- Les caractéristiques sans valeurs sont ignorées lors du calcul de l'entropie et le gain d'information.
+- Élagage des arbres après la création.
+
 
 [(Sommaire)](#sommaire)
 
@@ -195,3 +206,6 @@ Parmi les avantages des arbres de décision:
 - https://medium.com/deep-math-machine-learning-ai/chapter-4-decision-trees-algorithms-b93975f7a1f1
 - https://medium.com/coinmonks/what-is-entropy-and-why-information-gain-is-matter-4e85d46d2f01
 - https://scikit-learn.org/stable/modules/tree.html
+- https://sefiks.com/2017/11/20/a-step-by-step-id3-decision-tree-example/
+- https://sefiks.com/2018/05/13/a-step-by-step-c4-5-decision-tree-example/
+- https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/
