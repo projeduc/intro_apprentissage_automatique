@@ -406,6 +406,8 @@ Les processus d'apprentissage sera comme suit:
 - [Alteryx designer](https://www.alteryx.com/products/alteryx-platform/alteryx-designer) Payant, Windows
 - [Rapidminer studio](https://rapidminer.com/products/studio/) Freemium,
 - [Weka](https://www.cs.waikato.ac.nz/ml/weka/) Licence GPL, Java
+- Ce sont des logiciels visuels qui peuvent être utilisés par des non informaticiens.
+- [Orange3](https://orange.biolab.si): écrit en python.
 
 ### Services
 

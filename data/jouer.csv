@@ -1,0 +1,15 @@
+temps,température,humidité,vent,jouer
+ensoleilé,30,85,non,non
+ensoleilé,27,90,oui,non
+nuageux,28,78,non,oui
+pluvieux,21,96,non,oui
+pluvieux,20,80,non,oui
+pluvieux,18,70,oui,non
+nuageux,18,65,oui,oui
+ensoleilé,22,95,non,non
+ensoleilé,21,70,non,oui
+pluvieux,24,80,non,oui
+ensoleilé,24,70,oui,oui
+nuageux,22,90,oui,oui
+nuageux,27,75,non,oui
+pluvieux,22,80,oui,non,

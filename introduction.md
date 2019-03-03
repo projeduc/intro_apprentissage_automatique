@@ -4,7 +4,7 @@
 
 [(Retour vers la page principale)](README.md)
 
-- Chapitre I: Introduction 
+- Chapitre I: Introduction
   - [I-1 Motivation](#i-1-motivation)
   - [I-2 Applications](#i-2-applications)
   - [I-3 Types des algorithmes d'apprentissage](#i-3-types-des-algorithmes-dapprentissage)
@@ -304,7 +304,10 @@ La liste suivante contient les outils avec plusieurs algorithmes d'apprentissage
 
 ### I-5-2 Logiciels
 
-- [Weka](https://www.cs.waikato.ac.nz/ml/weka/)
+Ce sont des logiciels visuels qui peuvent être utilisés par des non informaticiens.
+
+- [Weka](https://www.cs.waikato.ac.nz/ml/weka/): écrit en java. 
+- [Orange3](https://orange.biolab.si): écrit en python.
 
 ### I-5-3 Apprentissage automatique comme un service
 

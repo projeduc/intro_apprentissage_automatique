@@ -21,25 +21,34 @@
 
 ## IV-1 Description
 
-**TODO**: More description HERE!!
+Un arbre de décision est un modèle très simple.
+Etant donnée plusieurs caractéristiques, la décision se commence par un de ces caractéristiques; si ce n'ai pas suffisant, on utilise une autre, ainsi de suite.
+Il est largement connu et utilisé dans de nombreuses entreprises pour faciliter le processus de prise de décision et l'analyse des risques.
+Il a été largement utilisé dans les années 1960-1980 pour la construction de systèmes experts.
+Les règles sont introduites manuellement, pour cette raison ce modèle a perdu sa popularité après les années 80.
+L'apparition des méthodes mathématiques pour construire les arbres de décision fait revenir ce modèle à la bataille des algorithmes de l'apparentissage automatique.
 
-L'algorithme de création d'un arbre de décision:
+Il existe plusieurs algorithmes automatiques pour construire les arbres de décision:
+- **ID3** (Iterative Dichotomiser 3): dévelopé en 1986 par Ross Quinlan. Il peut être appliqué seulement sur les caractéristiques nominales. Il est utilisé pour le classement.
+- **C4.5**: une extension de ID3 par Ross Quinlan. Il peut être appliqué sur tous les types de caractéristiques. Il est utilisé pour le classement.
+- **C5.0**: une extension commerciale de C4.5, toujours par Ross Quinlan.
+- **CART** (Classification and Regression Trees): comme C4.5 mais utilise d'autres métriques. Aussi, l'algorithme supporte la régression.
+
+L'algorithme général de création d'un arbre de décision:
 1. Déterminer la meilleure caractéristique dans l'ensemble de données d'entrainement.
 1. Diviser les données d'entrainement en sous-ensembles contenant les valeurs possibles de la meilleure caractéristique.
 1. Générez de manière récursive de nouveaux arbres de décision en utilisant les sous-ensembles de données créés.
 1. Lorsqu'on ne peut plus classifier les données, on s'arrête.
 
-
 [(Sommaire)](#sommaire)
 
 ## IV-2 ID3
 
-Il a été dévelopé en 1986 par Ross Quinlan.
 L'algorithme ne fonctionne que sur des caractéristiques nominales.
 Donc, si on a des caractéristiques continues, il faut appliquer la discritésation.
+Aussi, il est utilisé pour le classement seulement.
 
-
-### IV-2-1 sélectionner la meilleure caractéristique
+### IV-2-1 Sélectionner la meilleure caractéristique
 
 Cet algorithme utilise la fonction entropie et le gain d'information pour décider quelle est la meilleure caractéristique.
 Etant donnée un ensemble de classes **C**, l'entropie de ensemble de donnée **S** est exprimée par:
@@ -166,10 +175,16 @@ Parmi les améliorations:
 - Les caractéristiques sans valeurs sont ignorées lors du calcul de l'entropie et le gain d'information.
 - Élagage des arbres après la création.
 
+### IV-3-1 Transformation en caractéristiques nominales
+
+
+### IV-3-2 Élagage des arbres
 
 [(Sommaire)](#sommaire)
 
 ## IV-4 CART
+
+### IV-4-1 Sélectionner la meilleure caractéristique
 
 [(Sommaire)](#sommaire)
 
@@ -196,6 +211,41 @@ Parmi les avantages des arbres de décision:
 
 ## IV-7 Un peu de programmation
 
+Il existe des outils pour construire des arbres de décision.
+Dans ce démo, on utilise toujours [Scikit-learn](https://scikit-learn.org/stable/):
+- Langage: python.
+- Algorithmes: CART.
+- Type de classification: classement et régression.
+- Limites: ne supporte pas les caractéristiques nominales.
+- Visualisation: oui.
+
+Concernant ID3, on peut construire un module (comme l'algorithme est simple), ou on peut chercher des modules sur internet; par exemple [decision-tree-id3](https://github.com/svaante/decision-tree-id3).
+
+## IV-7-1 Le classement
+
+Reprenant l'exemple précédent avec une petite modéfication: on utilise des caractéristiques continues.
+
+| temps | température | humidité | vent | jouer |
+| :---: | :---: | :---: | :---: | :---: |
+| ensoleilé | 30 | 85 | non | non |
+| ensoleilé | 27 | 90 | oui | non |
+| nuageux | 28 | 78 | non | oui |
+| pluvieux | 21 | 96 | non | oui |
+| pluvieux | 20 | 80 | non | oui |
+| pluvieux | 18 | 70 | oui | non |
+| nuageux | 18 | 65 | oui | oui |
+| ensoleilé | 22 | 95 | non | non |
+| ensoleilé | 21 | 70 | non | oui |
+| pluvieux | 24 | 80 | non | oui |
+| ensoleilé | 24 | 70 | oui | oui |
+| nuageux | 22 | 90 | oui | oui |
+| nuageux | 27 | 75 | non | oui |
+| pluvieux | 22 | 80 | oui | non |
+
+Consulter le fichier [data/jouer.csv](data/jouer.csv)
+
+Utiliser "One Hot Encoder" pour les caractéristiques nominales.
+
 [(Sommaire)](#sommaire)
 
 ## Bibliographie
@@ -209,3 +259,4 @@ Parmi les avantages des arbres de décision:
 - https://sefiks.com/2017/11/20/a-step-by-step-id3-decision-tree-example/
 - https://sefiks.com/2018/05/13/a-step-by-step-c4-5-decision-tree-example/
 - https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/
+- https://medium.com/machine-learning-guy/an-introduction-to-decision-tree-learning-id3-algorithm-54c74eb2ad55
