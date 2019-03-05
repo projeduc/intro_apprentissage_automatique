@@ -221,6 +221,42 @@ Dans ce démo, on utilise toujours [Scikit-learn](https://scikit-learn.org/stabl
 
 Concernant ID3, on peut construire un module (comme l'algorithme est simple), ou on peut chercher des modules sur internet; par exemple [decision-tree-id3](https://github.com/svaante/decision-tree-id3).
 
+## IV-7-1 Le classement ID3
+
+On va reprendre l'exemple précédent: décider de jouer en se basant sur des caractéristiques nominales. Consulter le fichier [data/jouer.csv](data/jouer0.csv)
+
+| temps | température | humidité | vent | jouer |
+| :---: | :---: | :---: | :---: | :---: |
+| ensoleilé | chaude | haute | non | non |
+| ensoleilé | chaude | haute | oui | non |
+| nuageux | chaude | haute | non | oui |
+| pluvieux | douce | haute | non | oui |
+| pluvieux | fraîche | normale | non | oui |
+| pluvieux | fraîche | normale | oui | non |
+| nuageux | fraîche | normale | oui | oui |
+| ensoleilé | douce | haute | non | non |
+| ensoleilé | fraîche | normale | non | oui |
+| pluvieux | douce | normale | non | oui |
+| ensoleilé | douce | normale | oui | oui |
+| nuageux | douce | haute | oui | oui |
+| nuageux | chaude | normale | non | oui |
+| pluvieux | douce | haute | oui | non |
+
+On va utiliser un outil sur Github: [https://github.com/svaante/decision-tree-id3](https://github.com/svaante/decision-tree-id3).
+Pour l'installer il faut taper sur le ligne de commande:
+
+```sh
+pip install decision-tree-id3 --user
+```
+
+On sépare les données en: entrées (les caractéristiques) et sorties (les classes: comestible ou toxique).
+Dans notre fichier, les classes (qui sont le résultat attendu) sont dans la colonne 0, et les autres caractéristiques (les entrées) sont dans les colonnes restantes.
+
+```python
+X = data.iloc[:,1:23] #les caractéristiques
+y = data.iloc[:, 0]  #les résulats (classes)
+```
+
 ## IV-7-1 Le classement
 
 Reprenant l'exemple précédent avec une petite modéfication: on utilise des caractéristiques continues.
