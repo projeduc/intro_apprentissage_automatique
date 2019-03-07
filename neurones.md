@@ -25,7 +25,7 @@ Un neurone est une cellule constituant l'unité fonctionnelle de base du systèm
 Il existe de trois parties importantes (parmi autres):
 - Dendrites: ce sont des fibres nerveuses qui ont comme but de transmettre (apporter) les impulsions électriques vers le corps. On peut les considérer comme des entrées.
 - Corps (péricaryon, soma): on peut le considérer comme un système de traitement. Il reçoit des impulsions électriques à partir des dendrites. Lorsque la charge électrique dépasse un certain seuil, il émit une impulsion électrique instantanée via son axone. On appel ça le potentiel d'action ou l'influx nerveux.
-- Axone: on peut le considérer comme la sortie du neurone. Il transporte le signal électrique vers d'autres neurones (ou vers les muscles ).
+- Axone: on peut le considérer comme la sortie du neurone. Il transporte le signal électrique vers d'autres neurones (ou vers les muscles).
 
 
 ## VII-2 Perceptron

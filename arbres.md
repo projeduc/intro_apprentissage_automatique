@@ -68,6 +68,9 @@ Où:
 
 ![IV-2-psjk]
 
+La caractéristiques ayant plus de gain d'information est celle sélectionnée comme meilleure.
+Aussi, la valeur avec entropie null est considérée comme feuille de l'arbre.
+
 ### IV-2-2 Exemple
 
 On veut estimer une décision (jouer ou non) en se basant sur 4 caractéristiques: temps, température, humidité et vent.
@@ -184,7 +187,16 @@ Parmi les améliorations:
 
 ## IV-4 CART
 
+
 ### IV-4-1 Sélectionner la meilleure caractéristique
+
+Dans le cas de classement, cet algorithme utilise la fonction Gini Index pour décider quelle est la meilleure caractéristique.
+Etant donnée un ensemble de classes **C**, la fonction Gini Index de l'ensemble de donnée **S** est exprimée par:
+
+![IV-4-gini]
+
+
+[IV-4-gini]: https://latex.codecogs.com/png.latex?E(S)=\sum\limits_{c_i\in{C}}P(c_i)(1-P(c_i))=1-\sum\limits_{c_i\in{C}}P^2(c_i)
 
 [(Sommaire)](#sommaire)
 
@@ -217,47 +229,84 @@ Dans ce démo, on utilise toujours [Scikit-learn](https://scikit-learn.org/stabl
 - Algorithmes: CART.
 - Type de classification: classement et régression.
 - Limites: ne supporte pas les caractéristiques nominales.
-- Visualisation: oui.
+- Visualisation: oui (en utilisant [Graphviz](https://www.graphviz.org)).
 
 Concernant ID3, on peut construire un module (comme l'algorithme est simple), ou on peut chercher des modules sur internet; par exemple [decision-tree-id3](https://github.com/svaante/decision-tree-id3).
 
-## IV-7-1 Le classement ID3
+## IV-7-1 Le classement (ID3)
 
-On va reprendre l'exemple précédent: décider de jouer en se basant sur des caractéristiques nominales. Consulter le fichier [data/jouer.csv](data/jouer0.csv)
+On va reprendre l'exemple précédent: décider de jouer en se basant sur des caractéristiques nominales. Consulter le fichier [data/jouer0.csv](data/jouer0.csv)
 
-| temps | température | humidité | vent | jouer |
+| temps | temperature | humidite | vent | jouer |
 | :---: | :---: | :---: | :---: | :---: |
-| ensoleilé | chaude | haute | non | non |
-| ensoleilé | chaude | haute | oui | non |
+| ensoleile | chaude | haute | non | non |
+| ensoleile | chaude | haute | oui | non |
 | nuageux | chaude | haute | non | oui |
 | pluvieux | douce | haute | non | oui |
-| pluvieux | fraîche | normale | non | oui |
-| pluvieux | fraîche | normale | oui | non |
-| nuageux | fraîche | normale | oui | oui |
-| ensoleilé | douce | haute | non | non |
-| ensoleilé | fraîche | normale | non | oui |
+| pluvieux | fraiche | normale | non | oui |
+| pluvieux | fraiche | normale | oui | non |
+| nuageux | fraiche | normale | oui | oui |
+| ensoleile | douce | haute | non | non |
+| ensoleile | fraiche | normale | non | oui |
 | pluvieux | douce | normale | non | oui |
-| ensoleilé | douce | normale | oui | oui |
+| ensoleile | douce | normale | oui | oui |
 | nuageux | douce | haute | oui | oui |
 | nuageux | chaude | normale | non | oui |
 | pluvieux | douce | haute | oui | non |
 
-On va utiliser un outil sur Github: [https://github.com/svaante/decision-tree-id3](https://github.com/svaante/decision-tree-id3).
-Pour l'installer il faut taper sur le ligne de commande:
+Les données sont sauvegardées sous format CSV ([data/jouer0.csv](data/jouer0.csv)).
+On va utiliser **pandas** pour lire le fichier.
 
-```sh
-pip install decision-tree-id3 --user
+```python
+import pandas
+#lire le fichier csv
+data = pandas.read_csv("../../data/jouer0.csv")
 ```
 
 On sépare les données en: entrées (les caractéristiques) et sorties (les classes: comestible ou toxique).
-Dans notre fichier, les classes (qui sont le résultat attendu) sont dans la colonne 0, et les autres caractéristiques (les entrées) sont dans les colonnes restantes.
+Dans ce fichier, les classes (qui sont le résultat attendu) sont dans la dernière colonne, et les autres caractéristiques (les entrées) sont dans les colonnes restantes.
 
 ```python
-X = data.iloc[:,1:23] #les caractéristiques
-y = data.iloc[:, 0]  #les résulats (classes)
+# séparer les données en: entrées et sorties
+X = data.iloc[:,:-1] #les caractéristiques
+y = data.iloc[:,-1]  #les résulats (classes)
 ```
 
-## IV-7-1 Le classement
+On va utiliser un outil sur Github: [https://github.com/svaante/decision-tree-id3](https://github.com/svaante/decision-tree-id3).
+On a modifié ce programme pour qu'il accepte les caractéristiques comme chaînes de caractères (string).
+Le code modifié est fourni avec ce tutorial: [codes/arbre/](codes/arbre/).
+
+
+```python
+# importer l'estimateur
+from id3a import Id3Estimator
+# créer un estimateur
+estimator = Id3Estimator()
+# entrainer l'estimateur
+estimator.fit(X, y)
+```
+
+On peut exporter l'arbre sous forme Graphviz.
+
+```python
+from id3a import export_graphviz
+# expoter l'arbre sous format graphviz
+export_graphviz(estimator.tree_, "resultat.dot", data.columns.tolist())
+```
+
+On peut visualiser ce fichier en utilisant [Graphviz](https://www.graphviz.org).
+Il faut l'installer sur machine.
+Aussi, on peut exporter ce fichier vers une image PNG.
+
+```sh
+dot -Tpng resultat.dot -o resultat.png
+```
+
+Le résulat sera:
+
+![resultat arbres id3](IMG/arbres-id3.png)
+
+## IV-7-2 Le classement (CART)
 
 Reprenant l'exemple précédent avec une petite modéfication: on utilise des caractéristiques continues.
 
@@ -281,6 +330,8 @@ Reprenant l'exemple précédent avec une petite modéfication: on utilise des ca
 Consulter le fichier [data/jouer.csv](data/jouer.csv)
 
 Utiliser "One Hot Encoder" pour les caractéristiques nominales.
+
+## IV-7-3 La régression (CART)
 
 [(Sommaire)](#sommaire)
 
