@@ -4,11 +4,8 @@
 # pip install decision-tree-id3 --user
 
 import pandas
-import numpy as np
-from id3 import Id3Estimator
-from id3 import export_graphviz
-from sklearn.preprocessing import OrdinalEncoder
-
+from id3a import Id3Estimator
+from id3a import export_graphviz
 
 #lire le fichier csv
 data = pandas.read_csv("../../data/jouer0.csv")
@@ -17,13 +14,10 @@ data = pandas.read_csv("../../data/jouer0.csv")
 X = data.iloc[:,:-1] #les caractéristiques
 y = data.iloc[:,-1]  #les résulats (classes)
 
-enc = OrdinalEncoder()
-
-enc.fit(X, y)
-
-X_ = enc.transform(X)
 
 # créer un estimateur
 estimator = Id3Estimator()
-estimator.fit(enc, y)
-export_graphviz(estimator.tree_, 'tree.dot', data.columns.tolist())
+# entrainer l'estimateur
+estimator.fit(X, y)
+# expoter l'arbre sous format graphviz
+export_graphviz(estimator.tree_, "resultat.dot", data.columns.tolist())
