@@ -178,10 +178,56 @@ Parmi les améliorations:
 - Les caractéristiques sans valeurs sont ignorées lors du calcul de l'entropie et le gain d'information.
 - Élagage des arbres après la création.
 
-### IV-3-1 Transformation en caractéristiques nominales
+### IV-3-1 Sélectionner la meilleure caractéristique
+
+Pour décider quelle est la meilleure caractéristique afin de diviser l'ensemble de données, C4.5 utilise une extension du gain d'information connue par **rapport de gain**.
+Lorsqu'on a une caractéristique ait un grand nombre de valeurs, elle sera favorisée par le gain d'information.
+Le rapport de gain fait face au problème de biais en normalisant le gain d'informations à l'aide de l'information de division.
+
+Etant donnée:
+- *C*: un ensemble de classes
+- *S*: un ensemble de donnée d'entrainement
+- ![vec-f]: un vecteur de caractéristiques
+- ![S-j]: un hyper-ensemble contenant des ensembles avec les mêmes valeurs de la caractéristique ![f-j].
+- *IG(S, ![f-j])*: le gain d'information en divisant l'ensemble de données *S* avec la caractéristique ![f-j].
+
+L'information de dévision *SI* (Split Information) peut être calculée comme suit:
+
+![IV-3-si]
+
+Et le rapport de gain *GR* (Gain Ratio) est calculé comme suit:
+
+![IV-3-gr]
+
+Donc, la caractéristique avec le plus grand rapport de gain sera prise comme caractéristique de division.
+
+### IV-3-2 Traitement des caractéristiques continues
+
+ID3 ne supporte pas les caractéristiques avec des valeurs continues; comme l'age, le prix, etc.
+C4.5 introduit le support de ce type de caractéristiques en cherchant le meilleur seuil qui peut diviser l'ensemble des valeurs d'une caractéristique en deux.
+
+Afin de sélectionner la bonne division, on suit l'algorithme suivant à chaque fois qu'on veuille comparer une caractéristique avec d'autres:
+- Pour chaque valeur *Vjk* d'une caractéristique ![f-j]
+  - Diviser l'ensemble de données *S* en deux sous ensembles: les données avec ![f-j] > *Vjk* et celles avec ![f-j] <= *Vjk*
+  - Calculer le rapport de gain *GR* de cet ensemble en le divisant avec un seuil *Vjk* sur la caractéristique ![f-j]
+- La  valeur qui maximise le rapport de gain est prise comme seuil de dévision
+
+### IV-3-3 Élagage des arbres (pruning)
+
+Pour éviter le sur-apprentissage (créer un arbre avec une grande profondeur), on peut utiliser la technique d'élagage.
+Il existe deux types d'élagage:
+- pré-élagage: utiliser des critères d'arrêt de la division. Par exemmple: nombre minimum des échantillons dans un noeud, un taux d'homogénéité d'un sous-ensemble.
+- post-élagage: construire l'arbre, ensuite éliminer les branches qui n'améliorent pas la performance de l'arbre.
+
+Voici l'algorithme de post-élagage utilisé par C4.5:
+- Construire l'arbre de décision
+- Transformer l'arbre à un ensemble de règles de la forme (Si [preconditions] Alors [résultat]) en traversant l'arbre depuis la racine jusqu'à une feuile.
+- Supprimer les préconditions qui n'améliorent pas la performance d'une règle.
+- Arranger les règles élagées en se basant sur leurs performances. On commence par la règle qui donne plus de performance et on se termine par celle qui donne moins.
 
 
-### IV-3-2 Élagage des arbres
+[IV-3-si]: https://latex.codecogs.com/png.latex?SI(S,f_j)=-\sum\limits_{S_{jk}\in{S_j}}\frac{&#124;S_{jk}&#124;}{&#124;S&#124;}*log_2(\frac{&#124;S_{jk}&#124;}{&#124;S&#124;})
+[IV-3-gr]: https://latex.codecogs.com/png.latex?GR(S,f_j)=\frac{IG(S,f_j)}{SI(S,f_j)}
 
 [(Sommaire)](#sommaire)
 
@@ -306,6 +352,10 @@ Le résulat sera:
 
 ![resultat arbres id3](IMG/arbres-id3.png)
 
+Si vous voulez implémenter cet algorithme de zéro, voici quelques outils que vous pouviez utiliser:
+- [scipy.stats.entropy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.entropy.html#scipy.stats.entropy)
+-
+
 ## IV-7-2 Le classement (CART)
 
 Reprenant l'exemple précédent avec une petite modéfication: on utilise des caractéristiques continues.
@@ -347,3 +397,5 @@ Utiliser "One Hot Encoder" pour les caractéristiques nominales.
 - https://sefiks.com/2018/05/13/a-step-by-step-c4-5-decision-tree-example/
 - https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/
 - https://medium.com/machine-learning-guy/an-introduction-to-decision-tree-learning-id3-algorithm-54c74eb2ad55
+- https://www.datacamp.com/community/tutorials/decision-tree-classification-python
+- https://pdfs.semanticscholar.org/2b3c/17da5e60d5bc953c181ca637bf6262469d25.pdf
