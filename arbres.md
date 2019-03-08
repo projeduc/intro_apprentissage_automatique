@@ -29,12 +29,16 @@ Les règles sont introduites manuellement, pour cette raison ce modèle a perdu 
 L'apparition des méthodes mathématiques pour construire les arbres de décision fait revenir ce modèle à la bataille des algorithmes de l'apparentissage automatique.
 
 Il existe plusieurs algorithmes automatiques pour construire les arbres de décision:
+
+
 - **ID3** (Iterative Dichotomiser 3): dévelopé en 1986 par Ross Quinlan. Il peut être appliqué seulement sur les caractéristiques nominales. Il est utilisé pour le classement.
 - **C4.5**: une extension de ID3 par Ross Quinlan. Il peut être appliqué sur tous les types de caractéristiques. Il est utilisé pour le classement.
 - **C5.0**: une extension commerciale de C4.5, toujours par Ross Quinlan.
 - **CART** (Classification and Regression Trees): comme C4.5 mais utilise d'autres métriques. Aussi, l'algorithme supporte la régression.
 
 L'algorithme général de création d'un arbre de décision:
+
+
 1. Déterminer la meilleure caractéristique dans l'ensemble de données d'entrainement.
 1. Diviser les données d'entrainement en sous-ensembles contenant les valeurs possibles de la meilleure caractéristique.
 1. Générez de manière récursive de nouveaux arbres de décision en utilisant les sous-ensembles de données créés.
@@ -59,8 +63,8 @@ Où (en divivant le nombre des échantillons d'une certaine classe sur le nombre
 
 ![IV-2-pci]
 
-Etant donnée un vecteur de caractéristiques ![vec-f], en utilisant les valuers d'une caractéristique ![f-j], on peut diviser l'ensemble de donnée **S** en plusieurs sous ensembles groupés dans un ensemble ![S-j].
-Le gain d'information est mesuré en se basant sur la différence entre l'entropie originale de **S** et celle après sa division en se basant sur une caractéristique ![f-j].
+Etant donnée un vecteur de caractéristiques ![vec-f], en utilisant les valuers d'une caractéristique ![f-j], on peut diviser l'ensemble de donnée *S* en plusieurs sous ensembles groupés dans un ensemble ![S-j].
+Le gain d'information est mesuré en se basant sur la différence entre l'entropie originale de *S* et celle après sa division en se basant sur une caractéristique ![f-j].
 
 ![IV-2-ig]
 
@@ -121,19 +125,17 @@ Le caractéristique "temps" divise les données sur 3 sous ensembles. Voici le n
 
 On calcule la probabilité de chaque ensemble:
 
-P(S_ensoleilé) = 5/14
 
-P(S_nuageux)  = 4/14
-
-P(S_pluvieux)  = 5/14
+- P(S_ensoleilé) = 5/14
+- P(S_nuageux)  = 4/14
+- P(S_pluvieux)  = 5/14
 
 On calcule l'entropie de chaque ensemble:
 
-H(S_ensoleilé) = - 2/5 \* log2(2/5) - 3/5 \* log2(3/5) = 0.971
 
-P(S_nuageux) = - 4/4 \* log2(4/4) - 0/4 \* log2(0/4) = 0
-
-P(S_pluvieux) = - 3/5 \* log2(3/5) - 2/5 \* log2(2/5) = 0.971
+- H(S_ensoleilé) = - 2/5 \* log2(2/5) - 3/5 \* log2(3/5) = 0.971
+- P(S_nuageux) = - 4/4 \* log2(4/4) - 0/4 \* log2(0/4) = 0
+- P(S_pluvieux) = - 3/5 \* log2(3/5) - 2/5 \* log2(2/5) = 0.971
 
 Le gain d'information de la caractéristique "temps":
 
@@ -174,6 +176,8 @@ On fait la même chose sur les sous ensembles.
 
 Cet algorithme est une amélioration sur l'algorithme ID3.
 Parmi les améliorations:
+
+
 - Transformer les caractéristiques continues (numériques) en caractéristiques nominales dynamiquement.
 - Les caractéristiques sans valeurs sont ignorées lors du calcul de l'entropie et le gain d'information.
 - Élagage des arbres après la création.
@@ -185,6 +189,8 @@ Lorsqu'on a une caractéristique ait un grand nombre de valeurs, elle sera favor
 Le rapport de gain fait face au problème de biais en normalisant le gain d'informations à l'aide de l'information de division.
 
 Etant donnée:
+
+
 - *C*: un ensemble de classes
 - *S*: un ensemble de donnée d'entrainement
 - ![vec-f]: un vecteur de caractéristiques
@@ -207,6 +213,8 @@ ID3 ne supporte pas les caractéristiques avec des valeurs continues; comme l'ag
 C4.5 introduit le support de ce type de caractéristiques en cherchant le meilleur seuil qui peut diviser l'ensemble des valeurs d'une caractéristique en deux.
 
 Afin de sélectionner la bonne division, on suit l'algorithme suivant à chaque fois qu'on veuille comparer une caractéristique avec d'autres:
+
+
 - Pour chaque valeur *Vjk* d'une caractéristique ![f-j]
   - Diviser l'ensemble de données *S* en deux sous ensembles: les données avec ![f-j] > *Vjk* et celles avec ![f-j] <= *Vjk*
   - Calculer le rapport de gain *GR* de cet ensemble en le divisant avec un seuil *Vjk* sur la caractéristique ![f-j]
@@ -216,10 +224,14 @@ Afin de sélectionner la bonne division, on suit l'algorithme suivant à chaque 
 
 Pour éviter le sur-apprentissage (créer un arbre avec une grande profondeur), on peut utiliser la technique d'élagage.
 Il existe deux types d'élagage:
+
+
 - pré-élagage: utiliser des critères d'arrêt de la division. Par exemmple: nombre minimum des échantillons dans un noeud, un taux d'homogénéité d'un sous-ensemble.
 - post-élagage: construire l'arbre, ensuite éliminer les branches qui n'améliorent pas la performance de l'arbre.
 
 Voici l'algorithme de post-élagage utilisé par C4.5:
+
+
 - Construire l'arbre de décision
 - Transformer l'arbre à un ensemble de règles de la forme (Si [preconditions] Alors [résultat]) en traversant l'arbre depuis la racine jusqu'à une feuile.
 - Supprimer les préconditions qui n'améliorent pas la performance d'une règle.
@@ -234,6 +246,8 @@ Voici l'algorithme de post-élagage utilisé par C4.5:
 ## IV-4 CART
 
 L'algorithme CART est similaire à celui de C4.5 avec quelques différences:
+
+
 - Il supporte la régression.
 - Il utilise d'autres critères pour sélectionner la meilleure caractéristique.
 Il essaye de minimiser une fonction de coût.
@@ -277,7 +291,7 @@ Si on atteint ce nombre, on ne divise plus et on considère le noeud comme feuil
 Aussi, on peut appliquer un post-élagage.
 La méthode la plus simple est de supprimer une feuille et de tester la performane sur des données de validation.
 Tant qu'il n'y a pas une chute de performance, on continue l'opération.
- 
+
 
 [IV-4-idg]: https://latex.codecogs.com/png.latex?ID(S,f_j)=\frac{&#124;S_G&#124;}{&#124;S&#124;}*E(S_G)+\frac{&#124;S_D&#124;}{&#124;S&#124;}*E(S_D)
 [IV-4-gini]: https://latex.codecogs.com/png.latex?E(S)=\sum\limits_{c_i\in{C}}P(c_i)(1-P(c_i))=1-\sum\limits_{c_i\in{C}}P^2(c_i)
@@ -393,7 +407,7 @@ Le résulat sera:
 ![resultat arbres id3](IMG/arbres-id3.png)
 
 Si vous voulez implémenter cet algorithme de zéro, voici quelques outils que vous pouviez utiliser:
-- [scipy.stats.entropy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.entropy.html#scipy.stats.entropy)
+ [scipy.stats.entropy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.entropy.html#scipy.stats.entropy)
 -
 
 ## IV-7-2 Le classement (CART)
