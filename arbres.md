@@ -233,16 +233,56 @@ Voici l'algorithme de post-élagage utilisé par C4.5:
 
 ## IV-4 CART
 
+L'algorithme CART est similaire à celui de C4.5 avec quelques différences:
+- Il supporte la régression.
+- Il utilise d'autres critères pour sélectionner la meilleure caractéristique.
+Il essaye de minimiser une fonction de coût.
+- Il utilise le pré-élagage en utilisant un critère d'arrêt.
+- Il crée des arbres binaires (je ne sais pas comment il le fait avec des caractéristiques nominales ayant plusieurs valeurs).
 
 ### IV-4-1 Sélectionner la meilleure caractéristique
 
-Dans le cas de classement, cet algorithme utilise la fonction Gini Index pour décider quelle est la meilleure caractéristique.
-Etant donnée un ensemble de classes **C**, la fonction Gini Index de l'ensemble de donnée **S** est exprimée par:
+Dans le cas de CART, la meilleure caractéristique est celle qui minimize une fonction de coût *E(S)*.
+Chaque caractéristique ![f-j] doit diviser un ensemble de données sur deux sous ensembles: gauche (*Sg*) et droit (*Sd*).
+Donc, celle avec la plus petite valeur de l'Indice de diversité sera choisie.
+
+![IV-4-idg]
+
+Dans le cas de classement, CART utilise l'indexe de diversité Gini pour mesurer l'erreur de classification.
+Etant donnée un ensemble de classes *C*, la fonction Gini Index de l'ensemble de donnée *S* est exprimée par:
 
 ![IV-4-gini]
 
+Où (en divivant le nombre des échantillons d'une certaine classe sur le nombre de tous les échantillons dans les données d'entrainement):
 
+![IV-2-pci]
+
+Dans le cas de régression, on utilise la somme des carrés résiduelle.
+Etant donné un ensemble de données *S*, la somme des carrés résiduelle est calculée par:
+
+![IV-4-rss]
+
+Où *yi* sont les valeurs attendues, et
+
+![IV-4-ym]
+
+est la valeur de sortie estimée.
+
+### IV-4-2 Élagage des arbres (pruning)
+
+CART utilise le pré-élagage qu'on le réfère par la condition d'arrêt.
+Le critère le plus utilisé pour arréter la division est le nombre minimal des échantillons dans un noeud.
+Si on atteint ce nombre, on ne divise plus et on considère le noeud comme feuille avec la classe dominante comme classe de sortie en cas de classement, ou la moyenne des sorties en cas de régression.
+
+Aussi, on peut appliquer un post-élagage.
+La méthode la plus simple est de supprimer une feuille et de tester la performane sur des données de validation.
+Tant qu'il n'y a pas une chute de performance, on continue l'opération.
+ 
+
+[IV-4-idg]: https://latex.codecogs.com/png.latex?ID(S,f_j)=\frac{&#124;S_G&#124;}{&#124;S&#124;}*E(S_G)+\frac{&#124;S_D&#124;}{&#124;S&#124;}*E(S_D)
 [IV-4-gini]: https://latex.codecogs.com/png.latex?E(S)=\sum\limits_{c_i\in{C}}P(c_i)(1-P(c_i))=1-\sum\limits_{c_i\in{C}}P^2(c_i)
+[IV-4-rss]: https://latex.codecogs.com/png.latex?E(S)=\frac{1}{&#124;S&#124;}\sum\limits_{i=1}^{i=&#124;S&#124;}(y_i-\overline{y})^2
+[IV-4-ym]: https://latex.codecogs.com/png.latex?\overline{y}=\frac{1}{&#124;S&#124;}\sum\limits_{i=1}^{i=&#124;S&#124;}y_i
 
 [(Sommaire)](#sommaire)
 
