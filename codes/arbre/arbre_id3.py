@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 # Ici, on va utiliser l'outil: https://github.com/svaante/decision-tree-id3
 # pip install decision-tree-id3 --user
+# On a modifié un peu dans le programme
+# afin qu'il puisse accepter les chaines de caractères
+# 
 
 import pandas
 from id3a import Id3Estimator

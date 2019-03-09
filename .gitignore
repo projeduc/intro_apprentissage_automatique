@@ -350,3 +350,6 @@ ENV/
 *outputs/
 
 .pytest_cache
+
+codes/**/*.png
+codes/**/*.dot

@@ -99,9 +99,9 @@ On va construire un arbre de décision en se basant sur les données suivants:
 
 On calcule la probabilité de chaque classe:
 
-P(jouer=oui) = 9/14
 
-P(jouer=non) = 5/14
+- P(jouer=oui) = 9/14
+- P(jouer=non) = 5/14
 
 On calcule, ensuite, l'entropie de l'ensemble des données:
 
@@ -431,11 +431,89 @@ Reprenant l'exemple précédent avec une petite modéfication: on utilise des ca
 | nuageux | 27 | 75 | non | oui |
 | pluvieux | 22 | 80 | oui | non |
 
-Consulter le fichier [data/jouer.csv](data/jouer.csv)
+Consulter le fichier [data/jouer.csv](data/jouer.csv).
 
-Utiliser "One Hot Encoder" pour les caractéristiques nominales.
+On commence toujours par la lecture du fichier en utilisant **pandas**.
+Et, bien sûre, séparer les données d'entrée et la sortie.
+
+```python
+import pandas
+
+#lire le fichier csv
+data = pandas.read_csv("../../data/jouer.csv")
+
+# séparer les données en: entrées et sorties
+X = data.iloc[:,:-1] #les caractéristiques
+y = data.iloc[:,-1]  #les résulats (classes)
+
+```
+
+Pour construire un arbre de classement, on va utiliser [sklearn.tree.DecisionTreeClassifier](scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html).
+L'outil ne supporte pas les caractéristiques nominales: "temps" et "vent" dans notre cas.
+Dans ce cas, on va les encoder comme des caractéristiques numériques.
+
+### IV-7-2-1 Encodage One Hot (Pandas)
+
+On va utiliser l'encodage **One Hot** fourni par [pandas.get_dummies](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html).
+
+```python
+X_dum = pandas.get_dummies(X)
+
+# imprimer les premières lignes des données
+print X_dum.head()
+```
+
+Lorsqu'on imprime les données avec les nouvelles colonnes, ça va nous donner:
+
+```
+           temperature  humidite  temps_ensoleile  temps_nuageux  temps_pluvieux  vent_non  vent_oui
+0           30        85                1              0               0         1         0
+1           27        90                1              0               0         0         1
+2           28        78                0              1               0         1         0
+3           21        96                0              0               1         1         0
+4           20        80                0              0               1         1         0
+
+```
+
+On utilise le classifieur fourni par **Scikit-learn**.
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+
+# créer un estimateur
+estimator = DecisionTreeClassifier()
+# entrainer l'estimateur
+estimator.fit(X_dum, y)
+```
+
+On peut exporter l'arbre sous forme Graphviz en utilisant la fonction [sklearn.tree.export_graphviz](https://scikit-learn.org/stable/modules/generated/sklearn.tree.export_graphviz.html).
+Ici, on va donner comme paramètres: le classifieur, le fichier de sortie, les noms des colonnes et les noms des classes.
+
+```python
+from sklearn.tree import export_graphviz
+
+# expoter l'arbre sous format graphviz
+export_graphviz(estimator,
+    out_file="arbre_cart0.dot",
+    feature_names = X_dum.columns,
+    class_names=estimator.classes_)
+```
+
+On peut visualiser ce fichier en utilisant [Graphviz](https://www.graphviz.org).
+Il faut l'installer sur machine.
+Aussi, on peut exporter ce fichier vers une image PNG.
+
+```sh
+dot -Tpng resultat.dot -o resultat.png
+```
+
+Le résulat sera:
+
+![resultat arbres cart-dummy](IMG/arbres-cart-dummy.png)
 
 ## IV-7-3 La régression (CART)
+
+
 
 [(Sommaire)](#sommaire)
 
