@@ -407,8 +407,8 @@ Le résulat sera:
 ![resultat arbres id3](IMG/arbres-id3.png)
 
 Si vous voulez implémenter cet algorithme de zéro, voici quelques outils que vous pouviez utiliser:
- [scipy.stats.entropy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.entropy.html#scipy.stats.entropy)
--
+-  [scipy.stats.entropy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.entropy.html#scipy.stats.entropy)
+
 
 ## IV-7-2 Le classement (CART)
 
@@ -451,6 +451,8 @@ y = data.iloc[:,-1]  #les résulats (classes)
 Pour construire un arbre de classement, on va utiliser [sklearn.tree.DecisionTreeClassifier](scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html).
 L'outil ne supporte pas les caractéristiques nominales: "temps" et "vent" dans notre cas.
 Dans ce cas, on va les encoder comme des caractéristiques numériques.
+Il existe une bibliothèque pour encoder les caractéristiques nominales comme numériques.
+Vous pouvez consulter [https://github.com/scikit-learn-contrib/categorical-encoding](https://github.com/scikit-learn-contrib/categorical-encoding).
 
 ### IV-7-2-1 Encodage One Hot (Pandas)
 
@@ -504,15 +506,53 @@ Il faut l'installer sur machine.
 Aussi, on peut exporter ce fichier vers une image PNG.
 
 ```sh
-dot -Tpng resultat.dot -o resultat.png
+dot -Tpng arbre_cart0.dot -o arbre_cart0.png
 ```
 
 Le résulat sera:
 
 ![resultat arbres cart-dummy](IMG/arbres-cart-dummy.png)
 
+### IV-7-2-2 Encodage DictVectorizer (Scikit-learn)
+
+On va utiliser [sklearn.feature_extraction.DictVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.DictVectorizer.html).
+On transforme les données stockées sous forme d'un **DataFrame**  vers une liste des dictionnaires (tableaux associatifs).
+Cette structure peut, ensuite, être transformée en  utilisant **DictVectorizer**.
+Enfin, on transforme la structure résultante vers un **DataFrame**.
+
+```python
+from sklearn.feature_extraction import DictVectorizer
+
+# Transformer X à une liste de dicts
+list_dicts = X.T.to_dict().values()
+# créer une instance du transformateur
+vec = DictVectorizer()
+# transformer
+new_list_dicts = vec.fit_transform(list_dicts).toarray()
+# créer un nouveau DataFrame
+X_vec = pandas.DataFrame(new_list_dicts, columns=vec.get_feature_names())
+
+# imprimer les premières lignes des données
+print X_vec.head()
+```
+
+L'opération donne le même résulatat que **pandas.get_dummies**.
+
+```
+       humidite  temperature  temps=ensoleile  temps=nuageux  temps=pluvieux  vent=non  vent=oui
+0      85.0         30.0              1.0            0.0             0.0       1.0       0.0
+1      90.0         27.0              1.0            0.0             0.0       0.0       1.0
+2      78.0         28.0              0.0            1.0             0.0       1.0       0.0
+3      96.0         21.0              0.0            0.0             1.0       1.0       0.0
+4      80.0         20.0              0.0            0.0             1.0       1.0       0.0
+```
+
+Le reste est le même qu'avant.
+
 ## IV-7-3 La régression (CART)
 
+Pour la régression, on utilise [sklearn.tree.DecisionTreeRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html) de la même façon.
+La seule chose différente est que les résulats *y* sont numériques.
 
 
 [(Sommaire)](#sommaire)
