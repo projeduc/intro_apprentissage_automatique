@@ -47,7 +47,7 @@
   - [VII-1 Motivation](#vii-1-motivation)
 
 
-- [Chapitre VIII: Regroupement K-Means](kmean.md)
+- [Chapitre VIII: Regroupement K-Means](kmeans.md)
 
 
 - [Chapitre IX: Auto-encodeur](autoencodeur.md)
