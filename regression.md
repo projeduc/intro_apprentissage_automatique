@@ -31,7 +31,7 @@ Il existe plusieurs algorithmes pour la régression:
 - etc.
 
 
-[V-1-fct]: https://latex.codecogs.com/png.latex?y=f(x_1,x_2,...,x_n)
+[V-1-fct]: https://latex.codecogs.com/png.latex?\hat{y}=f(x_1,x_2,...,x_n)
 
 [(Sommaire)](#sommaire)
 
@@ -49,13 +49,13 @@ Aussi, savoir comment la version généralisée se fonctionne est plus intéress
 
 La régression linéaire multiple a comme but de décrire la variation d'une variable dépendante (*y*) associée aux variations de plusieurs variables indépendantes.
 Dans le contexte de l'apparentissage automatique, elle sert à estimer une fonction linéaire entre la sortie (avec des valeurs continues, numériques) et les entrées.
-La fonction est écrite comme suit:
+La fonction qui éstime les valeurs de *y* est écrite comme suit:
 
 ![V-2-lineare]
 
 Où:
 
-- *y* est la sortie (résulat),
+- *y^* est la sortie éstimée (résulat),
 - *xi* est une caractéristique d'entrée,
 - *wi* est le poids de cette caractéristique
 
@@ -85,7 +85,7 @@ L'algorithme du gradient est le suivant:
 1. Initialiser les poids *wi* à 0. Fixer un pas *α* pour mettre à jour les poids. Aussi, Fixer un seuil de tolérance *ε > 0*.
 1. Calculer les gradients de la fonction du coût en *wi*
 1. Mettre à jours les poids *wi* en utilisant leurs anciennes valeurs, leurs gradients et le pas *α*
-1. Si la fonction du coût *E <= ε* on s'arrête; sinon, on revient à l'étape (2).
+1. Si la fonction du coût *E < ε* on s'arrête; sinon, on revient à l'étape (2).
 
 #### Le pas
 
@@ -93,9 +93,11 @@ Le pas *α* est une valeur connue entre 0 et 1. *α ∈ ]0, 1]*.
 - Si le pas est grand, on risque de manquer la solution optimale.
 - S'il est petit, l'algorithme prend du temps à converger.
 
-Il y a une technique pour mettre à jour le pas dynamiquement.
+Il y a une technique pour mettre à jour le pas dynamiquement:
 - Si le coût se baisse, augmenter le pas
 - Si le coût s'augmente, diminuer le pas
+
+Dans ce cas, il faut introduire deux paramètres: le taux d'augmentation et le taux de réduction.
 
 #### Critère d'arrêt
 
@@ -111,7 +113,7 @@ Une autre technique est de fixer le nombre maximum des itérations.
 #### Les gradients
 
 Le gradient de chaque poids *wi* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
-Donc, le gradient d'un poids *wi* est calculé comme suit:
+Donc, le gradient d'un poids *wi* avec *i>0* est calculé comme suit:
 
 ![V-2-grad]
 
@@ -160,8 +162,8 @@ en se basant sur ces données:
 ![Exemple regression lineaire](IMG/lin_reg_exp.png)
 
 [V-2-exp]: https://latex.codecogs.com/png.latex?f(x)=x*cos(x*\pi)
-[V-2-lineare]: https://latex.codecogs.com/png.latex?y=w_0+w_1x_1+w_2x_2+...+w_nx_n
-[V-2-lineare0]: https://latex.codecogs.com/png.latex?y=w_0+w_1x_1
+[V-2-lineare]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1+w_2x_2+...+w_nx_n
+[V-2-lineare0]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1
 [V-2-mse]: https://latex.codecogs.com/png.latex?E=\frac{1}{N}\sum\limits_{i=1}^{N}(\hat{y}-y)^2
 [V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_i}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_i(\hat{y}-y)
 [V-2-grad0]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_0}}=\frac{2}{N}\sum\limits_{i=1}^{N}(\hat{y}-y)
