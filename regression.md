@@ -55,7 +55,7 @@ La fonction qui éstime les valeurs de *y* est écrite comme suit:
 
 Où:
 
-- *y^* est la sortie éstimée (résulat),
+- *ŷ* est la sortie éstimée (résulat),
 - *xi* est une caractéristique d'entrée,
 - *wi* est le poids de cette caractéristique
 
@@ -67,7 +67,7 @@ La fonction du coût aide à trouver l'erreur entre le résulat estimé et le r�
 Elle est utilisée pour régler les poids des caractéristiques.
 Donc, pour trouver les poids les plus optimals, il faut minimiser cette fonction.
 
-Etant donnée un ensemble des données d'entrainement avec *N* échantillons, la fonction du coût la plus utilisée est l'erreur quadratique moyenne (MSE) entre les sorties attendues (*y*) et les sorties estimées (*y^*)
+Etant donnée un ensemble des données d'entrainement avec *N* échantillons, la fonction du coût la plus utilisée est l'erreur quadratique moyenne (MSE) entre les sorties attendues (*y*) et les sorties estimées (*ŷ*)
 
 ![V-2-mse]
 
@@ -113,11 +113,15 @@ Une autre technique est de fixer le nombre maximum des itérations.
 #### Les gradients
 
 Le gradient de chaque poids *wi* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
-Donc, le gradient d'un poids *wi* avec *i>0* est calculé comme suit:
+Donc, le gradient d'un poids *wi* est calculé comme suit:
 
 ![V-2-grad]
 
-Le gradient de *w0* est calculé comme suit:
+Pour les *wi* avec *i>0*:
+
+![V-2-gradi]
+
+Pour *w0*:
 
 ![V-2-grad0]
 
@@ -165,7 +169,8 @@ en se basant sur ces données:
 [V-2-lineare]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1+w_2x_2+...+w_nx_n
 [V-2-lineare0]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1
 [V-2-mse]: https://latex.codecogs.com/png.latex?E=\frac{1}{N}\sum\limits_{i=1}^{N}(\hat{y}-y)^2
-[V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_i}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_i(\hat{y}-y)
+[V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_i}}=\frac{1}{N}\sum\limits_{i=1}^{N}\frac{\partial{\hat{y}}}{\partial{w_i}}*\frac{\partial{(\hat{y}-y)^2}}{\partial{\hat{y}}}
+[V-2-gradi]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_i}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_i(\hat{y}-y)
 [V-2-grad0]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_0}}=\frac{2}{N}\sum\limits_{i=1}^{N}(\hat{y}-y)
 [V-2-maj]: https://latex.codecogs.com/png.latex?w_i=w_i-\alpha*\frac{\partial{E}}{\partial{w_i}}
 
@@ -191,21 +196,77 @@ Suivant l'exemple précédent, en applicant la régression polynomiale avec un d
 
 La régression logistique est utilisée pour le classement et pas la régression.
 Mais, elle est considéré comme une méthode de régression puisqu'elle sert à estimer la probabilité d'appartenir à une classe.
+Il y a trois types de régression logistique:
+- **Régression logistique binaire**: ici, le but de la classification est d'identifier si un échantillon appartient à une classe ou non.
+- **Régression logistique multinomiale**: ici, le but de la classification est d'identifier à quelle classe appartient-t-il un échantillon parmi plusieurs classes.
+- **Régression logistique ordinale**: ici, le but de la classification est de chercher la classe d'un échantillon parmi des classes ordonnées. Un exemple de classes: non satisfait, satisfait, très sataisfait.
+
+### V-4-1 Principe
+
+Pour combiner entre les différentes caractéristiques, on utilise une fonction linéaire (exactement comme la régression linéaire):
+
+![V-4-lineare]
+
+Cette valeur est transformée à une probabilité en utilisant la fonction logistique.
+Donc, la probabilité qu'un échantillon avec les caractéristiques *x1, ..., xn* appartienne à une classe *y* est calculée comme suit:
+
+![V-4-logistic]
+
+Les valeurs de la fonction logistique sont comprises entre 0 et 1; comme il est indiqué dans le diagramme suivant:
+
+![La fonction logistique](IMG/logistic.png)
+
+### V-4-2 La décision
+
+Pour prédire si un échantillon *x* appartient à une classe *y*, on calcule sa probabilité en utilisant l'équation précédante.
+Ensuite, on utilise un seuil sur cette probabilité pour décider.
+
+On peut utiliser le seuil **0.5**. Dans ce cas:
+- Si *p(y/x) >= 0.5* donc *x ∈ y*
+- Sinon *x ∈ y*
+
+En cas de  plusieurs classes, on utilise une stratégie de un-contre-le-reste.
+On entraine plusieurs classifieurs, chacun pour une classe.
+Pour décider quelle est la classe d'un échantillon, on prend celle avec la probabilité la plus élevée.
+
+### V-4-3 La fonction du coût
+
+
+
+
+
+### V-4-4 Algorithme du gradient
+
+[V-4-lineare]: https://latex.codecogs.com/png.latex?z=w_0+w_1x_1+w_2x_2+...+w_nx_n
+[V-4-logistic]: https://latex.codecogs.com/png.latex?p(y)=\frac{1}{1+e^{-z}}
 
 [(Sommaire)](#sommaire)
 
 ## V-5 Avantages
 
+La régression linéaire
+
+La régression polynomiale
+
+La régression logistique
+
 [(Sommaire)](#sommaire)
 
 ## V-6 Limites
+
+La régression linéaire
+
+La régression polynomiale
+-
+
+La régression logistique
 
 [(Sommaire)](#sommaire)
 
 
 ## V-7 Un peu de programmation
 
-## V-7-1 Description des données
+### V-7-1 Description des données
 
 On va utiliser l'ensemble des données [Real estate valuation Data Set ](https://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set).
 Ce sont des données pour estimer les prix des maisons (Sindian Dist., New Taipei City, Taiwan.) en se basant sur 7 caractéristiques:
@@ -234,3 +295,5 @@ On a créé un fichier CSV contenant ces données: [data/maisons_taiwan.csv](dat
 - https://scikit-learn.org/stable/modules/linear_model.html
 - https://towardsdatascience.com/linear-regression-using-gradient-descent-97a6c8700931
 - http://www.cs.toronto.edu/~hinton/csc2515/notes/lec6tutorial.pdf
+- https://towardsdatascience.com/introduction-to-linear-regression-and-polynomial-regression-f8adc96f31cb
+- https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/
