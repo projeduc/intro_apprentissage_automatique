@@ -112,12 +112,12 @@ Une autre technique est de fixer le nombre maximum des itérations.
 
 #### Les gradients
 
-Le gradient de chaque poids *wi* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
-Donc, le gradient d'un poids *wi* est calculé comme suit:
+Le gradient de chaque poids *wj* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
+Donc, le gradient d'un poids *wj* est calculé comme suit, où *(i)* représente un échantillon:
 
 ![V-2-grad]
 
-Pour les *wi* avec *i>0*:
+Pour les *wj* avec *j>0*:
 
 ![V-2-gradi]
 
@@ -169,9 +169,9 @@ en se basant sur ces données:
 [V-2-lineare]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1+w_2x_2+...+w_nx_n
 [V-2-lineare0]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1
 [V-2-mse]: https://latex.codecogs.com/png.latex?E=\frac{1}{N}\sum\limits_{i=1}^{N}(\hat{y}-y)^2
-[V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_i}}=\frac{1}{N}\sum\limits_{i=1}^{N}\frac{\partial{\hat{y}}}{\partial{w_i}}*\frac{\partial{(\hat{y}-y)^2}}{\partial{\hat{y}}}
-[V-2-gradi]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_i}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_i(\hat{y}-y)
-[V-2-grad0]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_0}}=\frac{2}{N}\sum\limits_{i=1}^{N}(\hat{y}-y)
+[V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}\frac{\partial{\hat{y}}}{\partial{w_j}}*\frac{\partial{(\hat{y}(x^{(i)})-y^{(i)})^2}}{\partial{\hat{y}(x^{(i)})}}
+[V-2-gradi]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_j}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_j^{(i)}[\hat{y}(x^{(i)})-y^{(i)}]
+[V-2-grad0]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_0}}=\frac{2}{N}\sum\limits_{i=1}^{N}[\hat{y}(x^{(i)})-y^{(i)}]
 [V-2-maj]: https://latex.codecogs.com/png.latex?w_i=w_i-\alpha*\frac{\partial{E}}{\partial{w_i}}
 
 [(Sommaire)](#sommaire)
@@ -218,12 +218,12 @@ Les valeurs de la fonction logistique sont comprises entre 0 et 1; comme il est 
 
 ### V-4-2 La décision
 
-Pour prédire si un échantillon *x* appartient à une classe *y*, on calcule sa probabilité en utilisant l'équation précédante.
+Pour prédire si un échantillon *x* appartient à une classe donnée (classe positive) *y=1*, on calcule sa probabilité en utilisant l'équation précédante.
 Ensuite, on utilise un seuil sur cette probabilité pour décider.
 
 On peut utiliser le seuil **0.5**. Dans ce cas:
-- Si *p(y/x) >= 0.5* donc *x ∈ y*
-- Sinon *x ∈ y*
+- Si *p(y=1&#124;x) >= 0.5* donc classe positive
+- Sinon classe négative
 
 En cas de  plusieurs classes, on utilise une stratégie de un-contre-le-reste.
 On entraine plusieurs classifieurs, chacun pour une classe.
@@ -231,14 +231,34 @@ Pour décider quelle est la classe d'un échantillon, on prend celle avec la pro
 
 ### V-4-3 La fonction du coût
 
+L'erreur quadratique moyenne (MSE) ne peut pas être utilisée comme dans la régression linéaire.
+Ceci est dû au fait que la fonction de prédiction est non linéaire.
+La fonction du coût va être non-convex avec plusieurs minimums locaux.
+Lors de la minimisation, on peut tomber sur un minimum local et l'algorithme du gradient va s'arrêter sans converger vers la solution optimale.
+
+Dans ce cas, on utilise l'entropie croisée.
+Etant donnée un ensemble de données avec *N* échantillons, où le résulat *y* est soit 1 ou 0.
+La fonction du coût est calculée comme suit, où *(i)* réfère au i-ème échantillon  dans les données d'entrainement:
+
+![V-4-ec]
+
+Puisque *y* peut prendre seulement les deux valeurs 0 et 1, cette fonction peut être simplifiée comme suit:
+
+![V-4-ec2]
 
 
+### V-4-4 Les gradients
 
+Le gradient de chaque poids *wi* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
+Donc, le gradient d'un poids *wi* est calculé comme suit:
 
-### V-4-4 Algorithme du gradient
+![V-4-grad]
 
-[V-4-lineare]: https://latex.codecogs.com/png.latex?z=w_0+w_1x_1+w_2x_2+...+w_nx_n
-[V-4-logistic]: https://latex.codecogs.com/png.latex?p(y)=\frac{1}{1+e^{-z}}
+[V-4-lineare]: https://latex.codecogs.com/png.latex?z(x)=\theta_0+\theta_1x_1+\theta_2x_2+...+\theta_nx_n
+[V-4-logistic]: https://latex.codecogs.com/png.latex?h_\theta(x)=p(y=1&#124;x)=\frac{1}{1+e^{-z(x)}}
+[V-4-ec]: https://latex.codecogs.com/png.latex?E=\frac{1}{N}\sum\limits_{i=1}^{N}\begin{cases}-log(h_\theta(x^{(i)}))&si\;y^{(i)}=1\\\\-log(1-h_\theta(x^{(i)}))&si\;y^{(i)}=0\end{cases}
+[V-4-ec2]: https://latex.codecogs.com/png.latex?E=-\frac{1}{N}\sum\limits_{i=1}^{N}[y^{(i)}log(h_\theta(x^{(i)}))+(1-y)log(1-h_\theta(x^{(i)}))]
+[V-4-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}x_j^{(i)}(h_\theta(x^{(i)})-y^{(i)})
 
 [(Sommaire)](#sommaire)
 
@@ -297,3 +317,4 @@ On a créé un fichier CSV contenant ces données: [data/maisons_taiwan.csv](dat
 - http://www.cs.toronto.edu/~hinton/csc2515/notes/lec6tutorial.pdf
 - https://towardsdatascience.com/introduction-to-linear-regression-and-polynomial-regression-f8adc96f31cb
 - https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/
+- https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html
