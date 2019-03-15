@@ -31,7 +31,7 @@ Il existe plusieurs algorithmes pour la régression:
 - etc.
 
 
-[V-1-fct]: https://latex.codecogs.com/png.latex?\hat{y}=f(x_1,x_2,...,x_n)
+[V-1-fct]: https://latex.codecogs.com/png.latex?\hat{y}(x)=f(x_1,x_2,...,x_m)
 
 [(Sommaire)](#sommaire)
 
@@ -56,8 +56,8 @@ La fonction qui éstime les valeurs de *y* d'un échantillon en se basant sur de
 Où:
 
 - *ŷ* est la sortie éstimée (résulat),
-- *xi* est une caractéristique d'entrée,
-- *wi* est le poids de cette caractéristique
+- *xj* est une caractéristique d'entrée,
+- *θj* est le poids de cette caractéristique
 
 Dans ce cas, l'apprentissage est le fait d'estimer ces poids en se basant sur des données d'entrées et des résulats attendus.
 
@@ -82,10 +82,10 @@ Il est utilisé pour mettre à jour les poids de la fonction linéaire en se bas
 C'est un algorithme itératif qui met à jour les poids à chaque itération pour minimiser la fonction du coût.
 L'algorithme du gradient est le suivant:
 
-1. Initialiser les poids *wi* à 0. Fixer un pas *α* pour mettre à jour les poids. Aussi, Fixer un seuil de tolérance *ε > 0*.
-1. Calculer les gradients de la fonction du coût en *wi*
-1. Mettre à jours les poids *wi* en utilisant leurs anciennes valeurs, leurs gradients et le pas *α*
-1. Si la fonction du coût *E < ε* on s'arrête; sinon, on revient à l'étape (2).
+1. Initialiser les poids *θj* à 0. Fixer un pas *α* pour mettre à jour les poids. Aussi, Fixer un seuil de tolérance *ε > 0*.
+1. Calculer les gradients de la fonction du coût en *θj*
+1. Mettre à jours les poids *θj* en utilisant leurs anciennes valeurs, leurs gradients et le pas *α*
+1. Si la fonction du coût *J < ε* on s'arrête; sinon, on revient à l'étape (2).
 
 #### Le pas
 
@@ -112,16 +112,16 @@ Une autre technique est de fixer le nombre maximum des itérations.
 
 #### Les gradients
 
-Le gradient de chaque poids *wj* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
-Donc, le gradient d'un poids *wj* est calculé comme suit, où *(i)* représente un échantillon:
+Le gradient de chaque poids *θj* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
+Donc, le gradient d'un poids *θj* est calculé comme suit, où *(i)* représente un échantillon:
 
 ![V-2-grad]
 
-Pour les *wj* avec *j>0*:
+Pour les *θj* avec *j>0*:
 
 ![V-2-gradi]
 
-Pour *w0*:
+Pour *θ0*:
 
 ![V-2-grad0]
 
@@ -166,13 +166,13 @@ en se basant sur ces données:
 ![Exemple regression lineaire](IMG/lin_reg_exp.png)
 
 [V-2-exp]: https://latex.codecogs.com/png.latex?f(x)=x*cos(x*\pi)
-[V-2-lineare]: https://latex.codecogs.com/png.latex?\hat{y}(x)=w_0+w_1x_1+w_2x_2+...+w_nx_n
-[V-2-lineare0]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1
+[V-2-lineare]: https://latex.codecogs.com/png.latex?\hat{y}(x)=\theta_0+\theta_1x_1+\theta_2x_2+...+\theta_mx_m
+[V-2-lineare0]: https://latex.codecogs.com/png.latex?\hat{y}(x)=\theta_0+\theta_1x_1
 [V-2-mse]: https://latex.codecogs.com/png.latex?J=\frac{1}{N}\sum\limits_{i=1}^{N}(\hat{y}(x^{(i)})-y^{(i)})^2
-[V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{w_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}\frac{\partial{\hat{y}(x^{(i)})}}{\partial{w_j}}*\frac{\partial{(\hat{y}(x^{(i)})-y^{(i)})^2}}{\partial{\hat{y}}}
-[V-2-gradi]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{w_j}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_j^{(i)}[\hat{y}(x^{(i)})-y^{(i)}]
-[V-2-grad0]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{w_0}}=\frac{2}{N}\sum\limits_{i=1}^{N}[\hat{y}(x^{(i)})-y^{(i)}]
-[V-2-maj]: https://latex.codecogs.com/png.latex?w_i=w_i-\alpha*\frac{\partial{J}}{\partial{w_i}}
+[V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{\theta_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}\frac{\partial{\hat{y}(x^{(i)})}}{\partial{\theta_j}}*\frac{\partial{(\hat{y}(x^{(i)})-y^{(i)})^2}}{\partial{\hat{y}}}
+[V-2-gradi]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{\theta_j}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_j^{(i)}[\hat{y}(x^{(i)})-y^{(i)}]
+[V-2-grad0]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{\theta_0}}=\frac{2}{N}\sum\limits_{i=1}^{N}[\hat{y}(x^{(i)})-y^{(i)}]
+[V-2-maj]: https://latex.codecogs.com/png.latex?\theta_j=\theta_j-\alpha*\frac{\partial{J}}{\partial{\theta_j}}
 
 [(Sommaire)](#sommaire)
 
@@ -188,7 +188,7 @@ Suivant l'exemple précédent, en applicant la régression polynomiale avec un d
 
 ![Exemple regression polynomiale](IMG/poly_reg_exp.png)
 
-[V-3-poly]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1+w_2x_2+...+w_nx_n+w_{11}x_1^2+...+w_{nn}x_n^2+w_{12}x_1x_2+...
+[V-3-poly]: https://latex.codecogs.com/png.latex?\hat{y}(x)=\theta_0+\theta_1x_1+\theta_2x_2+...+\theta_mx_m+\theta_{11}x_1^2+...+\theta_{mm}x_m^2+\theta_{12}x_1x_2+...
 
 [(Sommaire)](#sommaire)
 
@@ -249,16 +249,16 @@ Puisque *y* peut prendre seulement les deux valeurs 0 et 1, cette fonction peut 
 
 ### V-4-4 Les gradients
 
-Le gradient de chaque poids *wi* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
-Donc, le gradient d'un poids *wi* est calculé comme suit:
+Le gradient de chaque poids *θj* est calculé en utilisant le dérivé partiel de la fonction du coût par rapport à ce poids.
+Donc, le gradient d'un poids *θj* est calculé comme suit:
 
 ![V-4-grad]
 
-[V-4-lineare]: https://latex.codecogs.com/png.latex?z(x)=\theta_0+\theta_1x_1+\theta_2x_2+...+\theta_nx_n
+[V-4-lineare]: https://latex.codecogs.com/png.latex?z(x)=\theta_0+\theta_1x_1+\theta_2x_2+...+\theta_mx_m
 [V-4-logistic]: https://latex.codecogs.com/png.latex?h_\theta(x)=p(y=1&#124;x)=\frac{1}{1+e^{-z(x)}}
 [V-4-ec]: https://latex.codecogs.com/png.latex?J=\frac{1}{N}\sum\limits_{i=1}^{N}\begin{cases}-log(h_\theta(x^{(i)}))&si\;y^{(i)}=1\\\\-log(1-h_\theta(x^{(i)}))&si\;y^{(i)}=0\end{cases}
 [V-4-ec2]: https://latex.codecogs.com/png.latex?J=-\frac{1}{N}\sum\limits_{i=1}^{N}[y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]
-[V-4-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{w_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}x_j^{(i)}(h_\theta(x^{(i)})-y^{(i)})
+[V-4-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{\theta_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}x_j^{(i)}(h_\theta(x^{(i)})-y^{(i)})
 
 [(Sommaire)](#sommaire)
 
@@ -306,19 +306,22 @@ La régression logistique
 
 ## V-7 Un peu de programmation
 
+Vous pouvez consulter le programe [codes/regression/reg_lin.py](codes/regression/reg_lin.py).
+Aussi, le code utilisé pour générer les exemples précédent est: [codes/regression/exp.py](codes/regression/exp.py).
+
 ### V-7-1 Description des données
 
 On va utiliser l'ensemble des données [Real estate valuation Data Set ](https://archive.ics.uci.edu/ml/datasets/Real+estate+valuation+data+set).
 Ce sont des données pour estimer les prix des maisons (Sindian Dist., New Taipei City, Taiwan.) en se basant sur 7 caractéristiques:
 
-- date: la date de transaction (par exemple: 2013.250=2013 March, 2013.500=2013 June, etc.)
-- age: l'age de la maison en nmbre d'années (nombre réel).
-- metro: la distance à la station de métro la plus proche (en mètre).
-- epicerie: nombre des épiceries près de la maison (nombre entier).
-- latitude: latitude en degrée
-- longitude: longitude en degrée
+- **date**: la date de transaction (par exemple: 2013.250=2013 March, 2013.500=2013 June, etc.)
+- **age**: l'age de la maison en nmbre d'années (nombre réel).
+- **metro**: la distance à la station de métro la plus proche (en mètre).
+- **epicerie**: nombre des épiceries près de la maison (nombre entier).
+- **latitude**: latitude en degrée
+- **longitude**: longitude en degrée
 
-La sortie est le prix de la maison par unité (10000 New Taiwan Dollar/Ping, où Ping est l'unité locale, 1 Ping = 3.3 mètres carrés).
+La sortie est le **prix** de la maison par unité (10000 New Taiwan Dollar/Ping, où Ping est l'unité locale, 1 Ping = 3.3 mètres carrés).
 
 On a créé un fichier CSV contenant ces données: [data/maisons_taiwan.csv](data/maisons_taiwan.csv).
 
@@ -447,7 +450,7 @@ y_pred2 = modele.predict(X_test2)
 
 ### V-7-6 Modèle polynomial
 
-On veut étudier la relation du prix par rapport à l'age des maisons seulement.
+On veut étudier la relation entre le prix etl'age des maisons.
 On va commencer par un modèle linéaire en se basant sur la colonne "age":
 
 ```python
@@ -472,7 +475,7 @@ yp_age = age_pm.predict(age_test)
 
 ### V-7-7 Tracer un graphique
 
-Pour voir la relation entre deux variables, il est préférable de tracer un graphique montrant cette relation.
+Pour étudier la relation entre deux variables, il est préférable de tracer un graphique montrant cette relation.
 Dans notre cas, on va tracer un graphique sur l'évolution du prix en se basant sur l'age des maisons.
 Pour ce faire, on va utiliser la bibliothèque [matplotlib.pyplot](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html).
 

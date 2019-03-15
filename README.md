@@ -39,7 +39,16 @@
   - [IV-6 Limites](arbres.md#iv-6-limites)
   - [IV-7 Un peu de programmation](arbres.md#iv-7-un-peu-de-programmation)
 
+
 - [Chapitre V: Régression](regression.md)
+  - [V-1 Motivation](regression.md#v-1-motivation)
+  - [V-2 Régression linéaire](regression.md#v-2-régression-linéaire)
+  - [V-3 Régression polynomiale](regression.md#v-3-régression-polynomiale)
+  - [V-4 Régression logistique](regression.md#v-4-régression-logistique)
+  - [V-5 Avantages](regression.md#v-5-avantages)
+  - [V-6 Limites](regression.md#v-6-limites)
+  - [V-7 Un peu de programmation](regression.md#v-7-un-peu-de-programmation)
+
 
 - [Chapitre VI: Machine à vecteurs de support](svm.md)
 
@@ -50,7 +59,7 @@
 - [Chapitre VIII: Regroupement K-Means](kmeans.md)
 
 
-- [Chapitre IX: Auto-encodeur](autoencodeur.md)
+- [Chapitre IX: Réduction de la dimensionnalité](reduction.md)
 
 
 - [Chapitre X: Apprentissage par renforcement](renforcement.md)
