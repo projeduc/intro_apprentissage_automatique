@@ -295,7 +295,7 @@ La régression polynomiale
 
 - Les mêmes limites que la régression linéaire
 - Concernant son implémentation, la régression polynomiale est une régression généralisée sur des caractéristiques augmentées (par multiplication des caractéristiques originales).
-Donc, on peut avoir un grand nombre de valeurs en entrée. 
+Donc, on peut avoir un grand nombre de valeurs en entrée.
 
 La régression logistique
 
@@ -321,6 +321,204 @@ Ce sont des données pour estimer les prix des maisons (Sindian Dist., New Taipe
 La sortie est le prix de la maison par unité (10000 New Taiwan Dollar/Ping, où Ping est l'unité locale, 1 Ping = 3.3 mètres carrés).
 
 On a créé un fichier CSV contenant ces données: [data/maisons_taiwan.csv](data/maisons_taiwan.csv).
+
+### V-7-2 Préparation des données
+
+Les données sont sauvegardées sous format CSV ([data/jouer0.csv](data/maisons_taiwan.csv)).
+On va utiliser **pandas** pour lire le fichier.
+
+```python
+import pandas
+#lire le fichier csv
+data = pandas.read_csv("../../data/maisons_taiwan.csv")
+```
+
+On va pas utiliser le caractéristique "date", donc on va le supprimer.
+
+```python
+# supprimer la date
+data.drop(columns=["date"], inplace=True)
+```
+
+Aussi, on divise l'emplacement des maisons en 4 régions en utilisant la latitude et la longitude.
+Donc, on transforme la latitude et la longitude en deux valeurs (0 ou 1) en utilisant la moyenne.
+
+```python
+# une fonction pour binariser une colonne
+# donnee: le dataframe
+# colnom: le nom de la colonne
+def binariser(donnee, colnom):
+    # sélectinner la colonne et calculer la moyenne
+    moy = donnee[colnom].mean()
+    # remplacer les valeurs supérieures à la moyenne par 1
+    # et le reste par 0
+    donnee[colnom] = (donnee[colnom] > moy).astype(float)
+
+# binariser latitude
+binariser(data, "latitude")
+# binariser longitude
+binariser(data, "longitude")
+```
+
+On sépare les données en: entrées (les caractéristiques) et sorties (les classes: comestible ou toxique).
+Dans ce fichier, les classes (qui sont le résultat attendu) sont dans la dernière colonne, et les autres caractéristiques (les entrées) sont dans les colonnes restantes.
+
+```python
+# séparer les données en: entrées et sorties
+X = data.iloc[:,:-1] #les caractéristiques
+y = data.iloc[:,-1]  #les résulats (classes)
+```
+
+Ensuite, il faut séparer les données en deux parties: une pour l'entrainement (on prend 80%) et une pour le test (on prend 20%).
+On va utiliser [train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) de scikit-learn.
+
+```python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+```
+
+### V-7-3 Entrainement du modèle
+
+On va utiliser [sklearn.linear_model.LinearRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html).
+On instance un nouveau régresseur et on l'entaine en utilisant la méthode **fit**.
+Après l'entrainement, on peut récupérer les poids (coéfficients) des caractéristiques.
+
+```python
+from sklearn.linear_model import LinearRegression
+
+#construire le modèle
+modele = LinearRegression().fit(X_train, y_train)
+
+# afficher les coefficients
+print "Coefficients: ", modele.coef_
+```
+
+Lorsqu'on relance le même programme, on va avoir un autre modèle différent.
+
+
+### V-7-4 Evaluation du modèle
+
+Pour prédir les classes d'un ensemble d'échantillons (ici, les données de test), on utilise la méthode **predict**.
+
+```python
+y_pred = modele.predict(X_test)
+```
+
+Pour évaluer le modèle, on peut calculer l'erreur quadratique moyenne entre les valeurs prédites et les valeurs réelles.
+Aussi, il y a une métrique qui s'appelle **le coefficient de détermination**.
+Le meilleure score est 1.
+
+```python
+from sklearn.metrics import mean_squared_error, r2_score
+
+# prédire les résulats des échantillons de test
+y_pred = modele.predict(X_test)
+
+# Evaluation du modèle
+print "L'erreur quadratique moyenne: ", mean_squared_error(y_test, y_pred)
+print "Score R2: ", r2_score(y_test, y_pred)
+```
+
+### V-7-5 Persistance du modèle
+
+Après avoir entrainé un modèle, il est souhaitable de le conserver pour un usage ultérieur sans avoir besoin d'entrainer une deuxième fois.
+Il y a deux façons de le faire selon [la doc de scikit-learn ](https://scikit-learn.org/stable/modules/model_persistence.html):
+- la sérialisation pickle
+- la sérialisation joblib
+
+La deuxième est recommandée par scikit-learn.
+Après avoir entrainer notre modèle, on le sauvegarde.
+
+```python
+from joblib import dump
+...
+modele.fit(X_train, y_train)
+dump(modele, 'mon_modele.joblib')
+```
+
+Lorsqu'on veut prédire une classe en utilisant ce modèle, on le relance.
+
+```python
+from joblib import load
+...
+modele = load('mon_modele.joblib')
+y_pred2 = modele.predict(X_test2)
+```
+
+### V-7-6 Modèle polynomial
+
+On veut étudier la relation du prix par rapport à l'age des maisons seulement.
+On va commencer par un modèle linéaire en se basant sur la colonne "age":
+
+```python
+age_m = LinearRegression().fit(X_train[["age"]], y_train)
+
+yl_age = age_m.predict(X_test[["age"]])
+```
+
+Aussi, on va créer d'autres caractéristiques en se basant sur "age" et en utilisant [sklearn.preprocessing.PolynomialFeatures](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html) (degrée = 10).
+Ensuite, on entraine un modele lineaire sur ces nouvelles données.
+
+```python
+# créer des nouvelles caractéristiques
+poly = PolynomialFeatures(degree=10, include_bias=False)
+age_train = poly.fit_transform(X_train[["age"]])
+age_test = poly.fit_transform(X_test[["age"]])
+# entrainer un modèle linéaire
+age_pm = LinearRegression().fit(age_train, y_train)
+# estimer les prix à partir des données de teste
+yp_age = age_pm.predict(age_test)
+```
+
+### V-7-7 Tracer un graphique
+
+Pour voir la relation entre deux variables, il est préférable de tracer un graphique montrant cette relation.
+Dans notre cas, on va tracer un graphique sur l'évolution du prix en se basant sur l'age des maisons.
+Pour ce faire, on va utiliser la bibliothèque [matplotlib.pyplot](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html).
+
+```python
+import matplotlib.pyplot as plt
+```
+
+On va tracer les valeurs réelles des prix:
+
+```python
+plt.scatter(X_test["age"], y_test, color="black")
+```
+
+Pour tracer les valeurs estimées linéairement sous forme d'une courbe, il faut ordonner les données selon la colonne "age".
+
+```python
+new_x, new_y = zip(*sorted(zip(X_test["age"], yl_age)))
+# v: forme triangle, -: ligne
+plt.plot(new_x, new_y, "v-")
+```
+
+De la même façon pour les valeurs estimées polynomialement.
+
+```python
+new_x, new_y = zip(*sorted(zip(X_test["age"], yp_age)))
+# o: forme cercle, -: ligne
+plt.plot(new_x, new_y, "o-")
+```
+
+Ensuite, on ajoute d'autre information dans notre graphique.
+
+```python
+# la légende des courbes
+plt.legend([u"linéaire", u"polynomiale"])
+
+plt.xlabel("age")
+plt.ylabel("prix")
+plt.title(u"Régression")
+plt.grid()
+plt.show()
+```
+
+Et, voici le résulat:
+
+![Regression](IMG/regression_tuto.png)
+
 
 [(Sommaire)](#sommaire)
 

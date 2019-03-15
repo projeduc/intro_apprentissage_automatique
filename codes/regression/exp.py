@@ -7,7 +7,6 @@ import math
 import csv
 from pandas import DataFrame
 from sklearn.linear_model import LinearRegression
-from sklearn.isotonic import IsotonicRegression
 from sklearn.preprocessing import PolynomialFeatures
 
 X = numpy.arange(0, 4, 0.25)

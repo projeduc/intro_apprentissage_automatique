@@ -315,7 +315,6 @@ Ou, on peut utiliser la méthode **score** qui donne le même résulat
 
 ```python
 print "précision: ", modele.score(X_test, y_test)
-
 ```
 
 ### Sauvegarder le modèle
