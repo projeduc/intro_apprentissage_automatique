@@ -49,7 +49,7 @@ Aussi, savoir comment la version généralisée se fonctionne est plus intéress
 
 La régression linéaire multiple a comme but de décrire la variation d'une variable dépendante (*y*) associée aux variations de plusieurs variables indépendantes.
 Dans le contexte de l'apparentissage automatique, elle sert à estimer une fonction linéaire entre la sortie (avec des valeurs continues, numériques) et les entrées.
-La fonction qui éstime les valeurs de *y* est écrite comme suit:
+La fonction qui éstime les valeurs de *y* d'un échantillon en se basant sur des caractéristiques d'entrée *x* est écrite comme suit:
 
 ![V-2-lineare]
 
@@ -166,13 +166,13 @@ en se basant sur ces données:
 ![Exemple regression lineaire](IMG/lin_reg_exp.png)
 
 [V-2-exp]: https://latex.codecogs.com/png.latex?f(x)=x*cos(x*\pi)
-[V-2-lineare]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1+w_2x_2+...+w_nx_n
+[V-2-lineare]: https://latex.codecogs.com/png.latex?\hat{y}(x)=w_0+w_1x_1+w_2x_2+...+w_nx_n
 [V-2-lineare0]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1
-[V-2-mse]: https://latex.codecogs.com/png.latex?E=\frac{1}{N}\sum\limits_{i=1}^{N}(\hat{y}-y)^2
-[V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}\frac{\partial{\hat{y}}}{\partial{w_j}}*\frac{\partial{(\hat{y}(x^{(i)})-y^{(i)})^2}}{\partial{\hat{y}(x^{(i)})}}
-[V-2-gradi]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_j}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_j^{(i)}[\hat{y}(x^{(i)})-y^{(i)}]
-[V-2-grad0]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_0}}=\frac{2}{N}\sum\limits_{i=1}^{N}[\hat{y}(x^{(i)})-y^{(i)}]
-[V-2-maj]: https://latex.codecogs.com/png.latex?w_i=w_i-\alpha*\frac{\partial{E}}{\partial{w_i}}
+[V-2-mse]: https://latex.codecogs.com/png.latex?J=\frac{1}{N}\sum\limits_{i=1}^{N}(\hat{y}(x^{(i)})-y^{(i)})^2
+[V-2-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{w_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}\frac{\partial{\hat{y}(x^{(i)})}}{\partial{w_j}}*\frac{\partial{(\hat{y}(x^{(i)})-y^{(i)})^2}}{\partial{\hat{y}}}
+[V-2-gradi]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{w_j}}=\frac{2}{N}\sum\limits_{i=1}^{N}x_j^{(i)}[\hat{y}(x^{(i)})-y^{(i)}]
+[V-2-grad0]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{w_0}}=\frac{2}{N}\sum\limits_{i=1}^{N}[\hat{y}(x^{(i)})-y^{(i)}]
+[V-2-maj]: https://latex.codecogs.com/png.latex?w_i=w_i-\alpha*\frac{\partial{J}}{\partial{w_i}}
 
 [(Sommaire)](#sommaire)
 
@@ -188,7 +188,7 @@ Suivant l'exemple précédent, en applicant la régression polynomiale avec un d
 
 ![Exemple regression polynomiale](IMG/poly_reg_exp.png)
 
-[V-3-poly]: https://latex.codecogs.com/png.latex?y=w_0+w_1x_1+w_2x_2+...+w_nx_n+w_{11}x_1^2+...+w_{nn}x_n^2+w_{12}x_1x_2+...
+[V-3-poly]: https://latex.codecogs.com/png.latex?\hat{y}=w_0+w_1x_1+w_2x_2+...+w_nx_n+w_{11}x_1^2+...+w_{nn}x_n^2+w_{12}x_1x_2+...
 
 [(Sommaire)](#sommaire)
 
@@ -256,9 +256,9 @@ Donc, le gradient d'un poids *wi* est calculé comme suit:
 
 [V-4-lineare]: https://latex.codecogs.com/png.latex?z(x)=\theta_0+\theta_1x_1+\theta_2x_2+...+\theta_nx_n
 [V-4-logistic]: https://latex.codecogs.com/png.latex?h_\theta(x)=p(y=1&#124;x)=\frac{1}{1+e^{-z(x)}}
-[V-4-ec]: https://latex.codecogs.com/png.latex?E=\frac{1}{N}\sum\limits_{i=1}^{N}\begin{cases}-log(h_\theta(x^{(i)}))&si\;y^{(i)}=1\\\\-log(1-h_\theta(x^{(i)}))&si\;y^{(i)}=0\end{cases}
-[V-4-ec2]: https://latex.codecogs.com/png.latex?E=-\frac{1}{N}\sum\limits_{i=1}^{N}[y^{(i)}log(h_\theta(x^{(i)}))+(1-y)log(1-h_\theta(x^{(i)}))]
-[V-4-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{E}}{\partial{w_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}x_j^{(i)}(h_\theta(x^{(i)})-y^{(i)})
+[V-4-ec]: https://latex.codecogs.com/png.latex?J=\frac{1}{N}\sum\limits_{i=1}^{N}\begin{cases}-log(h_\theta(x^{(i)}))&si\;y^{(i)}=1\\\\-log(1-h_\theta(x^{(i)}))&si\;y^{(i)}=0\end{cases}
+[V-4-ec2]: https://latex.codecogs.com/png.latex?J=-\frac{1}{N}\sum\limits_{i=1}^{N}[y^{(i)}log(h_\theta(x^{(i)}))+(1-y^{(i)})log(1-h_\theta(x^{(i)}))]
+[V-4-grad]: https://latex.codecogs.com/png.latex?\frac{\partial{J}}{\partial{w_j}}=\frac{1}{N}\sum\limits_{i=1}^{N}x_j^{(i)}(h_\theta(x^{(i)})-y^{(i)})
 
 [(Sommaire)](#sommaire)
 
@@ -266,9 +266,19 @@ Donc, le gradient d'un poids *wi* est calculé comme suit:
 
 La régression linéaire
 
+- Simple à comprendre et à expliquer
+- Utile pour l'analyse des données
+
 La régression polynomiale
 
+- Fournit une bonne approximation de la relation entre la variable dépendante *y* et la variable indépendante *x*.
+
+
 La régression logistique
+
+- Poutant elle est utilisée pour la classification, elle donne des probabilités pour les sorties.
+- Les modèle logistique peut être mis à jour facilement.
+
 
 [(Sommaire)](#sommaire)
 
@@ -276,10 +286,20 @@ La régression logistique
 
 La régression linéaire
 
+- Elle donne des mauvaises performances s'il n'y a pas une relation linéaire.
+- La plupart des phénomènes réelles ne correspondent pas la supposition du modèle linéaire.
+- Sensible aux valeurs aberrantes
+
+
 La régression polynomiale
--
+
+- Les mêmes limites que la régression linéaire
+- Concernant son implémentation, la régression polynomiale est une régression généralisée sur des caractéristiques augmentées (par multiplication des caractéristiques originales).
+Donc, on peut avoir un grand nombre de valeurs en entrée. 
 
 La régression logistique
+
+- Donne une mauvaise performance lorsqu'il existe plusieurs limites de décision ou des limites de décision non linéaires.
 
 [(Sommaire)](#sommaire)
 
@@ -318,3 +338,4 @@ On a créé un fichier CSV contenant ces données: [data/maisons_taiwan.csv](dat
 - https://towardsdatascience.com/introduction-to-linear-regression-and-polynomial-regression-f8adc96f31cb
 - https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/
 - https://ml-cheatsheet.readthedocs.io/en/latest/logistic_regression.html
+- https://elitedatascience.com/machine-learning-algorithms
