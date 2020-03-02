@@ -336,7 +336,7 @@ import pandas
 data = pandas.read_csv("../../data/maisons_taiwan.csv")
 ```
 
-On va pas utiliser le caractéristique "date", donc on va le supprimer.
+On ne va pas utiliser le caractéristique "date", donc on va le supprimer.
 
 ```python
 # supprimer la date

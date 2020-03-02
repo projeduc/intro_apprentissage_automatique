@@ -293,7 +293,7 @@ Notre équation de régression linéaire sera comme suit:
 [II-3-z-score]: https://latex.codecogs.com/png.latex?x'=\frac{x-\mu}{\sigma}
 [II-3-coupure]: https://latex.codecogs.com/png.latex?x'=\begin{cases}\alpha&si\;x\ge\alpha\\\\\beta&si\;x\le\beta\\\\x&sinon\end{cases}
 [II-3-log]: https://latex.codecogs.com/png.latex?x'=\log(x)
-[II-3-bin]: https://latex.codecogs.com/png.latex?x'=\begin{cases}1&si\;x>a\\\\0&sinon\end{cases}
+[II-3-bin]: https://latex.codecogs.com/png.latex?x'=\begin{cases}1&si\;x%3Ea\\\\0&sinon\end{cases}
 [II-3-reg]: https://latex.codecogs.com/png.latex?y=w_1x_1+w_2x_2+...+w_nx_n
 [II-3-reg2]: https://latex.codecogs.com/png.latex?y=w_1x_1+w_2x_2+...+w_nx_n+w_{11}x_1^2+w_{22}x_2^2+w_{12}x_1x_2+...
 
@@ -824,7 +824,7 @@ Pour les valeurs de absentes de "age", on va faire un lissage par moyenne:
 
 ```python
 adult["age"] = pandas.to_numeric(adult["age"])
-adult["age"] = adult.groupby(["class", "education"])["age"].transform(lambda x: x.fillna(x.mean().round()))
+adult["age"] = adult.groupby(["class", "education"])["age"].transform(lambda x: x.fillna(int(round(x.mean()))))
 ```
 
 On vérifie le nombre des valeurs indéfinies pour être sûre qu'il ne reste aucune.

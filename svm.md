@@ -1,19 +1,21 @@
-﻿# Chapitre IV: Machine à vecteurs de support
+﻿# Chapitre VI: Machine à vecteurs de support
 
 ## Sommaire
 
 [(Retour vers la page principale)](README.md)
 
-- Chapitre IV: Machine à vecteurs de support
-  - [IV-1 Motivation](#iv-1-motivation)
-  - [IV-1 Classification](#iv-1-classification)
-  - [IV-2 Apprentissage](#iv-2-apprentissage)
-  - [IV-3 Exemples](#iv-3-exemples)
-  - [IV-4 Avantages](#iv-4-avantages)
-  - [IV-5 Limites](#iv-5-limites)
-  - [IV-6 un peu de programmation](#iv-6-un-peu-de-programmation)
+- Chapitre VI: Machine à vecteurs de support
+  - [VI-1 Motivation](#vi-1-motivation)
+  - [VI-2 Classement](#vi-2-classement)
+  - [VI-3 Régression](#vi-3-regression)
+  - [VI-4 Les noyaux](#vi-4-les-noyaux)
+  - [VI-5 Avantages](#vi-5-avantages)
+  - [VI-6 Limites](#vi-6-limites)
+  - [VI-7 Un peu de programmation](#vi-7-un-peu-de-programmation)
 
-## III-1 Classification
+## VI-1 Motivation
+
+
 
 [(Sommaire)](#sommaire)
 

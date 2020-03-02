@@ -52,6 +52,7 @@
 
 - [Chapitre VI: Machine à vecteurs de support](svm.md)
 
+
 - [Chapitre VII: Réseau de neurones artificiels](neurones.md)
   - [VII-1 Motivation](#vii-1-motivation)
 
